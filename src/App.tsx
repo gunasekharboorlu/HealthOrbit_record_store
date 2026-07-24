@@ -9,6 +9,7 @@ import WebsiteLayout from './layouts/WebsiteLayout';
 import AppLayout from './layouts/AppLayout';
 import ProtectedRoute from './components/common/ProtectedRoute';
 import LoadingSkeleton from './components/layout/LoadingSkeleton';
+import PWAInstallBanner from './components/common/PWAInstallBanner';
 
 // Lazy Loaded Public Pages
 const HomePage = lazy(() => import('./pages/public/HomePage'));
@@ -636,6 +637,7 @@ export default function App() {
       )}
 
       <Suspense fallback={<LoadingSkeleton />}>
+        <PWAInstallBanner />
         <Routes>
           
           {/* PUBLIC WEBSITE ROUTES */}

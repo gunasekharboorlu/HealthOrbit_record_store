@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HealthOrbit — Offline Mode</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #081221;
+      color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+      text-align: center;
+    }
+    .card {
+      background: rgba(12, 20, 37, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 40px 32px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
+    }
+    .logo-container {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 24px auto;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-container svg {
+      width: 36px;
+      height: 36px;
+      stroke: #38bdf8;
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+    p {
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      color: #f87171;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 20px;
+    }
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      background-color: #ef4444;
+      border-radius: 50%;
+    }
+    .btn {
+      background: linear-gradient(135deg, #38bdf8, #22d3ee);
+      color: #020617;
+      border: none;
+      border-radius: 14px;
+      padding: 14px 28px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      width: 100%;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .btn:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+    .btn:active {
+      transform: translateY(0);
+    }
+    .status-text {
+      margin-top: 16px;
+      font-size: 12px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo-container">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="1" y1="1" x2="23" y2="23"></line>
+        <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"></path>
+        <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"></path>
+        <path d="M10.71 5.05A16 16 0 0 1 22.58 9"></path>
+        <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"></path>
+        <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+        <line x1="12" y1="20" x2="12.01" y2="20"></line>
+      </svg>
+    </div>
+
+    <div class="badge">
+      <span class="badge-dot"></span>
+      Offline Mode Active
+    </div>
+
+    <h1>No Internet Connection</h1>
+    <p>
+      HealthOrbit is operating in cached offline mode. Cached patient record summaries and client state remain accessible. Live ledger synchronization will automatically resume once connectivity is restored.
+    </p>
+
+    <button class="btn" onclick="checkConnection()">Retry Connection</button>
+    <div class="status-text" id="statusMsg">Checking network status...</div>
+  </div>
+
+  <script>
+    function checkConnection() {
+      const msg = document.getElementById('statusMsg');
+      msg.textContent = 'Verifying network availability...';
+      if (navigator.onLine) {
+        msg.textContent = 'Connection detected! Reloading HealthOrbit...';
+        msg.style.color = '#38bdf8';
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 800);
+      } else {
+        setTimeout(() => {
+          msg.textContent = 'Still offline. Please check your WiFi or mobile network.';
+          msg.style.color = '#f87171';
+        }, 1000);
+      }
+    }
+
+    window.addEventListener('online', function() {
+      document.getElementById('statusMsg').textContent = 'Network restored! Redirecting...';
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 500);
+    });
+
+    document.getElementById('statusMsg').textContent = 'Auto-reconnect standby active';
+  </script>
+</body>
+</html>

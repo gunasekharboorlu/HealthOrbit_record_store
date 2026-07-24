@@ -71,212 +71,216 @@ export default function LandingPage({ setView, setAuthRole }: LandingPageProps) 
   };
 
   return (
-    <div className="space-y-32 relative overflow-hidden pb-16">
+    <div className="space-y-20 sm:space-y-24 relative overflow-hidden pb-16">
       
       {/* Background Decorative Ambient Flares */}
       <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-gradient-to-tr from-[#38bdf8]/8 to-[#22d3ee]/4 rounded-full blur-[160px] pointer-events-none animate-pulse-slow" />
       <div className="absolute top-[40%] left-[-15%] w-[500px] h-[500px] bg-gradient-to-tr from-[#22d3ee]/6 to-[#38bdf8]/4 rounded-full blur-[140px] pointer-events-none" />
 
-      {/* Hero Section */}
-      <motion.div 
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-8 sm:pt-16 relative z-10"
-      >
-        
-        {/* Left column: High-impact copy */}
-        <div className="lg:col-span-7 space-y-8 text-left">
-          
-          {/* Sparkle Tag */}
-          <motion.div variants={itemVariants} className="inline-flex">
-            <div className="inline-flex items-center gap-2 bg-[#38bdf8]/10 border border-[#38bdf8]/20 px-4 py-1.5 rounded-full text-xs font-bold text-[#38bdf8] tracking-wide uppercase shadow-lg backdrop-blur-md">
-              <Sparkles className="w-4.5 h-4.5 text-[#38bdf8] animate-pulse" />
-              <span className="font-mono">Next-Gen Interoperable Health Protocol</span>
-            </div>
-          </motion.div>
-
-          {/* Heading */}
-          <motion.h1 variants={itemVariants} className="font-display text-4xl sm:text-6.5xl font-black text-white tracking-tight leading-[1.08]">
-            Your Certified Medical Timeline. <br/>
-            <span className="bg-gradient-to-r from-[#38bdf8] via-[#22d3ee] to-[#14f195] bg-clip-text text-transparent">
-              Decentralized & Patient-Owned.
-            </span>
-          </motion.h1>
-
-          {/* Subtitle */}
-          <motion.p variants={itemVariants} className="text-slate-300 text-sm sm:text-base max-w-xl leading-relaxed">
-            HealthOrbit dismantles fragmented medical silos. Securely compile certified diagnostics, govern access locks with cryptographic permission keys, and authorize doctors instantly across any network clinic.
-          </motion.p>
-
-          {/* Action Buttons */}
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-4 pt-2">
-            <button 
-              onClick={() => { setAuthRole('patient'); setView('register'); }} 
-              className="w-full sm:w-auto relative overflow-hidden group bg-gradient-to-r from-[#38bdf8] to-[#22d3ee] text-slate-950 shadow-[0_0_30px_rgba(56,189,248,0.3)] hover:shadow-[0_0_40px_rgba(56,189,248,0.5)] px-8 py-4 rounded-2xl font-bold text-sm tracking-wide transition-all hover:scale-[1.03] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <span className="relative z-10 flex items-center gap-2 font-black">
-                Initialize Patient Vault
-                <ArrowRight className="w-4.5 h-4.5 group-hover:translate-x-1 transition-transform" />
-              </span>
-              <span className="absolute inset-0 bg-gradient-to-r from-[#22d3ee] to-[#14f195] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </button>
-            
-            <button 
-              onClick={() => { setAuthRole('doctor'); setView('login'); }} 
-              className="w-full sm:w-auto bg-[#0c1425]/80 hover:bg-[#12203b] text-white border border-white/10 hover:border-white/20 shadow-md px-8 py-4 rounded-2xl font-bold text-sm tracking-wide transition-all hover:scale-[1.03] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer backdrop-blur-md"
-            >
-              <Stethoscope className="w-4.5 h-4.5 text-[#38bdf8]" />
-              Practitioner Entry
-            </button>
-          </motion.div>
-
-          {/* Core Feature Badges */}
-          <motion.div variants={itemVariants} className="pt-6 border-t border-white/5 flex flex-wrap gap-x-6 gap-y-3">
-            <div className="flex items-center gap-2 text-xs text-slate-400 font-medium">
-              <Shield className="w-4.5 h-4.5 text-[#38bdf8]" />
-              <span>Zero-Knowledge Locks</span>
-            </div>
-            <div className="flex items-center gap-2 text-xs text-slate-400 font-medium">
-              <BadgeCheck className="w-4.5 h-4.5 text-emerald-400" />
-              <span>Accredited Clinic Stamps</span>
-            </div>
-            <div className="flex items-center gap-2 text-xs text-slate-400 font-medium">
-              <RefreshCw className="w-4.5 h-4.5 text-[#22d3ee]" />
-              <span>Real-Time Ingestion</span>
-            </div>
-          </motion.div>
-
-        </div>
-
-        {/* Right column: Futuristic Healthcare Illustration (SVG styled dynamically) */}
+      {/* Hero Section Container */}
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-8 pt-6 sm:pt-12 relative z-10">
         <motion.div 
-          variants={itemVariants}
-          className="lg:col-span-5 flex justify-center items-center relative"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center"
         >
-          {/* Outer Rotating Halo ring */}
-          <div className="absolute w-[360px] h-[360px] rounded-full border border-[#38bdf8]/15 border-dashed animate-[spin_24s_infinite_linear]" />
-          <div className="absolute w-[440px] h-[440px] rounded-full border border-cyan-500/10 pointer-events-none" />
-
-          {/* Floating interactive card canvas */}
-          <motion.div 
-            variants={floatVariants}
-            animate="animate"
-            className="w-full max-w-[380px] bg-[#0c1425]/50 backdrop-blur-2xl rounded-[32px] p-6 border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.5)] space-y-6 relative"
-          >
-            {/* Glowing node connections lines */}
-            <div className="absolute top-0 left-12 w-[1px] h-full bg-gradient-to-b from-transparent via-[#38bdf8]/20 to-transparent" />
+          
+          {/* Left column: High-impact copy */}
+          <div className="lg:col-span-7 space-y-6 sm:space-y-7 text-left">
             
-            {/* Animated medical timeline preview header */}
-            <div className="flex items-center justify-between pb-4 border-b border-white/10">
-              <div className="flex items-center gap-2.5">
-                <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-[#38bdf8] to-[#22d3ee] flex items-center justify-center text-slate-950">
-                  <Activity className="w-5 h-5 animate-pulse" />
-                </div>
-                <div>
-                  <span className="block text-xs font-bold text-white">Universal Clinical ID</span>
-                  <span className="block text-[9px] text-[#22d3ee] font-mono">PAT-80924039</span>
-                </div>
+            {/* Sparkle Tag */}
+            <motion.div variants={itemVariants} className="inline-flex">
+              <div className="inline-flex items-center gap-2 bg-[#38bdf8]/10 border border-[#38bdf8]/20 px-3.5 py-1.5 rounded-full text-xs font-bold text-[#38bdf8] tracking-wide uppercase shadow-lg backdrop-blur-md">
+                <Sparkles className="w-4 h-4 text-[#38bdf8] animate-pulse" />
+                <span className="font-mono">Next-Gen Interoperable Health Protocol</span>
               </div>
-              <span className="text-[9px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/25 px-2.5 py-0.5 rounded-full font-bold">Secure Online</span>
-            </div>
+            </motion.div>
 
-            {/* Medical Timeline Records Preview */}
-            <div className="space-y-3.5 relative">
+            {/* Heading */}
+            <motion.h1 variants={itemVariants} className="font-display text-4xl sm:text-5.5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
+              Your Certified Medical Timeline. <br/>
+              <span className="bg-gradient-to-r from-[#38bdf8] via-[#22d3ee] to-[#14f195] bg-clip-text text-transparent">
+                Decentralized & Patient-Owned.
+              </span>
+            </motion.h1>
+
+            {/* Subtitle */}
+            <motion.p variants={itemVariants} className="text-slate-300 text-sm sm:text-base max-w-xl leading-relaxed">
+              HealthOrbit dismantles fragmented medical silos. Securely compile certified diagnostics, govern access locks with cryptographic permission keys, and authorize doctors instantly across any network clinic.
+            </motion.p>
+
+            {/* Action Buttons */}
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-3.5 pt-1">
+              <button 
+                onClick={() => { setAuthRole('patient'); setView('register'); }} 
+                className="w-full sm:w-auto relative overflow-hidden group bg-gradient-to-r from-[#38bdf8] to-[#22d3ee] text-slate-950 shadow-[0_0_30px_rgba(56,189,248,0.3)] hover:shadow-[0_0_40px_rgba(56,189,248,0.5)] px-7 py-3.5 rounded-2xl font-bold text-sm tracking-wide transition-all hover:scale-[1.03] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <span className="relative z-10 flex items-center gap-2 font-black">
+                  Initialize Patient Vault
+                  <ArrowRight className="w-4.5 h-4.5 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <span className="absolute inset-0 bg-gradient-to-r from-[#22d3ee] to-[#14f195] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </button>
               
-              {/* Record block 1 */}
-              <div className="relative pl-7 space-y-1">
-                <div className="absolute left-[9px] top-1.5 h-2 w-2 rounded-full bg-[#38bdf8] ring-4 ring-[#38bdf8]/25" />
-                <div className="flex justify-between items-center text-[10px]">
-                  <span className="font-bold text-white">LabCorp Blood Panel</span>
-                  <span className="text-slate-400 font-mono">Today, 09:14 AM</span>
+              <button 
+                onClick={() => { setAuthRole('doctor'); setView('login'); }} 
+                className="w-full sm:w-auto bg-[#0c1425]/80 hover:bg-[#12203b] text-white border border-white/10 hover:border-white/20 shadow-md px-7 py-3.5 rounded-2xl font-bold text-sm tracking-wide transition-all hover:scale-[1.03] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer backdrop-blur-md"
+              >
+                <Stethoscope className="w-4.5 h-4.5 text-[#38bdf8]" />
+                Practitioner Entry
+              </button>
+            </motion.div>
+
+            {/* Core Feature Badges */}
+            <motion.div variants={itemVariants} className="pt-5 border-t border-white/5 flex flex-wrap gap-x-6 gap-y-2.5">
+              <div className="flex items-center gap-2 text-xs text-slate-400 font-medium">
+                <Shield className="w-4 h-4 text-[#38bdf8]" />
+                <span>Zero-Knowledge Locks</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-slate-400 font-medium">
+                <BadgeCheck className="w-4 h-4 text-emerald-400" />
+                <span>Accredited Clinic Stamps</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-slate-400 font-medium">
+                <RefreshCw className="w-4 h-4 text-[#22d3ee]" />
+                <span>Real-Time Ingestion</span>
+              </div>
+            </motion.div>
+
+          </div>
+
+          {/* Right column: Futuristic Healthcare Illustration (SVG styled dynamically) */}
+          <motion.div 
+            variants={itemVariants}
+            className="lg:col-span-5 flex justify-center lg:justify-end items-center relative"
+          >
+            {/* Outer Rotating Halo ring */}
+            <div className="absolute w-[320px] sm:w-[360px] h-[320px] sm:h-[360px] rounded-full border border-[#38bdf8]/15 border-dashed animate-[spin_24s_infinite_linear]" />
+            <div className="absolute w-[380px] sm:w-[420px] h-[380px] sm:h-[420px] rounded-full border border-cyan-500/10 pointer-events-none" />
+
+            {/* Floating interactive card canvas */}
+            <motion.div 
+              variants={floatVariants}
+              animate="animate"
+              className="w-full max-w-[380px] bg-[#0c1425]/60 backdrop-blur-2xl rounded-[28px] p-5 sm:p-6 border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.5)] space-y-5 relative"
+            >
+              {/* Glowing node connections lines */}
+              <div className="absolute top-0 left-12 w-[1px] h-full bg-gradient-to-b from-transparent via-[#38bdf8]/20 to-transparent" />
+              
+              {/* Animated medical timeline preview header */}
+              <div className="flex items-center justify-between pb-4 border-b border-white/10">
+                <div className="flex items-center gap-2.5">
+                  <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-[#38bdf8] to-[#22d3ee] flex items-center justify-center text-slate-950">
+                    <Activity className="w-5 h-5 animate-pulse" />
+                  </div>
+                  <div>
+                    <span className="block text-xs font-bold text-white">Universal Clinical ID</span>
+                    <span className="block text-[9px] text-[#22d3ee] font-mono">PAT-80924039</span>
+                  </div>
                 </div>
-                <p className="text-[9px] text-slate-300">St. Jude General Hospital • Verified Stamp</p>
+                <span className="text-[9px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/25 px-2.5 py-0.5 rounded-full font-bold">Secure Online</span>
               </div>
 
-              {/* Record block 2 (Locked sensitive file) */}
-              <div className="relative pl-7 space-y-1">
-                <div className="absolute left-[9px] top-1.5 h-2 w-2 rounded-full bg-purple-500 ring-4 ring-purple-500/20" />
-                <div className="flex justify-between items-center text-[10px]">
-                  <span className="font-bold text-white flex items-center gap-1">
-                    MRI Brain Scan <Lock className="w-2.5 h-2.5 text-purple-400" />
-                  </span>
-                  <span className="text-slate-400 font-mono">Yesterday</span>
+              {/* Medical Timeline Records Preview */}
+              <div className="space-y-3.5 relative">
+                
+                {/* Record block 1 */}
+                <div className="relative pl-7 space-y-1">
+                  <div className="absolute left-[9px] top-1.5 h-2 w-2 rounded-full bg-[#38bdf8] ring-4 ring-[#38bdf8]/25" />
+                  <div className="flex justify-between items-center text-[10px]">
+                    <span className="font-bold text-white">LabCorp Blood Panel</span>
+                    <span className="text-slate-400 font-mono">Today, 09:14 AM</span>
+                  </div>
+                  <p className="text-[9px] text-slate-300">St. Jude General Hospital • Verified Stamp</p>
                 </div>
-                <p className="text-[9px] text-slate-300">Metropolis Medical Center • Sensitive Lock</p>
-              </div>
 
-              {/* Record block 3 */}
-              <div className="relative pl-7 space-y-1">
-                <div className="absolute left-[9px] top-1.5 h-2 w-2 rounded-full bg-emerald-400 ring-4 ring-emerald-400/20" />
-                <div className="flex justify-between items-center text-[10px]">
-                  <span className="font-bold text-white">COVID-19 Booster Stamp</span>
-                  <span className="text-slate-400 font-mono">Jul 10, 2026</span>
+                {/* Record block 2 (Locked sensitive file) */}
+                <div className="relative pl-7 space-y-1">
+                  <div className="absolute left-[9px] top-1.5 h-2 w-2 rounded-full bg-purple-500 ring-4 ring-purple-500/20" />
+                  <div className="flex justify-between items-center text-[10px]">
+                    <span className="font-bold text-white flex items-center gap-1">
+                      MRI Brain Scan <Lock className="w-2.5 h-2.5 text-purple-400" />
+                    </span>
+                    <span className="text-slate-400 font-mono">Yesterday</span>
+                  </div>
+                  <p className="text-[9px] text-slate-300">Metropolis Medical Center • Sensitive Lock</p>
                 </div>
-                <p className="text-[9px] text-slate-300">Westcity Health • Patient Reported</p>
+
+                {/* Record block 3 */}
+                <div className="relative pl-7 space-y-1">
+                  <div className="absolute left-[9px] top-1.5 h-2 w-2 rounded-full bg-emerald-400 ring-4 ring-emerald-400/20" />
+                  <div className="flex justify-between items-center text-[10px]">
+                    <span className="font-bold text-white">COVID-19 Booster Stamp</span>
+                    <span className="text-slate-400 font-mono">Jul 10, 2026</span>
+                  </div>
+                  <p className="text-[9px] text-slate-300">Westcity Health • Patient Reported</p>
+                </div>
+
               </div>
 
-            </div>
-
-            {/* Glowing biometric health waves vector */}
-            <div className="bg-[#020617]/70 rounded-2xl p-3 border border-white/5 space-y-2">
-              <div className="flex items-center justify-between text-[9px] font-mono text-slate-400">
-                <span>Interoperable Sync Feed</span>
-                <span className="text-[#38bdf8] font-bold">60 FPS</span>
+              {/* Glowing biometric health waves vector */}
+              <div className="bg-[#020617]/70 rounded-2xl p-3 border border-white/5 space-y-2">
+                <div className="flex items-center justify-between text-[9px] font-mono text-slate-400">
+                  <span>Interoperable Sync Feed</span>
+                  <span className="text-[#38bdf8] font-bold">60 FPS</span>
+                </div>
+                <svg viewBox="0 0 100 25" className="w-full h-8 stroke-[#38bdf8] fill-none stroke-[1.5] overflow-visible">
+                  <path d="M 0,12.5 L 20,12.5 L 25,2 L 30,23 L 35,12.5 L 55,12.5 L 60,7 L 65,18 L 70,12.5 L 100,12.5" />
+                  <circle cx="25" cy="2" r="1.5" className="fill-white stroke-[#38bdf8]" />
+                  <circle cx="30" cy="23" r="1.5" className="fill-white stroke-[#38bdf8]" />
+                </svg>
               </div>
-              <svg viewBox="0 0 100 25" className="w-full h-8 stroke-[#38bdf8] fill-none stroke-[1.5] overflow-visible">
-                <path d="M 0,12.5 L 20,12.5 L 25,2 L 30,23 L 35,12.5 L 55,12.5 L 60,7 L 65,18 L 70,12.5 L 100,12.5" />
-                <circle cx="25" cy="2" r="1.5" className="fill-white stroke-[#38bdf8]" />
-                <circle cx="30" cy="23" r="1.5" className="fill-white stroke-[#38bdf8]" />
-              </svg>
-            </div>
+
+            </motion.div>
 
           </motion.div>
 
         </motion.div>
-
-      </motion.div>
+      </div>
 
       {/* Statistics board with beautiful counters */}
-      <div className="relative z-10">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#38bdf8]/5 to-transparent blur-2xl" />
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          
-          <div className="glass-card rounded-2xl p-6 border border-white/5 text-center space-y-1 hover:border-[#38bdf8]/20 transition duration-300">
-            <div className="text-3xl sm:text-4xl font-display font-black text-white font-mono bg-gradient-to-r from-[#38bdf8] to-white bg-clip-text text-transparent">100%</div>
-            <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#94a3b8] font-mono">Patient Sovereignty</p>
-            <p className="text-[9px] text-slate-500">You hold the unique encryption keys</p>
-          </div>
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-8 relative z-10">
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#38bdf8]/5 to-transparent blur-2xl pointer-events-none" />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            
+            <div className="glass-card rounded-2xl p-5 sm:p-6 border border-white/5 text-center space-y-1 hover:border-[#38bdf8]/20 transition duration-300">
+              <div className="text-3xl sm:text-4xl font-display font-black text-white font-mono bg-gradient-to-r from-[#38bdf8] to-white bg-clip-text text-transparent">100%</div>
+              <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#94a3b8] font-mono">Patient Sovereignty</p>
+              <p className="text-[9px] text-slate-500">You hold the unique encryption keys</p>
+            </div>
 
-          <div className="glass-card rounded-2xl p-6 border border-white/5 text-center space-y-1 hover:border-[#38bdf8]/20 transition duration-300">
-            <div className="text-3xl sm:text-4xl font-display font-black text-white font-mono bg-gradient-to-r from-[#22d3ee] to-white bg-clip-text text-transparent">24H</div>
-            <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#94a3b8] font-mono">Access Clearance</p>
-            <p className="text-[9px] text-slate-500">Unlocks decay automatically</p>
-          </div>
+            <div className="glass-card rounded-2xl p-5 sm:p-6 border border-white/5 text-center space-y-1 hover:border-[#38bdf8]/20 transition duration-300">
+              <div className="text-3xl sm:text-4xl font-display font-black text-white font-mono bg-gradient-to-r from-[#22d3ee] to-white bg-clip-text text-transparent">24H</div>
+              <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#94a3b8] font-mono">Access Clearance</p>
+              <p className="text-[9px] text-slate-500">Unlocks decay automatically</p>
+            </div>
 
-          <div className="glass-card rounded-2xl p-6 border border-white/5 text-center space-y-1 hover:border-[#38bdf8]/20 transition duration-300">
-            <div className="text-3xl sm:text-4xl font-display font-black text-white font-mono bg-gradient-to-r from-emerald-400 to-white bg-clip-text text-transparent">3s</div>
-            <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#94a3b8] font-mono">Emergency Recall</p>
-            <p className="text-[9px] text-slate-500">First Responders fetch vitals instantly</p>
-          </div>
+            <div className="glass-card rounded-2xl p-5 sm:p-6 border border-white/5 text-center space-y-1 hover:border-[#38bdf8]/20 transition duration-300">
+              <div className="text-3xl sm:text-4xl font-display font-black text-white font-mono bg-gradient-to-r from-emerald-400 to-white bg-clip-text text-transparent">3s</div>
+              <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#94a3b8] font-mono">Emergency Recall</p>
+              <p className="text-[9px] text-slate-500">First Responders fetch vitals instantly</p>
+            </div>
 
-          <div className="glass-card rounded-2xl p-6 border border-white/5 text-center space-y-1 hover:border-[#38bdf8]/20 transition duration-300">
-            <div className="text-3xl sm:text-4xl font-display font-black text-white font-mono bg-gradient-to-r from-[#14f195] to-white bg-clip-text text-transparent">Zero</div>
-            <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#94a3b8] font-mono">Central Leak Risk</p>
-            <p className="text-[9px] text-slate-500">Fragmented keys prevent database breaches</p>
-          </div>
+            <div className="glass-card rounded-2xl p-5 sm:p-6 border border-white/5 text-center space-y-1 hover:border-[#38bdf8]/20 transition duration-300">
+              <div className="text-3xl sm:text-4xl font-display font-black text-white font-mono bg-gradient-to-r from-[#14f195] to-white bg-clip-text text-transparent">Zero</div>
+              <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#94a3b8] font-mono">Central Leak Risk</p>
+              <p className="text-[9px] text-slate-500">Fragmented keys prevent database breaches</p>
+            </div>
 
+          </div>
         </div>
       </div>
 
       {/* Features bento grid */}
-      <div className="space-y-12 relative z-10">
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-8 space-y-10 relative z-10">
         
         <div className="text-center space-y-3 max-w-2xl mx-auto">
           <span className="text-[10px] uppercase font-bold tracking-widest text-[#38bdf8] font-mono bg-[#38bdf8]/10 px-3 py-1 rounded-full border border-[#38bdf8]/15">
             Architectural Excellence
           </span>
-          <h2 className="font-display text-2xl sm:text-4.5xl font-black text-white tracking-tight">
+          <h2 className="font-display text-2xl sm:text-4xl font-black text-white tracking-tight">
             Engineered For Medical Interoperability.
           </h2>
           <p className="text-slate-400 text-xs sm:text-sm">
@@ -284,12 +288,12 @@ export default function LandingPage({ setView, setAuthRole }: LandingPageProps) 
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           
           {/* Card 1 */}
           <motion.div 
             whileHover={{ y: -6, borderColor: "rgba(56,189,248,0.25)" }}
-            className="glass-card rounded-[24px] p-8 space-y-6 flex flex-col justify-between transition-all duration-300 border border-white/5"
+            className="glass-card rounded-[24px] p-7 sm:p-8 space-y-6 flex flex-col justify-between transition-all duration-300 border border-white/5"
           >
             <div className="space-y-4">
               <div className="h-12 w-12 rounded-2xl bg-[#38bdf8]/10 border border-[#38bdf8]/25 flex items-center justify-center text-[#38bdf8] shadow-inner">
@@ -308,7 +312,7 @@ export default function LandingPage({ setView, setAuthRole }: LandingPageProps) 
           {/* Card 2 */}
           <motion.div 
             whileHover={{ y: -6, borderColor: "rgba(34,211,238,0.25)" }}
-            className="glass-card rounded-[24px] p-8 space-y-6 flex flex-col justify-between transition-all duration-300 border border-white/5"
+            className="glass-card rounded-[24px] p-7 sm:p-8 space-y-6 flex flex-col justify-between transition-all duration-300 border border-white/5"
           >
             <div className="space-y-4">
               <div className="h-12 w-12 rounded-2xl bg-[#22d3ee]/10 border border-[#22d3ee]/25 flex items-center justify-center text-[#22d3ee] shadow-inner">
@@ -327,7 +331,7 @@ export default function LandingPage({ setView, setAuthRole }: LandingPageProps) 
           {/* Card 3 */}
           <motion.div 
             whileHover={{ y: -6, borderColor: "rgba(239,68,68,0.25)" }}
-            className="glass-card rounded-[24px] p-8 space-y-6 flex flex-col justify-between transition-all duration-300 border border-white/5"
+            className="glass-card rounded-[24px] p-7 sm:p-8 space-y-6 flex flex-col justify-between transition-all duration-300 border border-white/5"
           >
             <div className="space-y-4">
               <div className="h-12 w-12 rounded-2xl bg-rose-500/10 border border-rose-500/25 flex items-center justify-center text-rose-400 shadow-inner">
@@ -348,13 +352,13 @@ export default function LandingPage({ setView, setAuthRole }: LandingPageProps) 
       </div>
 
       {/* How it works - Visual Flow Timeline */}
-      <div className="space-y-16 relative z-10">
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-8 space-y-12 relative z-10">
         
         <div className="text-center space-y-3 max-w-2xl mx-auto">
           <span className="text-[10px] uppercase font-bold tracking-widest text-[#22d3ee] font-mono bg-[#22d3ee]/10 px-3 py-1 rounded-full border border-[#22d3ee]/15">
             Operational Lifecycle
           </span>
-          <h2 className="font-display text-2xl sm:text-4.5xl font-black text-white tracking-tight">
+          <h2 className="font-display text-2xl sm:text-4xl font-black text-white tracking-tight">
             How The HealthOrbit Ecosystem Syncs.
           </h2>
           <p className="text-slate-400 text-xs sm:text-sm">
@@ -363,10 +367,10 @@ export default function LandingPage({ setView, setAuthRole }: LandingPageProps) 
         </div>
 
         {/* Dynamic timeline grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 max-w-6xl mx-auto relative">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
           
           {/* Connector horizontal line for desktops */}
-          <div className="hidden lg:block absolute top-[44px] left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-[#38bdf8]/30 via-[#22d3ee]/30 to-[#38bdf8]/30 z-0" />
+          <div className="hidden lg:block absolute top-[44px] left-[12%] right-[12%] h-[2px] bg-gradient-to-r from-[#38bdf8]/30 via-[#22d3ee]/30 to-[#38bdf8]/30 z-0" />
           
           {/* Step 1 */}
           <div className="glass-card rounded-3xl p-6 border border-white/5 text-left space-y-4 relative z-10">
@@ -429,83 +433,87 @@ export default function LandingPage({ setView, setAuthRole }: LandingPageProps) 
       </div>
 
       {/* FAQ Section */}
-      <div className="space-y-12 relative z-10 max-w-4xl mx-auto">
-        <div className="text-center space-y-3">
-          <span className="text-[10px] uppercase font-bold tracking-widest text-[#38bdf8] font-mono bg-[#38bdf8]/10 px-3 py-1 rounded-full border border-[#38bdf8]/15">
-            Platform F.A.Q.
-          </span>
-          <h2 className="font-display text-2xl sm:text-4.5xl font-black text-white tracking-tight">
-            Frequently Answered Inquiries.
-          </h2>
-          <p className="text-slate-400 text-xs sm:text-sm">
-            Everything you need to know about the HealthOrbit security system, access policies, and data flow.
-          </p>
-        </div>
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-8 relative z-10">
+        <div className="max-w-3xl mx-auto space-y-10">
+          <div className="text-center space-y-3">
+            <span className="text-[10px] uppercase font-bold tracking-widest text-[#38bdf8] font-mono bg-[#38bdf8]/10 px-3 py-1 rounded-full border border-[#38bdf8]/15">
+              Platform F.A.Q.
+            </span>
+            <h2 className="font-display text-2xl sm:text-4xl font-black text-white tracking-tight">
+              Frequently Answered Inquiries.
+            </h2>
+            <p className="text-slate-400 text-xs sm:text-sm">
+              Everything you need to know about the HealthOrbit security system, access policies, and data flow.
+            </p>
+          </div>
 
-        <div className="space-y-4">
-          {faqs.map((faq, idx) => (
-            <div 
-              key={idx} 
-              className="glass-card rounded-2xl border border-white/5 overflow-hidden transition-all duration-300 hover:border-white/10"
-            >
-              <button
-                onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                className="w-full flex items-center justify-between p-6 text-left cursor-pointer hover:bg-white/5 transition-colors focus:outline-none"
+          <div className="space-y-3.5">
+            {faqs.map((faq, idx) => (
+              <div 
+                key={idx} 
+                className="glass-card rounded-2xl border border-white/5 overflow-hidden transition-all duration-300 hover:border-white/10"
               >
-                <span className="text-sm font-bold text-white pr-4">{faq.q}</span>
-                <ChevronDown 
-                  className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-300 ${
-                    openFaq === idx ? "rotate-180 text-[#38bdf8]" : ""
-                  }`} 
-                />
-              </button>
-              
-              <motion.div
-                initial={false}
-                animate={{ height: openFaq === idx ? "auto" : 0 }}
-                transition={{ duration: 0.25, ease: "easeInOut" }}
-                className="overflow-hidden"
-              >
-                <div className="p-6 pt-0 text-xs text-slate-300 leading-relaxed border-t border-white/5 bg-slate-950/20 font-sans">
-                  {faq.a}
-                </div>
-              </motion.div>
-            </div>
-          ))}
+                <button
+                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                  className="w-full flex items-center justify-between p-5 sm:p-6 text-left cursor-pointer hover:bg-white/5 transition-colors focus:outline-none"
+                >
+                  <span className="text-sm font-bold text-white pr-4">{faq.q}</span>
+                  <ChevronDown 
+                    className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-300 ${
+                      openFaq === idx ? "rotate-180 text-[#38bdf8]" : ""
+                    }`} 
+                  />
+                </button>
+                
+                <motion.div
+                  initial={false}
+                  animate={{ height: openFaq === idx ? "auto" : 0 }}
+                  transition={{ duration: 0.25, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <div className="p-5 sm:p-6 pt-0 text-xs text-slate-300 leading-relaxed border-t border-white/5 bg-slate-950/20 font-sans">
+                    {faq.a}
+                  </div>
+                </motion.div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Emergency Fast Look Up Action Banner */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.98 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        className="relative overflow-hidden bg-gradient-to-tr from-[#1e0a14]/60 via-[#050816]/90 to-[#0c0d23]/60 border border-rose-500/30 rounded-[32px] p-8 sm:p-12 text-white shadow-2xl flex flex-col lg:flex-row justify-between items-center gap-8 relative z-10"
-      >
-        {/* Soft glowing ambient drop */}
-        <div className="absolute right-0 bottom-0 h-48 w-48 rounded-full bg-rose-600/15 blur-[80px]" />
-        <div className="absolute left-0 top-0 h-48 w-48 rounded-full bg-purple-600/5 blur-[80px]" />
-        
-        <div className="space-y-4 text-center lg:text-left relative z-10">
-          <div className="inline-flex items-center gap-1.5 bg-rose-500/15 border border-rose-500/25 px-3.5 py-1 rounded-full text-xs font-bold text-rose-300 tracking-wider uppercase font-mono">
-            <ShieldAlert className="w-4.5 h-4.5 text-rose-400 animate-pulse" />
-            <span>Emergency Lookup Engine</span>
-          </div>
-          <h3 className="font-display text-2xl sm:text-3xl font-black tracking-tight leading-tight">
-            Urgent First Responder Access Portal
-          </h3>
-          <p className="text-xs sm:text-sm text-slate-300 max-w-xl leading-relaxed">
-            Quickly query vital medical summaries like blood type, critical allergy matrices, and emergency contacts using the patient's physical Medical ID. Instant, zero-credential access for urgent rescue situations.
-          </p>
-        </div>
-        
-        <button 
-          onClick={() => setView('emergency-view')} 
-          className="w-full lg:w-auto shrink-0 bg-gradient-to-r from-rose-600 to-pink-500 hover:opacity-95 text-white font-bold px-8 py-4 rounded-2xl text-xs tracking-wider uppercase transition shadow-[0_0_25px_rgba(239,68,68,0.25)] hover:shadow-[0_0_35px_rgba(239,68,68,0.4)] hover:scale-[1.03] active:scale-[0.98] relative z-10 cursor-pointer"
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-8 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="relative overflow-hidden bg-gradient-to-tr from-[#1e0a14]/60 via-[#050816]/90 to-[#0c0d23]/60 border border-rose-500/30 rounded-[32px] p-8 sm:p-12 text-white shadow-2xl flex flex-col lg:flex-row justify-between items-center gap-8"
         >
-          Launch Emergency Lookup
-        </button>
-      </motion.div>
+          {/* Soft glowing ambient drop */}
+          <div className="absolute right-0 bottom-0 h-48 w-48 rounded-full bg-rose-600/15 blur-[80px]" />
+          <div className="absolute left-0 top-0 h-48 w-48 rounded-full bg-purple-600/5 blur-[80px]" />
+          
+          <div className="space-y-4 text-center lg:text-left relative z-10">
+            <div className="inline-flex items-center gap-1.5 bg-rose-500/15 border border-rose-500/25 px-3.5 py-1 rounded-full text-xs font-bold text-rose-300 tracking-wider uppercase font-mono">
+              <ShieldAlert className="w-4.5 h-4.5 text-rose-400 animate-pulse" />
+              <span>Emergency Lookup Engine</span>
+            </div>
+            <h3 className="font-display text-2xl sm:text-3xl font-black tracking-tight leading-tight">
+              Urgent First Responder Access Portal
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-300 max-w-xl leading-relaxed">
+              Quickly query vital medical summaries like blood type, critical allergy matrices, and emergency contacts using the patient's physical Medical ID. Instant, zero-credential access for urgent rescue situations.
+            </p>
+          </div>
+          
+          <button 
+            onClick={() => setView('emergency-view')} 
+            className="w-full lg:w-auto shrink-0 bg-gradient-to-r from-rose-600 to-pink-500 hover:opacity-95 text-white font-bold px-8 py-4 rounded-2xl text-xs tracking-wider uppercase transition shadow-[0_0_25px_rgba(239,68,68,0.25)] hover:shadow-[0_0_35px_rgba(239,68,68,0.4)] hover:scale-[1.03] active:scale-[0.98] relative z-10 cursor-pointer"
+          >
+            Launch Emergency Lookup
+          </button>
+        </motion.div>
+      </div>
 
     </div>
   );
