@@ -1,0 +1,6 @@
+{
+  "name": "HealthOrbit",
+  "description": "A premium, secure decentralized healthcare platform for medical record management, access control, and dynamic patient-doctor interactions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
