@@ -76,7 +76,7 @@ export default function UploadRecordPage({
   };
 
   return (
-    <div className="space-y-6 animate-fade-in pb-12 max-w-3xl mx-auto">
+    <div className="space-y-8 md:space-y-10 animate-fade-in pb-12 max-w-3xl mx-auto">
       {/* Page Header */}
       <PageHeader
         portalName="Patient Portal"
@@ -88,7 +88,7 @@ export default function UploadRecordPage({
       />
 
       {/* Upload Flow Stepper */}
-      <div className="grid grid-cols-3 gap-3 font-mono text-[10px]">
+      <div className="grid grid-cols-3 gap-4 font-mono text-[10px]">
         <div className={`p-3 rounded-xl border ${uploadSuccess ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400' : isUploading ? 'bg-[#38bdf8]/10 border-[#38bdf8]/30 text-[#38bdf8]' : 'bg-white/5 border-white/10 text-slate-300'} flex items-center gap-2`}>
           <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center font-bold">1</span>
           <span className="font-bold">Record Details</span>

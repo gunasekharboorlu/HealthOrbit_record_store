@@ -31,17 +31,17 @@ export default function DoctorOverviewPage({
   const doctor = doctorData?.doctor || {};
 
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="space-y-8 md:space-y-10 animate-fade-in">
       
       {/* Welcome Card & Doctor Profile Summary */}
-      <GlassCard className="p-6 sm:p-8 bg-gradient-to-tr from-[#0a0f2b] via-[#0f173b] to-[#020617] border-white/10 relative overflow-hidden flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
+      <GlassCard className="p-6 sm:p-8 md:p-10 bg-gradient-to-tr from-[#0a0f2b] via-[#0f173b] to-[#020617] border-white/10 relative overflow-hidden flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#38bdf8]/10 rounded-full blur-3xl pointer-events-none" />
         
-        <div className="flex items-center gap-5 relative z-10">
+        <div className="flex items-center gap-6 relative z-10">
           <Avatar name={profName || 'Doctor'} src={profPic} size="xl" />
-          <div className="space-y-1.5">
-            <div className="flex items-center gap-2 flex-wrap">
-              <h1 className="text-2xl sm:text-3xl font-display font-black text-white">
+          <div className="space-y-2">
+            <div className="flex items-center gap-3 flex-wrap">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-black text-white">
                 Dr. {profName || doctor.name}
               </h1>
               {doctor.isVerified ? (
@@ -50,21 +50,21 @@ export default function DoctorOverviewPage({
                 <StatusChip status="Pending" label="Verification Pending" />
               )}
             </div>
-            <p className="text-xs text-[#38bdf8] font-mono font-bold flex items-center gap-2">
-              <Stethoscope className="w-3.5 h-3.5" />
+            <p className="text-xs sm:text-sm text-[#38bdf8] font-mono font-bold flex items-center gap-2">
+              <Stethoscope className="w-4 h-4" />
               {profSpec || doctor.specialization} • {doctor.department || 'General Medicine'}
             </p>
-            <div className="flex items-center gap-3 text-[11px] text-slate-400 font-mono">
-              <span className="flex items-center gap-1"><Building className="w-3 h-3 text-slate-500" /> {doctor.hospitalName || 'HealthOrbit Hospital Network'}</span>
+            <div className="flex items-center gap-3 text-xs text-slate-400 font-mono flex-wrap">
+              <span className="flex items-center gap-1.5"><Building className="w-3.5 h-3.5 text-slate-500" /> {doctor.hospitalName || 'HealthOrbit Hospital Network'}</span>
               <span>•</span>
-              <span className="flex items-center gap-1"><Award className="w-3 h-3 text-slate-500" /> License: {doctor.licenseNumber || 'N/A'}</span>
+              <span className="flex items-center gap-1.5"><Award className="w-3.5 h-3.5 text-slate-500" /> License: {doctor.licenseNumber || 'N/A'}</span>
               <span>•</span>
               <span>Exp: {profExp}</span>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-3 relative z-10 w-full lg:w-auto">
+        <div className="flex flex-wrap gap-4 relative z-10 w-full lg:w-auto">
           <PrimaryButton onClick={() => onNavigateTab('search')} icon={<Search className="w-4 h-4" />}>
             Search Registry
           </PrimaryButton>
@@ -75,7 +75,7 @@ export default function DoctorOverviewPage({
       </GlassCard>
 
       {/* Today's Clinical Statistics */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard
           title="PATIENTS TREATED"
           value={stats.totalPatientsViewed || 0}
@@ -114,12 +114,12 @@ export default function DoctorOverviewPage({
       <ProfessionalAnalyticsCharts role="doctor" />
 
       {/* Quick Actions Bar */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
         <button
           onClick={() => onNavigateTab('search')}
-          className="flex items-center gap-3 p-4 bg-gradient-to-r from-[#38bdf8]/10 to-[#4f8cff]/10 border border-[#38bdf8]/20 rounded-2xl hover:border-[#38bdf8]/40 transition text-left cursor-pointer group"
+          className="flex items-center gap-3.5 p-5 bg-gradient-to-r from-[#38bdf8]/10 to-[#4f8cff]/10 border border-[#38bdf8]/20 rounded-3xl hover:border-[#38bdf8]/40 transition text-left cursor-pointer group"
         >
-          <div className="p-2.5 rounded-xl bg-[#38bdf8]/20 text-[#38bdf8] group-hover:scale-110 transition-transform">
+          <div className="p-3 rounded-2xl bg-[#38bdf8]/20 text-[#38bdf8] group-hover:scale-110 transition-transform">
             <Search className="w-5 h-5" />
           </div>
           <div>
@@ -130,9 +130,9 @@ export default function DoctorOverviewPage({
 
         <button
           onClick={() => onNavigateTab('workspace')}
-          className="flex items-center gap-3 p-4 bg-gradient-to-r from-purple-500/10 to-indigo-500/10 border border-purple-500/20 rounded-2xl hover:border-purple-500/40 transition text-left cursor-pointer group"
+          className="flex items-center gap-3.5 p-5 bg-gradient-to-r from-purple-500/10 to-indigo-500/10 border border-purple-500/20 rounded-3xl hover:border-purple-500/40 transition text-left cursor-pointer group"
         >
-          <div className="p-2.5 rounded-xl bg-purple-500/20 text-purple-400 group-hover:scale-110 transition-transform">
+          <div className="p-3 rounded-2xl bg-purple-500/20 text-purple-400 group-hover:scale-110 transition-transform">
             <ClipboardList className="w-5 h-5" />
           </div>
           <div>
@@ -143,9 +143,9 @@ export default function DoctorOverviewPage({
 
         <button
           onClick={() => onNavigateTab('requests')}
-          className="flex items-center gap-3 p-4 bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 rounded-2xl hover:border-amber-500/40 transition text-left cursor-pointer group"
+          className="flex items-center gap-3.5 p-5 bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 rounded-3xl hover:border-amber-500/40 transition text-left cursor-pointer group"
         >
-          <div className="p-2.5 rounded-xl bg-amber-500/20 text-amber-400 group-hover:scale-110 transition-transform">
+          <div className="p-3 rounded-2xl bg-amber-500/20 text-amber-400 group-hover:scale-110 transition-transform">
             <Key className="w-5 h-5" />
           </div>
           <div>
@@ -156,9 +156,9 @@ export default function DoctorOverviewPage({
 
         <button
           onClick={() => onNavigateTab('search')}
-          className="flex items-center gap-3 p-4 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 rounded-2xl hover:border-emerald-500/40 transition text-left cursor-pointer group"
+          className="flex items-center gap-3.5 p-5 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 rounded-3xl hover:border-emerald-500/40 transition text-left cursor-pointer group"
         >
-          <div className="p-2.5 rounded-xl bg-emerald-500/20 text-emerald-400 group-hover:scale-110 transition-transform">
+          <div className="p-3 rounded-2xl bg-emerald-500/20 text-emerald-400 group-hover:scale-110 transition-transform">
             <Users className="w-5 h-5" />
           </div>
           <div>
@@ -169,10 +169,10 @@ export default function DoctorOverviewPage({
       </div>
 
       {/* Main Grid: Today's Schedule / Pending Requests & Recent Patients */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
         {/* Left 2 Cols: Recent Activity & Pending Clearances */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-2 space-y-8">
           
           {/* Pending Requests Quick View */}
           <GlassCard className="p-6 space-y-4">

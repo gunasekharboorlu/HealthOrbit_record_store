@@ -29,7 +29,7 @@ export default function PageContainer({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -12 }}
       transition={{ duration: 0.2 }}
-      className="space-y-6 pb-12"
+      className="space-y-8 md:space-y-10 pb-16"
     >
       <PageHeader
         portalName={portalName}
@@ -41,7 +41,7 @@ export default function PageContainer({
         onNavigateHome={onNavigateHome}
       />
 
-      <div className="space-y-6">
+      <div className="space-y-8 md:space-y-10">
         {children}
       </div>
     </motion.div>

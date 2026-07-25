@@ -66,18 +66,18 @@ export default function Sidebar({
   const navItems = getNavItems();
 
   const SidebarContent = () => (
-    <div className="flex flex-col h-full justify-between p-4 space-y-6">
+    <div className="flex flex-col h-full justify-between p-5 space-y-7">
       
       {/* Top Section */}
-      <div className="space-y-6">
+      <div className="space-y-7">
         
         {/* User Identity Card */}
         {currentUser && (
-          <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
+          <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3.5 shadow-sm">
             <Avatar name={currentUser.name} src={currentUser.profilePicture} size="md" />
-            <div className="overflow-hidden">
+            <div className="overflow-hidden space-y-0.5">
               <p className="text-xs font-bold text-white truncate font-display">{currentUser.name}</p>
-              <span className="inline-block text-[9px] font-mono font-bold text-[#38bdf8] uppercase tracking-wider bg-[#38bdf8]/10 border border-[#38bdf8]/20 px-1.5 py-0.5 rounded-md mt-0.5">
+              <span className="inline-block text-[9px] font-mono font-bold text-[#38bdf8] uppercase tracking-wider bg-[#38bdf8]/10 border border-[#38bdf8]/20 px-2 py-0.5 rounded-md">
                 {role} portal
               </span>
             </div>
@@ -92,7 +92,7 @@ export default function Sidebar({
         </div>
 
         {/* Links List */}
-        <nav className="space-y-1">
+        <nav className="space-y-1.5">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
@@ -103,13 +103,13 @@ export default function Sidebar({
                   setActiveTab(item.id);
                   setMobileOpen(false);
                 }}
-                className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                   isActive
                     ? 'bg-gradient-to-r from-[#38bdf8] to-[#22d3ee] text-slate-950 font-bold shadow-md shadow-[#38bdf8]/20'
                     : 'text-slate-300 hover:text-white hover:bg-white/5'
                 }`}
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3.5">
                   <Icon className={`w-4 h-4 ${isActive ? 'text-slate-950' : 'text-slate-400'}`} />
                   <span>{item.label}</span>
                 </div>
@@ -132,7 +132,7 @@ export default function Sidebar({
       </div>
 
       {/* Bottom Section */}
-      <div className="space-y-3 pt-4 border-t border-white/10">
+      <div className="space-y-3.5 pt-6 border-t border-white/10">
         
         {/* Emergency Shortcut */}
         <button
@@ -140,9 +140,9 @@ export default function Sidebar({
             setActiveTab('emergency');
             setMobileOpen(false);
           }}
-          className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 hover:bg-rose-500/20 text-xs font-bold transition-all cursor-pointer"
+          className="w-full flex items-center justify-between px-4 py-3 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 hover:bg-rose-500/20 text-xs font-bold transition-all cursor-pointer"
         >
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-3">
             <Heart className="w-4 h-4 text-rose-400 animate-pulse" />
             <span>Emergency Profile</span>
           </div>
@@ -158,7 +158,7 @@ export default function Sidebar({
               setMobileOpen(false);
               handleLogout();
             }}
-            className="w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition-all cursor-pointer"
+            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition-all cursor-pointer"
           >
             <LogOut className="w-4 h-4" />
             <span>Sign Out</span>
@@ -172,7 +172,7 @@ export default function Sidebar({
   return (
     <>
       {/* Desktop Permanent Sidebar */}
-      <aside className="hidden md:flex flex-col w-64 border-r border-white/10 bg-[#020617]/95 backdrop-blur-xl h-[calc(100vh-4rem)] sticky top-16 shrink-0 z-30">
+      <aside className="hidden md:flex flex-col w-72 border-r border-white/10 bg-[#020617]/95 backdrop-blur-xl h-[calc(100vh-4.5rem)] sticky top-18 shrink-0 z-30">
         <SidebarContent />
       </aside>
 

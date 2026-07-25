@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 import { 
-  Settings, Moon, Sun, Monitor, Shield, Key, 
-  Smartphone, Lock, CheckCircle2, RefreshCw, Save 
+  Shield, 
+  Smartphone, Lock, CheckCircle2, Save 
 } from 'lucide-react';
 import PageHeader from '../../components/layout/PageHeader';
-import { GlassCard, PrimaryButton, SecondaryButton, Badge } from '../../components/ui';
-import { useTheme } from '../../context/ThemeContext';
+import { GlassCard, PrimaryButton } from '../../components/ui';
 
 interface SettingsPageProps {
   onNavigateTab: (tab: string) => void;
 }
 
 export default function SettingsPage({ onNavigateTab }: SettingsPageProps) {
-  const { theme, setTheme } = useTheme();
-
   // Settings State
   const [twoFactorEnabled, setTwoFactorEnabled] = useState(true);
   const [autoExpireEnabled, setAutoExpireEnabled] = useState(true);
@@ -40,61 +37,9 @@ export default function SettingsPage({ onNavigateTab }: SettingsPageProps) {
         activeTab="settings"
         tabLabel="Settings"
         title="Portal & Security Settings"
-        subtitle="Manage display theme, security parameters, password credentials, and active device sessions."
+        subtitle="Manage security parameters, password credentials, and active device sessions."
         onNavigateHome={() => onNavigateTab('dashboard')}
       />
-
-      {/* Theme Settings Card */}
-      <GlassCard className="p-6 space-y-4">
-        <div className="flex items-center justify-between border-b border-white/10 pb-3">
-          <div>
-            <h3 className="font-display font-bold text-sm text-white">Appearance Theme</h3>
-            <p className="text-xs text-slate-400">Select workspace color mode. Dark theme remains default.</p>
-          </div>
-          <Badge variant="cyan">ThemeProvider Active</Badge>
-        </div>
-
-        <div className="grid grid-cols-3 gap-3 pt-2">
-          <button
-            type="button"
-            onClick={() => setTheme('dark')}
-            className={`p-4 rounded-2xl border flex flex-col items-center gap-2 cursor-pointer transition ${
-              theme === 'dark'
-                ? 'bg-[#38bdf8]/10 border-[#38bdf8] text-[#38bdf8] font-bold shadow-lg shadow-[#38bdf8]/10'
-                : 'bg-white/5 border-white/10 text-slate-400 hover:text-white'
-            }`}
-          >
-            <Moon className="w-5 h-5" />
-            <span className="text-xs">Dark Mode</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setTheme('light')}
-            className={`p-4 rounded-2xl border flex flex-col items-center gap-2 cursor-pointer transition ${
-              theme === 'light'
-                ? 'bg-[#38bdf8]/10 border-[#38bdf8] text-[#38bdf8] font-bold shadow-lg shadow-[#38bdf8]/10'
-                : 'bg-white/5 border-white/10 text-slate-400 hover:text-white'
-            }`}
-          >
-            <Sun className="w-5 h-5" />
-            <span className="text-xs">Light Mode</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setTheme('system')}
-            className={`p-4 rounded-2xl border flex flex-col items-center gap-2 cursor-pointer transition ${
-              theme === 'system'
-                ? 'bg-[#38bdf8]/10 border-[#38bdf8] text-[#38bdf8] font-bold shadow-lg shadow-[#38bdf8]/10'
-                : 'bg-white/5 border-white/10 text-slate-400 hover:text-white'
-            }`}
-          >
-            <Monitor className="w-5 h-5" />
-            <span className="text-xs">System Default</span>
-          </button>
-        </div>
-      </GlassCard>
 
       {/* Security Preferences Card */}
       <GlassCard className="p-6 space-y-5">

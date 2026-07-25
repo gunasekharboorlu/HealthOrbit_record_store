@@ -2,7 +2,7 @@ import React from 'react';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  icon?: React.ElementType;
+  icon?: React.ReactNode | React.ElementType;
   isLoading?: boolean;
   size?: 'sm' | 'md' | 'lg';
   fullWidth?: boolean;
@@ -11,14 +11,23 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 const sizeClasses = {
-  sm: 'px-3 py-1.5 text-xs rounded-xl gap-1.5',
-  md: 'px-4 py-2.5 text-xs sm:text-sm rounded-xl gap-2',
-  lg: 'px-6 py-3 text-sm font-bold rounded-2xl gap-2.5',
+  sm: 'px-4 py-2 text-xs font-semibold rounded-xl gap-2',
+  md: 'px-5 py-2.5 text-xs sm:text-sm font-bold rounded-xl gap-2.5',
+  lg: 'px-7 py-3.5 text-sm font-bold rounded-2xl gap-3',
 };
+
+function renderIcon(icon?: React.ReactNode | React.ElementType, defaultClass: string = 'w-4 h-4 shrink-0') {
+  if (!icon) return null;
+  if (React.isValidElement(icon)) {
+    return icon;
+  }
+  const IconComponent = icon as React.ElementType;
+  return <IconComponent className={defaultClass} />;
+}
 
 export const PrimaryButton = React.memo(function PrimaryButton({
   children,
-  icon: Icon,
+  icon,
   isLoading,
   size = 'md',
   fullWidth = false,
@@ -36,9 +45,9 @@ export const PrimaryButton = React.memo(function PrimaryButton({
     >
       {isLoading ? (
         <span className="w-4 h-4 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" />
-      ) : Icon ? (
-        <Icon className="w-4 h-4 shrink-0" />
-      ) : null}
+      ) : (
+        renderIcon(icon, 'w-4 h-4 shrink-0')
+      )}
       <span>{children}</span>
     </button>
   );
@@ -46,7 +55,7 @@ export const PrimaryButton = React.memo(function PrimaryButton({
 
 export const SecondaryButton = React.memo(function SecondaryButton({
   children,
-  icon: Icon,
+  icon,
   isLoading,
   size = 'md',
   fullWidth = false,
@@ -64,9 +73,9 @@ export const SecondaryButton = React.memo(function SecondaryButton({
     >
       {isLoading ? (
         <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-      ) : Icon ? (
-        <Icon className="w-4 h-4 shrink-0 text-slate-400" />
-      ) : null}
+      ) : (
+        renderIcon(icon, 'w-4 h-4 shrink-0 text-slate-400')
+      )}
       <span>{children}</span>
     </button>
   );
@@ -74,7 +83,7 @@ export const SecondaryButton = React.memo(function SecondaryButton({
 
 export const DangerButton = React.memo(function DangerButton({
   children,
-  icon: Icon,
+  icon,
   isLoading,
   size = 'md',
   fullWidth = false,
@@ -92,9 +101,9 @@ export const DangerButton = React.memo(function DangerButton({
     >
       {isLoading ? (
         <span className="w-4 h-4 border-2 border-rose-400 border-t-transparent rounded-full animate-spin" />
-      ) : Icon ? (
-        <Icon className="w-4 h-4 shrink-0" />
-      ) : null}
+      ) : (
+        renderIcon(icon, 'w-4 h-4 shrink-0')
+      )}
       <span>{children}</span>
     </button>
   );

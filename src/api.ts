@@ -89,6 +89,9 @@ export const api = {
   requestAccess: (patientId: string, recordId: string) => request('/doctor/request-access', { method: 'POST', body: JSON.stringify({ patientId, recordId }) }),
   addPrescription: (body: any) => request('/doctor/add-prescription', { method: 'POST', body: JSON.stringify(body) }),
 
+  // Hospitals
+  getHospitals: () => request('/hospitals'),
+
   // Admin
   getAdminDashboard: () => request('/admin/dashboard'),
   verifyDoctor: (userId: string, verify: boolean) => request(`/admin/verify-doctor/${userId}`, { method: 'POST', body: JSON.stringify({ verify }) }),

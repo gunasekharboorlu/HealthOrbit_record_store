@@ -32,6 +32,7 @@ export interface Patient {
 
 export interface Doctor {
   userId: string;
+  doctorId?: string;
   specialization: string;
   licenseNumber: string;
   hospitalId: string;
@@ -163,6 +164,27 @@ export function generatePatientId(): string {
   return 'PAT-100001';
 }
 
+export function generateDoctorId(): string {
+  try {
+    const doctors = db.getDoctors();
+    if (doctors && doctors.length > 0) {
+      let maxId = 100000;
+      doctors.forEach((d: any) => {
+        if (d.doctorId && d.doctorId.startsWith('DOC-')) {
+          const num = parseInt(d.doctorId.replace('DOC-', ''), 10);
+          if (!isNaN(num) && num > maxId) {
+            maxId = num;
+          }
+        }
+      });
+      return `DOC-${maxId + 1}`;
+    }
+  } catch (e) {
+    // ignore and fallback
+  }
+  return 'DOC-100001';
+}
+
 // Generate a cryptographic SHA-256 hash from content to detect duplicate file content
 export function computeHash(content: string): string {
   return crypto.createHash('sha256').update(content || '').digest('hex');
@@ -214,6 +236,7 @@ const getInitialDatabase = (): DatabaseSchema => {
   const doctors: Doctor[] = [
     {
       userId: 'USR-DOC1',
+      doctorId: 'DOC-100001',
       specialization: 'Cardiology',
       licenseNumber: 'LIC-774920',
       hospitalId: 'HOSP-1',
@@ -229,6 +252,7 @@ const getInitialDatabase = (): DatabaseSchema => {
     },
     {
       userId: 'USR-DOC2',
+      doctorId: 'DOC-100002',
       specialization: 'Neurology',
       licenseNumber: 'LIC-883019',
       hospitalId: 'HOSP-2',

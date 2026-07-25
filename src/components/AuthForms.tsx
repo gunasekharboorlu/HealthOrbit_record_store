@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'motion/react';
-import { Mail, Lock, User as UserIcon, Calendar, Activity, ChevronRight, Sparkles, Building, ShieldCheck, Eye, EyeOff } from 'lucide-react';
+import { Mail, Lock, User as UserIcon, Calendar, Activity, ChevronRight, Sparkles, Building, ShieldCheck, Eye, EyeOff, Search, ChevronDown } from 'lucide-react';
+import { api } from '../api';
 
 interface AuthFormsProps {
   view: 'login' | 'register';
@@ -57,6 +58,39 @@ export default function AuthForms({
 }: AuthFormsProps) {
   
   const [showPassword, setShowPassword] = useState(false);
+  const [hospitalsList, setHospitalsList] = useState<any[]>([]);
+  const [hospitalSearch, setHospitalSearch] = useState('');
+  const [isHospitalDropdownOpen, setIsHospitalDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    if (view === 'register' && authRole === 'doctor') {
+      api.getHospitals()
+        .then((data: any) => {
+          if (Array.isArray(data)) {
+            setHospitalsList(data);
+            const verified = data.filter((h: any) => h.verified !== false);
+            if (verified.length > 0 && !hospitalId) {
+              setHospitalId(verified[0].id);
+            }
+          }
+        })
+        .catch(() => {});
+    }
+  }, [view, authRole]);
+
+  const verifiedHospitals = useMemo(() => {
+    return hospitalsList.filter((h: any) => h.verified !== false);
+  }, [hospitalsList]);
+
+  const filteredHospitals = useMemo(() => {
+    if (!hospitalSearch.trim()) return verifiedHospitals;
+    const q = hospitalSearch.toLowerCase();
+    return verifiedHospitals.filter(
+      (h: any) => h.name.toLowerCase().includes(q) || (h.address || '').toLowerCase().includes(q)
+    );
+  }, [verifiedHospitals, hospitalSearch]);
+
+  const selectedHospitalObj = verifiedHospitals.find((h: any) => h.id === hospitalId) || verifiedHospitals[0];
 
   const hasMinLength = password.length >= 8;
   const hasUppercase = /[A-Z]/.test(password);
@@ -351,16 +385,69 @@ export default function AuthForms({
                 />
               </div>
               <div>
-                <label className="block text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1 font-mono">Partner Hospital</label>
-                <select 
-                  value={hospitalId} 
-                  onChange={e => setHospitalId(e.target.value)} 
-                  className="w-full px-3 py-2.5 rounded-lg premium-input text-xs font-medium outline-none text-white"
-                >
-                  <option className="bg-[#020617]" value="HOSP-1">Saint Jude General Hospital</option>
-                  <option className="bg-[#020617]" value="HOSP-2">Metropolis Medical Center</option>
-                  <option className="bg-[#020617]" value="HOSP-3">Westcity Health Clinic</option>
-                </select>
+                <label className="block text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1 font-mono">
+                  Verified Partner Hospital
+                </label>
+                <div className="relative">
+                  <div 
+                    onClick={() => setIsHospitalDropdownOpen(!isHospitalDropdownOpen)}
+                    className="w-full px-3 py-2.5 rounded-lg premium-input text-xs font-medium text-white flex items-center justify-between cursor-pointer"
+                  >
+                    <div className="flex items-center gap-2 truncate">
+                      <Building className="w-4 h-4 text-[#38bdf8] flex-shrink-0" />
+                      <span className="truncate">
+                        {selectedHospitalObj ? `${selectedHospitalObj.name} (${selectedHospitalObj.address || 'Verified'})` : 'Select Verified Hospital...'}
+                      </span>
+                    </div>
+                    <ChevronDown className="w-4 h-4 text-slate-400 flex-shrink-0" />
+                  </div>
+
+                  {isHospitalDropdownOpen && (
+                    <div className="absolute z-30 top-full left-0 right-0 mt-1.5 p-2 bg-[#090d23] border border-white/10 rounded-xl shadow-2xl space-y-2 max-h-60 overflow-y-auto">
+                      <div className="relative">
+                        <input
+                          type="text"
+                          value={hospitalSearch}
+                          onChange={e => setHospitalSearch(e.target.value)}
+                          placeholder="Search verified hospital by name or address..."
+                          className="w-full pl-8 pr-3 py-1.5 text-xs rounded-lg bg-slate-900 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-[#38bdf8]"
+                          onClick={e => e.stopPropagation()}
+                        />
+                        <Search className="w-3.5 h-3.5 absolute left-2.5 top-2.5 text-slate-400" />
+                      </div>
+
+                      <div className="space-y-1">
+                        {filteredHospitals.length === 0 ? (
+                          <div className="text-[11px] text-slate-400 p-2 text-center">
+                            No verified hospital found
+                          </div>
+                        ) : (
+                          filteredHospitals.map((h: any) => (
+                            <button
+                              key={h.id}
+                              type="button"
+                              onClick={() => {
+                                setHospitalId(h.id);
+                                setIsHospitalDropdownOpen(false);
+                              }}
+                              className={`w-full text-left p-2 rounded-lg text-xs transition-colors flex items-center justify-between cursor-pointer ${
+                                hospitalId === h.id ? 'bg-[#38bdf8]/20 text-[#38bdf8] font-bold border border-[#38bdf8]/30' : 'text-slate-300 hover:bg-white/5'
+                              }`}
+                            >
+                              <div className="truncate">
+                                <p className="font-semibold text-white">{h.name}</p>
+                                <p className="text-[10px] text-slate-400 truncate">{h.address}</p>
+                              </div>
+                              <span className="text-[9px] font-mono bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded ml-2 flex-shrink-0">
+                                Verified
+                              </span>
+                            </button>
+                          ))
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           )}

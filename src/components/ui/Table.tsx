@@ -8,12 +8,12 @@ interface TableProps {
 
 export const Table = React.memo(function Table({ headers, children, className = '' }: TableProps) {
   return (
-    <div className={`w-full overflow-x-auto rounded-2xl border border-white/10 bg-[#020617]/50 ${className}`}>
+    <div className={`w-full overflow-x-auto rounded-3xl border border-white/10 bg-[#020617]/50 ${className}`}>
       <table className="w-full text-left text-xs">
-        <thead className="bg-slate-900/80 text-slate-400 font-mono text-[10px] uppercase border-b border-white/10">
+        <thead className="bg-slate-900/80 text-slate-400 font-mono text-[10px] uppercase border-b border-white/10 tracking-wider">
           <tr>
             {headers.map((h, i) => (
-              <th key={i} className="px-4 py-3 font-bold">
+              <th key={i} className="px-6 py-4 font-bold">
                 {h}
               </th>
             ))}
@@ -62,7 +62,7 @@ export function DataTable<T extends { id?: string | number }>({
             }`}
           >
             {columns.map((col, cIdx) => (
-              <td key={cIdx} className={`px-4 py-3 text-slate-300 ${col.className || ''}`}>
+              <td key={cIdx} className={`px-6 py-4 text-slate-300 ${col.className || ''}`}>
                 {typeof col.accessor === 'function'
                   ? col.accessor(row)
                   : (row[col.accessor] as unknown as React.ReactNode)}

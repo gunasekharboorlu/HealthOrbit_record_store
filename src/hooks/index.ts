@@ -3,7 +3,6 @@ export * from './useNotifications';
 export * from './useSearch';
 export * from './useDebounce';
 export * from './useLocalStorage';
-export * from './useTheme';
 export * from './useMediaQuery';
 export * from './usePagination';
 export * from './useModal';

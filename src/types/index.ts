@@ -73,6 +73,7 @@ export interface Patient {
 
 export interface Doctor {
   userId: string;
+  doctorId?: string;
   hospitalId: string;
   hospitalName: string;
   specialization: string;

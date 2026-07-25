@@ -37,10 +37,10 @@ export default function TopNavigation({
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full h-16 border-b border-white/10 bg-[#020617]/80 backdrop-blur-xl px-4 lg:px-6 flex items-center justify-between gap-4">
+    <header className="sticky top-0 z-40 w-full h-18 border-b border-white/10 bg-[#020617]/85 backdrop-blur-xl px-6 lg:px-10 flex items-center justify-between gap-6">
       
       {/* Left: Brand & Mobile Menu Drawer Trigger */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-4">
         <button
           onClick={onToggleMobileSidebar}
           className="md:hidden p-2 text-slate-300 hover:text-white hover:bg-white/5 rounded-xl cursor-pointer"
@@ -49,12 +49,12 @@ export default function TopNavigation({
           <Menu className="w-5 h-5" />
         </button>
 
-        <Link to={getPortalHome()} className="flex items-center gap-2.5 group">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-[#38bdf8] to-[#22d3ee] text-slate-950 shadow-md shadow-[#38bdf8]/20 transition-transform group-hover:scale-105">
+        <Link to={getPortalHome()} className="flex items-center gap-3 group">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-[#38bdf8] to-[#22d3ee] text-slate-950 shadow-md shadow-[#38bdf8]/20 transition-transform group-hover:scale-105">
             <Activity className="h-5 w-5 animate-pulse" />
           </div>
           <div className="hidden sm:block">
-            <span className="font-display text-base font-bold tracking-tight bg-gradient-to-r from-[#38bdf8] to-[#22d3ee] bg-clip-text text-transparent">
+            <span className="font-display text-lg font-bold tracking-tight bg-gradient-to-r from-[#38bdf8] to-[#22d3ee] bg-clip-text text-transparent">
               HealthOrbit
             </span>
             <span className="block font-mono text-[8px] font-bold text-slate-400 uppercase tracking-widest">
@@ -65,28 +65,28 @@ export default function TopNavigation({
       </div>
 
       {/* Center: Global Search Bar */}
-      <div className="hidden md:flex items-center flex-1 max-w-md mx-4">
+      <div className="hidden md:flex items-center flex-1 max-w-lg mx-6">
         <div className="relative w-full">
-          <Search className="absolute left-3.5 top-2.5 w-4 h-4 text-slate-400" />
+          <Search className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
           <input
             type="text"
             value={globalSearchQuery}
             onChange={(e) => setGlobalSearchQuery && setGlobalSearchQuery(e.target.value)}
             placeholder="Search records, patients, ID (e.g. PAT-80924)..."
-            className="w-full pl-10 pr-4 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-medium text-white placeholder-slate-500 focus:outline-none focus:border-[#38bdf8] focus:bg-white/10 transition-all"
+            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-xs font-medium text-white placeholder-slate-500 focus:outline-none focus:border-[#38bdf8] focus:bg-white/10 transition-all"
           />
         </div>
       </div>
 
       {/* Right: Actions, Emergency Link, Notifications, Profile */}
-      <div className="flex items-center gap-2.5">
+      <div className="flex items-center gap-3.5 sm:gap-5">
         
         {/* Emergency Portal Shortcut */}
         <Link
           to="/app/emergency"
-          className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 hover:bg-rose-500/20 transition-all text-xs font-bold"
+          className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 hover:bg-rose-500/20 transition-all text-xs font-bold"
         >
-          <Heart className="w-3.5 h-3.5 text-rose-400 animate-pulse" />
+          <Heart className="w-4 h-4 text-rose-400 animate-pulse" />
           <span>Emergency Profile</span>
         </Link>
 

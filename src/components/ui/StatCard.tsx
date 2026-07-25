@@ -5,7 +5,7 @@ interface StatCardProps {
   title: string;
   value: string | number;
   subtitle?: string;
-  icon: React.ElementType;
+  icon: React.ReactNode | React.ElementType;
   trend?: string;
   trendType?: 'up' | 'down' | 'neutral';
   color?: string;
@@ -15,15 +15,24 @@ export const StatCard = React.memo(function StatCard({
   title,
   value,
   subtitle,
-  icon: Icon,
+  icon,
   trend,
   trendType = 'neutral',
   color = '#38bdf8',
 }: StatCardProps) {
+  const renderIcon = () => {
+    if (!icon) return null;
+    if (React.isValidElement(icon)) {
+      return icon;
+    }
+    const IconComponent = icon as React.ElementType;
+    return <IconComponent className="w-4 h-4" />;
+  };
+
   return (
     <motion.div
       whileHover={{ y: -2 }}
-      className="glass-card rounded-2xl p-5 border border-white/10 relative overflow-hidden space-y-3"
+      className="glass-card rounded-3xl p-6 sm:p-7 border border-white/10 relative overflow-hidden space-y-4"
     >
       <div className="flex items-center justify-between">
         <span className="text-xs font-bold font-mono uppercase text-slate-400 tracking-wider">
@@ -33,7 +42,7 @@ export const StatCard = React.memo(function StatCard({
           className="p-2 rounded-xl bg-white/5 border border-white/10"
           style={{ color }}
         >
-          <Icon className="w-4 h-4" />
+          {renderIcon()}
         </div>
       </div>
 

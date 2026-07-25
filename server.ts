@@ -3,7 +3,7 @@ import cors from 'cors';
 import path from 'path';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import { db, generateId, generatePatientId, computeHash, User, Patient, Doctor, MedicalRecord, Prescription, AccessRequest, Notification, AuditLog } from './server-db';
+import { db, generateId, generatePatientId, generateDoctorId, computeHash, User, Patient, Doctor, MedicalRecord, Prescription, AccessRequest, Notification, AuditLog } from './server-db';
 
 const app = express();
 const PORT = 3000;
@@ -139,28 +139,31 @@ app.post('/api/auth/register', (req, res, next) => {
         createdAt: new Date().toISOString()
       });
     } else if (role === 'doctor') {
-      const hospitalId = extraData?.hospitalId || 'HOSP-1';
-      const selectedHospital = db.getHospitals().find(h => h.id === hospitalId) || db.getHospitals()[0];
+      const hospitalId = extraData?.hospitalId;
+      const hospitals = db.getHospitals();
+      const selectedHospital = hospitals.find(h => h.id === hospitalId) || hospitals.find(h => h.verified) || hospitals[0];
+      const doctorId = generateDoctorId();
 
       const newDoctor: Doctor = {
         userId,
+        doctorId,
         specialization: extraData?.specialization || 'General Physician',
         licenseNumber: extraData?.licenseNumber || '',
-        hospitalId: selectedHospital.id,
-        hospitalName: selectedHospital.name,
+        hospitalId: selectedHospital ? selectedHospital.id : 'HOSP-1',
+        hospitalName: selectedHospital ? selectedHospital.name : 'Metro General Hospital',
         isVerified: false // Admin must verify doctor
       };
       db.addDoctor(newDoctor);
 
       // Audit Log
-      db.addAuditLog(userId, name, 'doctor', 'DOCTOR_REGISTER', `Resource ID: ${userId} | IP: ${req.ip} | Result: Success | Doctor registered with license ${newDoctor.licenseNumber}. Pending verification.`);
+      db.addAuditLog(userId, name, 'doctor', 'DOCTOR_REGISTER', `Resource ID: ${userId} | IP: ${req.ip} | Result: Success | Doctor registered with ID ${doctorId} and license ${newDoctor.licenseNumber}. Pending verification.`);
 
       // Notification
       db.addNotification({
         id: generateId('NOT-'),
         userId,
         title: 'Account Registered',
-        message: 'Your credentials have been submitted. An administrator will verify your profile shortly.',
+        message: `Your credentials have been submitted. Your Doctor ID is ${doctorId}. An administrator will verify your profile shortly.`,
         read: false,
         createdAt: new Date().toISOString()
       });
@@ -172,7 +175,7 @@ app.post('/api/auth/register', (req, res, next) => {
           id: generateId('NOT-'),
           userId: admin.id,
           title: 'Pending Doctor Verification',
-          message: `Dr. ${name} registered and is pending verification.`,
+          message: `Dr. ${name} (${doctorId}) registered and is pending verification.`,
           read: false,
           createdAt: new Date().toISOString()
         });
@@ -184,10 +187,30 @@ app.post('/api/auth/register', (req, res, next) => {
 
     const token = jwt.sign({ id: userId, role, name, email }, JWT_SECRET, { expiresIn: '24h' });
 
+    const doctorProfile = role === 'doctor' ? db.getDoctors().find(d => d.userId === userId) : null;
+    const patientProfile = role === 'patient' ? db.getPatients().find(p => p.userId === userId) : null;
+
     res.status(201).json({
       token,
-      user: { id: userId, email, role, name }
+      user: {
+        id: userId,
+        email,
+        role,
+        name,
+        doctorId: doctorProfile?.doctorId,
+        patientId: patientProfile?.patientId
+      }
     });
+  } catch (err: any) {
+    next(err);
+  }
+});
+
+// Get Hospitals List
+app.get('/api/hospitals', (req, res, next) => {
+  try {
+    const hospitals = db.getHospitals();
+    res.json(hospitals);
   } catch (err: any) {
     next(err);
   }

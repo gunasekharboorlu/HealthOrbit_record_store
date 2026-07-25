@@ -270,6 +270,12 @@ export default function App() {
       return showToast('Password must contain at least one special character (!@#$%^&*())', 'error');
     }
 
+    if (authRole === 'doctor') {
+      if (!specialization || !licenseNumber || !hospitalId) {
+        return showToast('Specialization, License ID, and Hospital selection are required', 'error');
+      }
+    }
+
     setLoading(true);
     const extraData = authRole === 'patient' 
       ? { dob, gender, bloodGroup }
@@ -279,7 +285,10 @@ export default function App() {
       .then(res => {
         localStorage.setItem('sihrms_token', res.token);
         setCurrentUser(res.user);
-        showToast('Account registered successfully!', 'success');
+        const msg = res.user?.doctorId 
+          ? `Registration successful! Assigned Doctor ID: ${res.user.doctorId}`
+          : (res.user?.patientId ? `Registration successful! Assigned Patient ID: ${res.user.patientId}` : 'Account registered successfully!');
+        showToast(msg, 'success');
         navigateToDashboard(res.user);
       })
       .catch(err => showToast(err.message, 'error'))

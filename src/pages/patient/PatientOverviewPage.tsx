@@ -54,7 +54,7 @@ export default function PatientOverviewPage({
   ).length;
 
   return (
-    <div className="space-y-6 animate-fade-in pb-12">
+    <div className="space-y-8 md:space-y-10 animate-fade-in pb-12">
       {/* Page Header */}
       <PageHeader
         portalName="Patient Portal"
@@ -75,9 +75,9 @@ export default function PatientOverviewPage({
       />
 
       {/* Hero Welcome Banner + Universal Registry Key */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
         {/* Welcome Card */}
-        <div className="lg:col-span-8 bg-gradient-to-tr from-[#0a0f2b] via-[#0f173b] to-[#141d48] border border-white/10 rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden flex flex-col justify-between shadow-2xl">
+        <div className="lg:col-span-8 bg-gradient-to-tr from-[#0a0f2b] via-[#0f173b] to-[#141d48] border border-white/10 rounded-3xl p-6 sm:p-8 md:p-10 text-white relative overflow-hidden flex flex-col justify-between shadow-2xl">
           <div className="absolute top-0 right-0 h-56 w-56 rounded-full bg-[#38bdf8] opacity-10 blur-3xl pointer-events-none animate-pulse" />
 
           <div className="space-y-3 relative z-10">
@@ -171,7 +171,7 @@ export default function PatientOverviewPage({
       </div>
 
       {/* Stat Cards Row */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         <StatCard
           title="Total Reports"
           value={totalReports}
@@ -208,12 +208,12 @@ export default function PatientOverviewPage({
 
 
       {/* Quick Action Shortcuts */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
         <button
           onClick={() => onNavigateTab('upload')}
-          className="flex items-center gap-3 p-4 bg-gradient-to-r from-[#38bdf8]/10 to-[#4f8cff]/10 border border-[#38bdf8]/20 rounded-2xl text-left hover:bg-[#38bdf8]/20 transition cursor-pointer group"
+          className="flex items-center gap-3.5 p-5 bg-gradient-to-r from-[#38bdf8]/10 to-[#4f8cff]/10 border border-[#38bdf8]/20 rounded-3xl text-left hover:bg-[#38bdf8]/20 transition cursor-pointer group"
         >
-          <div className="p-2.5 rounded-xl bg-[#38bdf8]/20 text-[#38bdf8] group-hover:scale-110 transition-transform">
+          <div className="p-3 rounded-2xl bg-[#38bdf8]/20 text-[#38bdf8] group-hover:scale-110 transition-transform">
             <FileUp className="w-5 h-5" />
           </div>
           <div>
@@ -224,9 +224,9 @@ export default function PatientOverviewPage({
 
         <button
           onClick={() => onNavigateTab('emergency')}
-          className="flex items-center gap-3 p-4 bg-rose-500/10 border border-rose-500/20 rounded-2xl text-left hover:bg-rose-500/20 transition cursor-pointer group"
+          className="flex items-center gap-3.5 p-5 bg-rose-500/10 border border-rose-500/20 rounded-3xl text-left hover:bg-rose-500/20 transition cursor-pointer group"
         >
-          <div className="p-2.5 rounded-xl bg-rose-500/20 text-rose-400 group-hover:scale-110 transition-transform">
+          <div className="p-3 rounded-2xl bg-rose-500/20 text-rose-400 group-hover:scale-110 transition-transform">
             <Heart className="w-5 h-5 animate-pulse" />
           </div>
           <div>
@@ -237,9 +237,9 @@ export default function PatientOverviewPage({
 
         <button
           onClick={() => onNavigateTab('records')}
-          className="flex items-center gap-3 p-4 bg-purple-500/10 border border-purple-500/20 rounded-2xl text-left hover:bg-purple-500/20 transition cursor-pointer group"
+          className="flex items-center gap-3.5 p-5 bg-purple-500/10 border border-purple-500/20 rounded-3xl text-left hover:bg-purple-500/20 transition cursor-pointer group"
         >
-          <div className="p-2.5 rounded-xl bg-purple-500/20 text-purple-400 group-hover:scale-110 transition-transform">
+          <div className="p-3 rounded-2xl bg-purple-500/20 text-purple-400 group-hover:scale-110 transition-transform">
             <Activity className="w-5 h-5" />
           </div>
           <div>

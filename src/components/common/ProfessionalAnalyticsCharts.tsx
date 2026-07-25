@@ -82,22 +82,22 @@ export default function ProfessionalAnalyticsCharts({ role = 'patient' }: Profes
       </div>
 
       {/* Chart Views */}
-      <GlassCard className="p-6">
+      <GlassCard className="p-6 md:p-8">
         {activeMetric === 'vitals' && (
-          <div className="space-y-4">
+          <div className="space-y-6">
             <div className="flex justify-between items-center">
               <div>
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                <h3 className="text-sm sm:text-base font-bold text-white flex items-center gap-2">
                   <Heart className="w-4 h-4 text-rose-400" /> Patient Vital Signs & Biomarker Telemetry
                 </h3>
-                <p className="text-xs text-slate-400">Blood Pressure (mmHg), Resting Heart Rate (BPM) & Fasting Glucose (mg/dL)</p>
+                <p className="text-xs text-slate-400 mt-0.5">Blood Pressure (mmHg), Resting Heart Rate (BPM) & Fasting Glucose (mg/dL)</p>
               </div>
-              <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
+              <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
                 ● Normal Range Verified
               </span>
             </div>
 
-            <div className="h-[280px] w-full">
+            <div className="h-[340px] w-full pt-2">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={vitalSignsData}>
                   <defs>
@@ -127,25 +127,25 @@ export default function ProfessionalAnalyticsCharts({ role = 'patient' }: Profes
         )}
 
         {activeMetric === 'distribution' && (
-          <div className="space-y-4">
+          <div className="space-y-6">
             <div className="flex justify-between items-center">
               <div>
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                <h3 className="text-sm sm:text-base font-bold text-white flex items-center gap-2">
                   <FileText className="w-4 h-4 text-[#38bdf8]" /> Medical Record Category Breakdown
                 </h3>
-                <p className="text-xs text-slate-400">Composition of clinical reports in patient encrypted store.</p>
+                <p className="text-xs text-slate-400 mt-0.5">Composition of clinical reports in patient encrypted store.</p>
               </div>
             </div>
 
-            <div className="h-[280px] w-full flex flex-col md:flex-row items-center justify-center gap-6">
+            <div className="h-[340px] w-full flex flex-col md:flex-row items-center justify-center gap-8 pt-2">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
                     data={recordsDistributionData}
                     cx="50%"
                     cy="50%"
-                    innerRadius={60}
-                    outerRadius={90}
+                    innerRadius={70}
+                    outerRadius={105}
                     paddingAngle={5}
                     dataKey="value"
                   >
@@ -158,7 +158,7 @@ export default function ProfessionalAnalyticsCharts({ role = 'patient' }: Profes
                 </PieChart>
               </ResponsiveContainer>
 
-              <div className="w-full md:w-64 space-y-2 font-mono text-xs bg-slate-950 p-4 rounded-2xl border border-white/5">
+              <div className="w-full md:w-72 space-y-3 font-mono text-xs bg-slate-950 p-5 rounded-2xl border border-white/5">
                 <span className="text-[10px] text-slate-500 uppercase font-bold block">Ledger Verification Summary</span>
                 <div className="flex justify-between text-slate-300">
                   <span>Total Records:</span>
@@ -178,17 +178,17 @@ export default function ProfessionalAnalyticsCharts({ role = 'patient' }: Profes
         )}
 
         {activeMetric === 'activity' && (
-          <div className="space-y-4">
+          <div className="space-y-6">
             <div className="flex justify-between items-center">
               <div>
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                <h3 className="text-sm sm:text-base font-bold text-white flex items-center gap-2">
                   <Stethoscope className="w-4 h-4 text-emerald-400" /> Weekly Clinical Workload
                 </h3>
-                <p className="text-xs text-slate-400">Daily breakdown of consultations, prescriptions issued, and access clearances granted.</p>
+                <p className="text-xs text-slate-400 mt-0.5">Daily breakdown of consultations, prescriptions issued, and access clearances granted.</p>
               </div>
             </div>
 
-            <div className="h-[280px] w-full">
+            <div className="h-[340px] w-full pt-2">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={doctorActivityData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.3} />

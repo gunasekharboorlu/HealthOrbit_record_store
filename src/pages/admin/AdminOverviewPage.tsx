@@ -45,11 +45,11 @@ export default function AdminOverviewPage({
   const recentLogs = (adminData.auditLogs || []).slice(0, 6);
 
   return (
-    <div className="space-y-6 animate-fade-in pb-12">
+    <div className="space-y-8 md:space-y-10 animate-fade-in pb-12">
       {/* Executive Hero Banner */}
-      <div className="bg-gradient-to-tr from-[#090e29] via-[#0d2240] to-[#031329] border border-white/10 rounded-3xl p-6 sm:p-8 text-white shadow-2xl relative overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+      <div className="bg-gradient-to-tr from-[#090e29] via-[#0d2240] to-[#031329] border border-white/10 rounded-3xl p-6 sm:p-8 md:p-10 text-white shadow-2xl relative overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
         <div className="absolute top-0 right-0 h-48 w-48 rounded-full bg-[#38bdf8] opacity-15 blur-3xl animate-pulse" />
-        <div className="space-y-2 relative z-10 max-w-2xl">
+        <div className="space-y-2.5 relative z-10 max-w-2xl">
           <div className="flex items-center gap-2">
             <span className="inline-flex items-center gap-1.5 bg-[#38bdf8]/10 border border-[#38bdf8]/20 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-[#38bdf8] font-mono">
               <Sparkles className="w-3.5 h-3.5" /> Healthcare Administration Console
@@ -61,15 +61,15 @@ export default function AdminOverviewPage({
           <h1 className="font-display text-2xl sm:text-3.5xl font-black tracking-tight text-white">
             Enterprise System Controller
           </h1>
-          <p className="text-xs text-slate-300 leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
             Real-time monitoring of decentralized patient records, physician credential verification, hospital networks, and HIPAA compliance audit logs.
           </p>
         </div>
 
-        <div className="flex flex-wrap md:flex-col gap-2 relative z-10 w-full sm:w-auto">
+        <div className="flex flex-wrap md:flex-col gap-3 relative z-10 w-full sm:w-auto">
           <button
             onClick={() => onNavigateTab('doctors')}
-            className="bg-[#38bdf8] hover:bg-[#38bdf8]/90 text-slate-950 font-bold px-4 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 transition cursor-pointer shadow-lg shadow-[#38bdf8]/20"
+            className="bg-[#38bdf8] hover:bg-[#38bdf8]/90 text-slate-950 font-bold px-5 py-3 rounded-xl text-xs flex items-center justify-center gap-2 transition cursor-pointer shadow-lg shadow-[#38bdf8]/20"
           >
             <Stethoscope className="w-4 h-4" /> Review Verifications
             {pendingVerifications > 0 && (
@@ -80,7 +80,7 @@ export default function AdminOverviewPage({
           </button>
           <button
             onClick={() => onNavigateTab('audit')}
-            className="bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold px-4 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 transition cursor-pointer"
+            className="bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold px-5 py-3 rounded-xl text-xs flex items-center justify-center gap-2 transition cursor-pointer"
           >
             <Shield className="w-4 h-4 text-[#38bdf8]" /> Audit Log Trail
           </button>
@@ -88,7 +88,7 @@ export default function AdminOverviewPage({
       </div>
 
       {/* Overview Stat Cards Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div onClick={() => onNavigateTab('patients')} className="cursor-pointer">
           <StatCard
             title="Total Registered Patients"
