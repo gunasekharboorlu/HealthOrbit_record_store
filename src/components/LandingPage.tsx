@@ -5,6 +5,7 @@ import {
   ShieldAlert, FileText, Lock, CheckCircle2, Zap, Users, 
   Database, RefreshCw, Key, ChevronRight, Stethoscope, ChevronDown
 } from 'lucide-react';
+import InstallHealthOrbitButton from './common/InstallHealthOrbitButton';
 
 interface LandingPageProps {
   setView: (view: any) => void;
@@ -111,7 +112,7 @@ export default function LandingPage({ setView, setAuthRole }: LandingPageProps) 
             </motion.p>
 
             {/* Action Buttons */}
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-3.5 pt-1">
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row flex-wrap items-center gap-3.5 pt-1">
               <button 
                 onClick={() => { setAuthRole('patient'); setView('register'); }} 
                 className="w-full sm:w-auto relative overflow-hidden group bg-gradient-to-r from-[#38bdf8] to-[#22d3ee] text-slate-950 shadow-[0_0_30px_rgba(56,189,248,0.3)] hover:shadow-[0_0_40px_rgba(56,189,248,0.5)] px-7 py-3.5 rounded-2xl font-bold text-sm tracking-wide transition-all hover:scale-[1.03] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer"
@@ -130,6 +131,8 @@ export default function LandingPage({ setView, setAuthRole }: LandingPageProps) 
                 <Stethoscope className="w-4.5 h-4.5 text-[#38bdf8]" />
                 Practitioner Entry
               </button>
+
+              <InstallHealthOrbitButton variant="hero" />
             </motion.div>
 
             {/* Core Feature Badges */}

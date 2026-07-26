@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { Activity, Heart, Shield, Sparkles, Menu, X, ArrowRight, Lock, CheckCircle2, ChevronRight } from 'lucide-react';
+import { Activity, Heart, Shield, Sparkles, Menu, X, ArrowRight, Lock, CheckCircle2, ChevronRight, Smartphone, Download } from 'lucide-react';
 import { User } from '../types';
+import InstallHealthOrbitButton from '../components/common/InstallHealthOrbitButton';
 
 interface WebsiteLayoutProps {
   currentUser: User | null;
@@ -74,6 +75,8 @@ export default function WebsiteLayout({ currentUser, handleLogout }: WebsiteLayo
 
             {/* Action Buttons */}
             <div className="hidden sm:flex items-center gap-3">
+              <InstallHealthOrbitButton variant="navbar" />
+
               <Link
                 to="/app/emergency"
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-rose-400 hover:bg-rose-500/10 border border-rose-500/20 transition-all"
@@ -140,6 +143,9 @@ export default function WebsiteLayout({ currentUser, handleLogout }: WebsiteLayo
                 </Link>
               ))}
               <div className="pt-2 border-t border-white/10 space-y-2">
+                <div className="px-1 py-1">
+                  <InstallHealthOrbitButton variant="footer" className="w-full justify-center" />
+                </div>
                 <Link
                   to="/app/emergency"
                   onClick={() => setMobileMenuOpen(false)}
@@ -237,18 +243,21 @@ export default function WebsiteLayout({ currentUser, handleLogout }: WebsiteLayo
             </div>
 
             {/* Emergency & Access */}
-            <div className="md:col-span-4 space-y-3">
-              <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider">Emergency First Responders</h4>
+            <div className="md:col-span-4 space-y-4">
+              <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider">Mobile & Desktop Progressive Web App</h4>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Need urgent patient vital lookup during rescue? Access the unauthenticated Emergency Rescue Portal instantly.
+                Install HealthOrbit on your mobile home screen or desktop launcher for zero-latency offline access.
               </p>
-              <Link
-                to="/app/emergency"
-                className="inline-flex items-center gap-2 bg-rose-500/10 border border-rose-500/20 text-rose-400 hover:bg-rose-500/20 px-4 py-2 rounded-xl text-xs font-bold transition-all"
-              >
-                <Heart className="w-4 h-4 text-rose-400 animate-pulse" />
-                Launch Emergency Portal
-              </Link>
+              <div className="flex flex-wrap items-center gap-3">
+                <InstallHealthOrbitButton variant="footer" />
+                <Link
+                  to="/app/emergency"
+                  className="inline-flex items-center gap-2 bg-rose-500/10 border border-rose-500/20 text-rose-400 hover:bg-rose-500/20 px-4 py-2 rounded-xl text-xs font-bold transition-all"
+                >
+                  <Heart className="w-4 h-4 text-rose-400 animate-pulse" />
+                  Emergency Portal
+                </Link>
+              </div>
             </div>
 
           </div>
