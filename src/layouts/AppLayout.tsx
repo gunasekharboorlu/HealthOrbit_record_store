@@ -44,7 +44,7 @@ export default function AppLayout({
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#020617] text-white selection:bg-[#38bdf8]/30 selection:text-white relative">
+    <div className="min-h-screen flex flex-col bg-[#020617] text-slate-100 selection:bg-[#38bdf8]/30 selection:text-white relative">
       
       {/* Toast Notification Container */}
       <Toast toast={toast} onClose={onCloseToast || (() => {})} />

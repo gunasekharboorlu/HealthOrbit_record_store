@@ -1,5 +1,7 @@
 import React from 'react';
-import { Activity } from 'lucide-react';
+import { motion } from 'motion/react';
+import { ShieldCheck, Activity } from 'lucide-react';
+import ThreeSceneBackground from '../common/ThreeSceneBackground';
 
 interface LoadingSkeletonProps {
   type?: 'page' | 'card' | 'table';
@@ -32,16 +34,38 @@ export default function LoadingSkeleton({ type = 'page' }: LoadingSkeletonProps)
   }
 
   return (
-    <div className="min-h-[60vh] flex flex-col items-center justify-center p-8 space-y-4 text-center">
-      <div className="relative w-14 h-14 flex items-center justify-center">
-        <div className="absolute inset-0 border-2 border-[#38bdf8]/20 rounded-full"></div>
-        <div className="absolute inset-0 border-2 border-t-[#38bdf8] border-r-transparent rounded-full animate-spin"></div>
-        <Activity className="w-6 h-6 text-[#38bdf8] animate-pulse" />
-      </div>
-      <div className="space-y-1">
-        <p className="text-sm font-bold text-white font-display tracking-wide">HealthOrbit Platform</p>
-        <p className="text-xs text-slate-400 font-mono">Loading secure view...</p>
-      </div>
+    <div className="min-h-[70vh] relative flex flex-col items-center justify-center p-8 space-y-6 text-center overflow-hidden">
+      <ThreeSceneBackground variant="loading" />
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.4 }}
+        className="glass-card p-8 rounded-3xl border border-white/15 bg-slate-950/80 backdrop-blur-2xl shadow-2xl relative z-10 max-w-sm w-full space-y-6 flex flex-col items-center"
+      >
+        <div className="relative w-16 h-16 flex items-center justify-center">
+          <div className="absolute inset-0 border-2 border-[#38bdf8]/20 rounded-full" />
+          <div className="absolute inset-0 border-2 border-t-[#38bdf8] border-r-transparent rounded-full animate-spin" />
+          <Activity className="w-8 h-8 text-[#38bdf8] animate-pulse" />
+        </div>
+
+        <div className="space-y-2">
+          <div className="flex items-center justify-center gap-1.5 text-[#38bdf8] font-mono text-[10px] uppercase font-bold tracking-widest">
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> HealthOrbit Zero-Trust
+          </div>
+          <h3 className="text-base font-black text-white font-display tracking-tight">Authenticating Ledger Token...</h3>
+          <p className="text-xs text-slate-400 font-sans">Decrypting patient vault credentials and establishing secure session.</p>
+        </div>
+
+        <div className="w-full h-1.5 bg-slate-900 rounded-full overflow-hidden border border-white/5">
+          <motion.div
+            initial={{ x: '-100%' }}
+            animate={{ x: '100%' }}
+            transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+            className="h-full bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent w-full"
+          />
+        </div>
+      </motion.div>
     </div>
   );
 }

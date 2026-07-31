@@ -47,7 +47,7 @@ export default function AdminOverviewPage({
   return (
     <div className="space-y-8 md:space-y-10 animate-fade-in pb-12">
       {/* Executive Hero Banner */}
-      <div className="bg-gradient-to-tr from-[#090e29] via-[#0d2240] to-[#031329] border border-white/10 rounded-3xl p-6 sm:p-8 md:p-10 text-white shadow-2xl relative overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+      <div className="bg-gradient-to-tr from-[#020617] via-[#0f172a] to-[#090e29] border border-[#38bdf8]/20 rounded-3xl p-6 sm:p-8 md:p-10 text-white shadow-2xl relative overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
         <div className="absolute top-0 right-0 h-48 w-48 rounded-full bg-[#38bdf8] opacity-15 blur-3xl animate-pulse" />
         <div className="space-y-2.5 relative z-10 max-w-2xl">
           <div className="flex items-center gap-2">
@@ -69,7 +69,7 @@ export default function AdminOverviewPage({
         <div className="flex flex-wrap md:flex-col gap-3 relative z-10 w-full sm:w-auto">
           <button
             onClick={() => onNavigateTab('doctors')}
-            className="bg-[#38bdf8] hover:bg-[#38bdf8]/90 text-slate-950 font-bold px-5 py-3 rounded-xl text-xs flex items-center justify-center gap-2 transition cursor-pointer shadow-lg shadow-[#38bdf8]/20"
+            className="bg-gradient-to-r from-[#38bdf8] to-[#22d3ee] hover:opacity-95 text-slate-950 font-bold px-5 py-3 rounded-xl text-xs flex items-center justify-center gap-2 transition cursor-pointer shadow-lg shadow-[#38bdf8]/20"
           >
             <Stethoscope className="w-4 h-4" /> Review Verifications
             {pendingVerifications > 0 && (
@@ -80,7 +80,7 @@ export default function AdminOverviewPage({
           </button>
           <button
             onClick={() => onNavigateTab('audit')}
-            className="bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold px-5 py-3 rounded-xl text-xs flex items-center justify-center gap-2 transition cursor-pointer"
+            className="bg-white/5 hover:bg-white/10 border border-[#38bdf8]/20 text-white font-bold px-5 py-3 rounded-xl text-xs flex items-center justify-center gap-2 transition cursor-pointer"
           >
             <Shield className="w-4 h-4 text-[#38bdf8]" /> Audit Log Trail
           </button>
@@ -151,17 +151,17 @@ export default function AdminOverviewPage({
         <GlassCard className="p-4 flex items-center justify-between">
           <div>
             <span className="text-[10px] font-mono uppercase text-slate-400 block font-semibold">Total Audit Events</span>
-            <span className="text-xl font-bold font-mono text-purple-400">{totalAuditLogs}</span>
+            <span className="text-xl font-bold font-mono text-cyan-400">{totalAuditLogs}</span>
           </div>
-          <Shield className="w-6 h-6 text-purple-400 opacity-80" />
+          <Shield className="w-6 h-6 text-cyan-400 opacity-80" />
         </GlassCard>
 
         <GlassCard className="p-4 flex items-center justify-between">
           <div>
             <span className="text-[10px] font-mono uppercase text-slate-400 block font-semibold">Compliance Rating</span>
-            <span className="text-xl font-bold font-mono text-teal-300">100% HIPAA</span>
+            <span className="text-xl font-bold font-mono text-[#38bdf8]">100% HIPAA</span>
           </div>
-          <CheckCircle2 className="w-6 h-6 text-teal-300 opacity-80" />
+          <CheckCircle2 className="w-6 h-6 text-[#38bdf8] opacity-80" />
         </GlassCard>
       </div>
 

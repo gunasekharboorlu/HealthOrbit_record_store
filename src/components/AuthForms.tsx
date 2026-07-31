@@ -2,6 +2,8 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'motion/react';
 import { Mail, Lock, User as UserIcon, Calendar, Activity, ChevronRight, Sparkles, Building, ShieldCheck, Eye, EyeOff, Search, ChevronDown } from 'lucide-react';
 import { api } from '../api';
+import ThreeSceneBackground from './common/ThreeSceneBackground';
+import BrandLogoCenterpiece from './common/BrandLogoCenterpiece';
 
 interface AuthFormsProps {
   view: 'login' | 'register';
@@ -100,33 +102,29 @@ export default function AuthForms({
 
   return (
     <div className="max-w-5xl mx-auto py-8 px-4 relative z-10">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
+      <ThreeSceneBackground variant="auth" />
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch relative z-10">
         
         {/* Left Side: Modern illustration and features panel */}
         <div className="hidden md:flex md:col-span-5 flex-col justify-between p-8 rounded-3xl border border-white/10 bg-[#090d23]/40 backdrop-blur-xl relative overflow-hidden shadow-2xl">
           <div className="absolute top-0 right-0 w-32 h-32 bg-[#38bdf8]/10 rounded-full blur-2xl pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#7c5cff]/10 rounded-full blur-2xl pointer-events-none" />
           
-          <div className="space-y-6 relative z-10">
-            <div className="flex items-center gap-2.5 text-[#38bdf8]">
-              <ShieldCheck className="w-8 h-8 animate-pulse text-[#38bdf8]" />
-              <span className="font-display font-extrabold text-xs uppercase tracking-widest font-mono">Clinical Shield Active</span>
-            </div>
-            <h2 className="font-display text-3xl font-black text-white leading-tight">
-              Decentralized EHR Control Room.
-            </h2>
-            <p className="text-xs text-slate-300 leading-relaxed font-sans">
+          <div className="space-y-6 relative z-10 my-auto">
+            <BrandLogoCenterpiece size="hero" showTagline={true} />
+            
+            <p className="text-xs text-slate-300 text-center leading-relaxed font-sans pt-2">
               Verify credentials, upload encrypted patient timelines, and manage instant health status updates on a tamper-proof system.
             </p>
           </div>
           
           {/* Dynamic ledger state visualization */}
-          <div className="py-6 relative z-10 flex flex-col gap-3">
-            <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-white/5 border border-white/5 backdrop-blur-sm">
+          <div className="py-4 relative z-10 flex flex-col gap-2.5">
+            <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/5 backdrop-blur-sm">
               <div className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
               <span className="text-[10px] font-mono text-slate-300">System Status: Active & Secured</span>
             </div>
-            <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-white/5 border border-white/5 backdrop-blur-sm">
+            <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/5 backdrop-blur-sm">
               <div className="w-2 h-2 rounded-full bg-[#38bdf8]" />
               <span className="text-[10px] font-mono text-slate-300">Integrity Check: SHA-256 Validated</span>
             </div>
@@ -463,15 +461,58 @@ export default function AuthForms({
 
         <div className="text-center text-xs text-slate-400 border-t border-white/5 pt-4 font-medium">
           {view === 'login' ? (
-            <>
-              Don't have an account?{' '}
-              <button 
-                onClick={() => setView('register')} 
-                className="text-[#38bdf8] hover:underline font-bold bg-transparent border-none cursor-pointer"
-              >
-                Register as {authRole}
-              </button>
-            </>
+            <div className="space-y-3">
+              <div className="p-3 bg-slate-950/60 border border-white/10 rounded-2xl text-left space-y-2">
+                <span className="text-[10px] font-mono font-bold text-[#38bdf8] uppercase tracking-wider block">
+                  ⚡ Quick Demo Access:
+                </span>
+                <div className="grid grid-cols-3 gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setAuthRole('patient');
+                      setEmail('john.doe@gmail.com');
+                      setPassword('patient123');
+                    }}
+                    className="px-2 py-1.5 rounded-lg bg-white/5 hover:bg-[#38bdf8]/20 border border-white/10 hover:border-[#38bdf8]/40 text-slate-300 hover:text-white text-[10px] font-mono font-semibold transition cursor-pointer text-center"
+                  >
+                    Patient
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setAuthRole('doctor');
+                      setEmail('dr.smith@metro.org');
+                      setPassword('doctor123');
+                    }}
+                    className="px-2 py-1.5 rounded-lg bg-white/5 hover:bg-[#38bdf8]/20 border border-white/10 hover:border-[#38bdf8]/40 text-slate-300 hover:text-white text-[10px] font-mono font-semibold transition cursor-pointer text-center"
+                  >
+                    Doctor
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setAuthRole('admin');
+                      setEmail('admin@healthorbit.org');
+                      setPassword('admin123');
+                    }}
+                    className="px-2 py-1.5 rounded-lg bg-white/5 hover:bg-[#38bdf8]/20 border border-white/10 hover:border-[#38bdf8]/40 text-slate-300 hover:text-white text-[10px] font-mono font-semibold transition cursor-pointer text-center"
+                  >
+                    Admin
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                Don't have an account?{' '}
+                <button 
+                  onClick={() => setView('register')} 
+                  className="text-[#38bdf8] hover:underline font-bold bg-transparent border-none cursor-pointer"
+                >
+                  Register as {authRole}
+                </button>
+              </div>
+            </div>
           ) : (
             <>
               Already have an account?{' '}

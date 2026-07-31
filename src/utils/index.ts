@@ -97,10 +97,9 @@ export function getAvatarBgColor(name?: string): string {
   if (!name) return 'from-[#38bdf8] to-[#22d3ee]';
   const colors = [
     'from-sky-500 to-cyan-400',
-    'from-emerald-500 to-teal-400',
-    'from-indigo-500 to-purple-400',
-    'from-rose-500 to-pink-400',
-    'from-amber-500 to-orange-400',
+    'from-blue-600 to-cyan-400',
+    'from-indigo-500 to-sky-400',
+    'from-sky-400 to-emerald-400',
     'from-blue-500 to-indigo-400',
   ];
   let hash = 0;

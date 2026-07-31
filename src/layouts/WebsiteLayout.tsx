@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Activity, Heart, Shield, Sparkles, Menu, X, ArrowRight, Lock, CheckCircle2, ChevronRight, Smartphone, Download } from 'lucide-react';
 import { User } from '../types';
 import InstallHealthOrbitButton from '../components/common/InstallHealthOrbitButton';
+import BrandLogoCenterpiece from '../components/common/BrandLogoCenterpiece';
 
 interface WebsiteLayoutProps {
   currentUser: User | null;
@@ -33,26 +34,16 @@ export default function WebsiteLayout({ currentUser, handleLogout }: WebsiteLayo
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#020617] text-white selection:bg-[#38bdf8]/30 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[#020617] text-slate-100 selection:bg-[#38bdf8]/30 selection:text-white">
       
       {/* Public Header Navbar */}
-      <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#020617]/80 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#020617]/85 backdrop-blur-xl">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             
             {/* Logo Brand */}
-            <Link to="/" className="flex items-center gap-3 group">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-[#38bdf8] to-[#22d3ee] text-slate-950 shadow-md shadow-[#38bdf8]/20 transition-all duration-300 group-hover:scale-105">
-                <Activity className="h-5.5 w-5.5 animate-pulse" />
-              </div>
-              <div>
-                <span className="font-display text-xl font-bold tracking-tight bg-gradient-to-r from-[#38bdf8] via-[#5da9ff] to-[#22d3ee] bg-clip-text text-transparent">
-                  HealthOrbit
-                </span>
-                <span className="block font-mono text-[8px] font-bold tracking-widest text-slate-400 uppercase">
-                  Clinical Ledger
-                </span>
-              </div>
+            <Link to="/">
+              <BrandLogoCenterpiece size="header" showTagline={false} />
             </Link>
 
             {/* Desktop Navigation Links */}

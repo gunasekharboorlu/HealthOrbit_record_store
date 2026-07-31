@@ -6,6 +6,8 @@ import {
   Database, RefreshCw, Key, ChevronRight, Stethoscope, ChevronDown
 } from 'lucide-react';
 import InstallHealthOrbitButton from './common/InstallHealthOrbitButton';
+import ThreeSceneBackground from './common/ThreeSceneBackground';
+import BrandLogoCenterpiece from './common/BrandLogoCenterpiece';
 
 interface LandingPageProps {
   setView: (view: any) => void;
@@ -73,13 +75,19 @@ export default function LandingPage({ setView, setAuthRole }: LandingPageProps) 
 
   return (
     <div className="space-y-20 sm:space-y-24 relative overflow-hidden pb-16">
+      <ThreeSceneBackground variant="hero" />
       
       {/* Background Decorative Ambient Flares */}
       <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-gradient-to-tr from-[#38bdf8]/8 to-[#22d3ee]/4 rounded-full blur-[160px] pointer-events-none animate-pulse-slow" />
       <div className="absolute top-[40%] left-[-15%] w-[500px] h-[500px] bg-gradient-to-tr from-[#22d3ee]/6 to-[#38bdf8]/4 rounded-full blur-[140px] pointer-events-none" />
 
       {/* Hero Section Container */}
-      <div className="max-w-[1280px] mx-auto px-6 sm:px-8 pt-6 sm:pt-12 relative z-10">
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-8 pt-4 sm:pt-8 relative z-10">
+        {/* Brand Logo Centerpiece Showcase */}
+        <div className="mb-8 sm:mb-12 flex justify-center">
+          <BrandLogoCenterpiece size="hero" showTagline={true} />
+        </div>
+
         <motion.div 
           variants={containerVariants}
           initial="hidden"

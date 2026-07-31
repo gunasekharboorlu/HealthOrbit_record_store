@@ -11,24 +11,24 @@ import ProtectedRoute from './components/common/ProtectedRoute';
 import LoadingSkeleton from './components/layout/LoadingSkeleton';
 import PWAInstallBanner from './components/common/PWAInstallBanner';
 
-// Lazy Loaded Public Pages
-const HomePage = lazy(() => import('./pages/public/HomePage'));
-const FeaturesPage = lazy(() => import('./pages/public/FeaturesPage'));
-const AboutPage = lazy(() => import('./pages/public/AboutPage'));
-const HowItWorksPage = lazy(() => import('./pages/public/HowItWorksPage'));
-const SecurityPage = lazy(() => import('./pages/public/SecurityPage'));
-const FaqPage = lazy(() => import('./pages/public/FaqPage'));
-const ContactPage = lazy(() => import('./pages/public/ContactPage'));
-const TermsPage = lazy(() => import('./pages/public/TermsPage'));
-const PrivacyPage = lazy(() => import('./pages/public/PrivacyPage'));
-const LoginPage = lazy(() => import('./pages/public/LoginPage'));
-const RegisterPage = lazy(() => import('./pages/public/RegisterPage'));
+// Public Pages
+import HomePage from './pages/public/HomePage';
+import FeaturesPage from './pages/public/FeaturesPage';
+import AboutPage from './pages/public/AboutPage';
+import HowItWorksPage from './pages/public/HowItWorksPage';
+import SecurityPage from './pages/public/SecurityPage';
+import FaqPage from './pages/public/FaqPage';
+import ContactPage from './pages/public/ContactPage';
+import TermsPage from './pages/public/TermsPage';
+import PrivacyPage from './pages/public/PrivacyPage';
+import LoginPage from './pages/public/LoginPage';
+import RegisterPage from './pages/public/RegisterPage';
 
-// Lazy Loaded SaaS Dashboards & Views
-const PatientDashboard = lazy(() => import('./components/PatientDashboard'));
-const DoctorDashboard = lazy(() => import('./components/DoctorDashboard'));
-const AdminDashboard = lazy(() => import('./components/AdminDashboard'));
-const EmergencyView = lazy(() => import('./components/EmergencyView'));
+// SaaS Dashboards & Views
+import PatientDashboard from './components/PatientDashboard';
+import DoctorDashboard from './components/DoctorDashboard';
+import AdminDashboard from './components/AdminDashboard';
+import EmergencyView from './components/EmergencyView';
 
 export default function App() {
   const navigate = useNavigate();
