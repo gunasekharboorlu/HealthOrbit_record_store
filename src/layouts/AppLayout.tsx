@@ -33,7 +33,6 @@ export default function AppLayout({
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [globalSearch, setGlobalSearch] = useState('');
 
-  // Determine active tab from location pathname (e.g. /app/patient/records -> records)
   const pathParts = location.pathname.split('/').filter(Boolean);
   const activeTab = pathParts[2] || 'dashboard';
 
@@ -44,7 +43,7 @@ export default function AppLayout({
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#020617] text-slate-100 selection:bg-[#38bdf8]/30 selection:text-white relative">
+    <div className="min-h-screen flex flex-col bg-[#F5F5F7] text-[#1D1D1F] selection:bg-[#0071E3]/20 selection:text-[#1D1D1F] relative">
       
       {/* Toast Notification Container */}
       <Toast toast={toast} onClose={onCloseToast || (() => {})} />

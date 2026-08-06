@@ -82,19 +82,19 @@ export default function AuditLogsPage({ auditLogs = [] }: AuditLogsPageProps) {
   return (
     <div className="space-y-6 animate-fade-in pb-12">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/10 pb-4">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-[#E5E5E7] pb-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-display font-bold text-white flex items-center gap-2">
-            <ShieldCheck className="w-6 h-6 text-emerald-400" /> HIPAA Compliance Audit Trail Console
+          <h1 className="text-xl sm:text-2xl font-display font-bold text-[#1D1D1F] flex items-center gap-2">
+            <ShieldCheck className="w-6 h-6 text-emerald-600" /> HIPAA Compliance Audit Trail Console
           </h1>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-[#6E6E73] mt-0.5">
             Immutable operation ledger recording patient data access, physician authorization, and network security actions.
           </p>
         </div>
 
         <button
           onClick={handleExportCSV}
-          className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-2 transition cursor-pointer shadow-lg shadow-emerald-600/20"
+          className="px-4 py-2 rounded-xl bg-[#1D1D1F] hover:bg-black text-white font-bold text-xs flex items-center gap-2 transition cursor-pointer shadow-xs"
         >
           <Download className="w-4 h-4" /> Export CSV Audit Trail
         </button>
@@ -103,7 +103,7 @@ export default function AuditLogsPage({ auditLogs = [] }: AuditLogsPageProps) {
       {/* Toolbar */}
       <GlassCard className="p-4 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="relative w-full md:w-80">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-[#86868B] absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchQuery}
@@ -112,7 +112,7 @@ export default function AuditLogsPage({ auditLogs = [] }: AuditLogsPageProps) {
               setCurrentPage(1);
             }}
             placeholder="Search by user, action, IP, or details..."
-            className="w-full pl-9 pr-3 py-2 bg-slate-950/60 border border-white/10 rounded-xl text-xs text-white placeholder-slate-500 outline-none focus:border-[#38bdf8]"
+            className="w-full pl-9 pr-3 py-2 bg-white border border-[#D2D2D7] rounded-xl text-xs text-[#1D1D1F] placeholder-[#86868B] outline-none focus:border-[#0071E3]"
           />
         </div>
 
@@ -124,7 +124,7 @@ export default function AuditLogsPage({ auditLogs = [] }: AuditLogsPageProps) {
               setRoleFilter(e.target.value);
               setCurrentPage(1);
             }}
-            className="bg-slate-950/80 border border-white/10 text-xs text-white px-3 py-2 rounded-xl outline-none cursor-pointer"
+            className="bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] px-3 py-2 rounded-xl outline-none cursor-pointer"
           >
             <option value="all">All Roles</option>
             <option value="patient">Patient</option>
@@ -139,7 +139,7 @@ export default function AuditLogsPage({ auditLogs = [] }: AuditLogsPageProps) {
               setActionFilter(e.target.value);
               setCurrentPage(1);
             }}
-            className="bg-slate-950/80 border border-white/10 text-xs text-white px-3 py-2 rounded-xl outline-none cursor-pointer"
+            className="bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] px-3 py-2 rounded-xl outline-none cursor-pointer"
           >
             <option value="all">All Actions</option>
             {actionTypes.map((act) => (
@@ -157,9 +157,9 @@ export default function AuditLogsPage({ auditLogs = [] }: AuditLogsPageProps) {
         />
       ) : (
         <GlassCard className="p-6 overflow-x-auto space-y-4">
-          <table className="w-full text-left text-xs divide-y divide-white/5">
+          <table className="w-full text-left text-xs divide-y divide-[#E5E5E7]">
             <thead>
-              <tr className="text-slate-400 uppercase font-mono font-bold text-[9px] tracking-wider pb-3">
+              <tr className="text-[#6E6E73] uppercase font-mono font-bold text-[9px] tracking-wider pb-3">
                 <th className="py-3 px-3">Timestamp</th>
                 <th className="py-3 px-3">User & Role</th>
                 <th className="py-3 px-3">Action Type</th>
@@ -168,10 +168,10 @@ export default function AuditLogsPage({ auditLogs = [] }: AuditLogsPageProps) {
                 <th className="py-3 px-3">Resource & Operation Details</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5 text-slate-300 font-medium">
+            <tbody className="divide-y divide-[#E5E5E7] text-[#1D1D1F] font-medium">
               {paginatedLogs.map((log) => (
-                <tr key={log.id} className="hover:bg-white/5 transition">
-                  <td className="py-3.5 px-3 font-mono text-slate-400 whitespace-nowrap">
+                <tr key={log.id} className="hover:bg-[#F5F5F7] transition">
+                  <td className="py-3.5 px-3 font-mono text-[#6E6E73] whitespace-nowrap">
                     {new Date(log.timestamp).toLocaleString([], {
                       year: 'numeric',
                       month: 'short',
@@ -182,27 +182,27 @@ export default function AuditLogsPage({ auditLogs = [] }: AuditLogsPageProps) {
                     })}
                   </td>
                   <td className="py-3.5 px-3">
-                    <span className="font-bold text-white block">{log.userName || 'System'}</span>
-                    <span className="text-[9px] font-mono uppercase text-[#38bdf8]">{log.userRole || 'admin'}</span>
+                    <span className="font-bold text-[#1D1D1F] block">{log.userName || 'System'}</span>
+                    <span className="text-[9px] font-mono uppercase text-[#0071E3]">{log.userRole || 'admin'}</span>
                   </td>
                   <td className="py-3.5 px-3">
-                    <span className="px-2.5 py-1 rounded-md text-[10px] font-mono font-bold bg-[#38bdf8]/10 text-[#38bdf8] border border-[#38bdf8]/20 inline-block">
+                    <span className="px-2.5 py-1 rounded-md text-[10px] font-mono font-bold bg-[#0071E3]/10 text-[#0071E3] border border-[#0071E3]/20 inline-block">
                       {log.action}
                     </span>
                   </td>
-                  <td className="py-3.5 px-3 font-mono text-slate-400">{log.ipAddress}</td>
+                  <td className="py-3.5 px-3 font-mono text-[#6E6E73]">{log.ipAddress}</td>
                   <td className="py-3.5 px-3">
                     {log.status === 'Security Alert' ? (
-                      <span className="inline-flex items-center gap-1 text-rose-400 bg-rose-500/10 border border-rose-500/20 px-2 py-0.5 rounded font-bold text-[10px] font-mono">
-                        <ShieldAlert className="w-3 h-3" /> Security Alert
+                      <span className="inline-flex items-center gap-1 text-rose-800 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded font-bold text-[10px] font-mono">
+                        <ShieldAlert className="w-3 h-3 text-rose-600" /> Security Alert
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1 text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded font-bold text-[10px] font-mono">
-                        <CheckCircle2 className="w-3 h-3" /> Success
+                      <span className="inline-flex items-center gap-1 text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded font-bold text-[10px] font-mono">
+                        <CheckCircle2 className="w-3 h-3 text-emerald-600" /> Success
                       </span>
                     )}
                   </td>
-                  <td className="py-3.5 px-3 font-mono text-[11px] text-slate-300 max-w-xs truncate">
+                  <td className="py-3.5 px-3 font-mono text-[11px] text-[#1D1D1F] max-w-xs truncate">
                     {log.details || 'Standard operational ledger event.'}
                   </td>
                 </tr>
@@ -212,7 +212,7 @@ export default function AuditLogsPage({ auditLogs = [] }: AuditLogsPageProps) {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="pt-4 border-t border-white/10">
+            <div className="pt-4 border-t border-[#E5E5E7]">
               <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}

@@ -81,7 +81,7 @@ export default function Sidebar({
   };
 
   const sidebarContent = (
-    <div className="h-full flex flex-col justify-between p-4 bg-[#020617]/90 backdrop-blur-xl border-r border-white/10 text-white w-64 select-none">
+    <div className="h-full flex flex-col justify-between p-4 bg-white/95 backdrop-blur-xl border-r border-[#E5E5E7] text-[#1D1D1F] w-64 select-none">
       
       {/* Upper Navigation Area */}
       <div className="space-y-6">
@@ -89,15 +89,15 @@ export default function Sidebar({
         {/* Header / Role Identifier */}
         <div className="px-3 py-2 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="flex h-2 w-2 rounded-full bg-[#38bdf8] animate-ping" />
-            <span className="text-[10px] font-mono font-bold tracking-widest text-[#38bdf8] uppercase">
+            <span className="flex h-2 w-2 rounded-full bg-[#0071E3]" />
+            <span className="text-[10px] font-mono font-bold tracking-widest text-[#0071E3] uppercase">
               {role === 'patient' ? 'Patient Portal' : role === 'doctor' ? 'Clinical Portal' : 'Admin Console'}
             </span>
           </div>
           {setMobileOpen && (
             <button 
               onClick={() => setMobileOpen(false)}
-              className="md:hidden text-slate-400 hover:text-white p-1 rounded-lg hover:bg-white/10 cursor-pointer"
+              className="md:hidden text-[#6E6E73] hover:text-[#1D1D1F] p-1 rounded-lg hover:bg-[#F5F5F7] cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -105,17 +105,17 @@ export default function Sidebar({
         </div>
 
         {/* User Card */}
-        <div className="bg-gradient-to-r from-white/5 to-white/[0.02] border border-white/10 rounded-2xl p-3.5 flex items-center gap-3">
+        <div className="bg-[#FBFBFD] border border-[#E5E5E7] rounded-2xl p-3.5 flex items-center gap-3 shadow-2xs">
           <Avatar 
             name={currentUser?.name || 'User'} 
             src={currentUser?.profilePicture} 
             size="sm" 
           />
           <div className="overflow-hidden flex-1">
-            <h4 className="text-xs font-bold text-white truncate leading-tight">
+            <h4 className="text-xs font-bold text-[#1D1D1F] truncate leading-tight">
               {currentUser?.name || 'User'}
             </h4>
-            <span className="text-[10px] text-slate-400 font-mono capitalize truncate block">
+            <span className="text-[10px] text-[#6E6E73] font-mono capitalize truncate block">
               {role}
             </span>
           </div>
@@ -134,26 +134,26 @@ export default function Sidebar({
                 className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition-all duration-200 cursor-pointer ${
                   isActive
                     ? item.highlight
-                      ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30 shadow-[0_0_15px_rgba(244,63,94,0.15)] font-bold'
-                      : 'bg-gradient-to-r from-[#38bdf8]/20 to-[#4f8cff]/10 text-[#38bdf8] border border-[#38bdf8]/30 shadow-[0_0_15px_rgba(56,189,248,0.15)] font-bold'
+                      ? 'bg-rose-50 text-rose-700 border border-rose-200 font-bold shadow-2xs'
+                      : 'bg-[#1D1D1F] text-white font-bold shadow-2xs'
                     : item.highlight
-                      ? 'text-rose-400/80 hover:text-rose-300 hover:bg-rose-500/10 border border-transparent'
-                      : 'text-slate-400 hover:text-slate-100 hover:bg-white/5 border border-transparent'
+                      ? 'text-rose-600 hover:bg-rose-50 border border-transparent'
+                      : 'text-[#6E6E73] hover:text-[#1D1D1F] hover:bg-[#F5F5F7] border border-transparent'
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <Icon className={`w-4.5 h-4.5 ${isActive ? (item.highlight ? 'text-rose-400' : 'text-[#38bdf8]') : 'text-slate-400'}`} />
+                  <Icon className={`w-4.5 h-4.5 ${isActive ? (item.highlight ? 'text-rose-700' : 'text-white') : (item.highlight ? 'text-rose-600' : 'text-[#86868B]')}`} />
                   <span>{item.label}</span>
                 </div>
 
                 <div className="flex items-center gap-1.5">
                   {item.badge !== undefined && item.badge > 0 && (
-                    <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-rose-500 text-white animate-pulse">
+                    <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-rose-600 text-white">
                       {item.badge}
                     </span>
                   )}
                   {isActive && (
-                    <ChevronRight className={`w-3.5 h-3.5 ${item.highlight ? 'text-rose-400' : 'text-[#38bdf8]'}`} />
+                    <ChevronRight className={`w-3.5 h-3.5 ${item.highlight ? 'text-rose-700' : 'text-white/80'}`} />
                   )}
                 </div>
               </button>
@@ -163,19 +163,19 @@ export default function Sidebar({
       </div>
 
       {/* Footer / Quick Actions */}
-      <div className="space-y-3 border-t border-white/10 pt-4">
+      <div className="space-y-3 border-t border-[#E5E5E7] pt-4">
         {handleLogout && (
           <button
             onClick={handleLogout}
-            className="w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 border border-transparent hover:border-rose-500/20 transition-all cursor-pointer"
+            className="w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-[#6E6E73] hover:text-rose-600 hover:bg-rose-50 border border-transparent hover:border-rose-100 transition-all cursor-pointer"
           >
             <LogOut className="w-4 h-4" />
             <span>Sign Out</span>
           </button>
         )}
-        <div className="px-3 py-1 flex items-center justify-between text-[9px] font-mono text-slate-500">
+        <div className="px-3 py-1 flex items-center justify-between text-[9px] font-mono text-[#86868B]">
           <span>HealthOrbit v2.5</span>
-          <span className="flex items-center gap-1 text-emerald-400 font-bold">
+          <span className="flex items-center gap-1 text-emerald-700 font-bold">
             <Sparkles className="w-2.5 h-2.5" /> HIPAA
           </span>
         </div>

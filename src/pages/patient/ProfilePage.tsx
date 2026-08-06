@@ -66,7 +66,7 @@ export default function ProfilePage({
       />
 
       {/* User Identity Header Card */}
-      <GlassCard className="p-6 flex flex-col sm:flex-row items-center gap-6 bg-gradient-to-r from-slate-900/80 via-[#0a0f2b]/90 to-slate-900/80">
+      <GlassCard className="p-6 flex flex-col sm:flex-row items-center gap-6 bg-[#FBFBFD] border border-[#E5E5E7] shadow-xs">
         <Avatar
           name={displayName}
           src={currentUser?.profilePicture}
@@ -74,15 +74,15 @@ export default function ProfilePage({
         />
         <div className="text-center sm:text-left space-y-1">
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
-            <h2 className="font-display text-xl font-bold text-white">
+            <h2 className="text-xl font-bold text-[#1D1D1F]">
               {displayName}
             </h2>
             <Badge variant="cyan">Universal Registry</Badge>
           </div>
-          <p className="text-xs text-slate-400 font-mono">
+          <p className="text-xs text-[#6E6E73] font-mono">
             Email: {currentUser?.email || 'patient@healthorbit.io'}
           </p>
-          <span className="inline-block text-[10px] font-mono font-bold text-teal-400 bg-teal-500/10 px-2.5 py-0.5 rounded-md border border-teal-500/20 mt-1">
+          <span className="inline-block text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200 mt-1">
             Registry ID: {patient?.patientId || 'PR-1001'}
           </span>
         </div>
@@ -93,35 +93,35 @@ export default function ProfilePage({
         <form onSubmit={handleUpdateProfile} className="space-y-6">
           {/* Section 1: Personal Info */}
           <div className="space-y-4">
-            <h3 className="text-xs font-bold font-mono text-[#38bdf8] uppercase tracking-wider border-b border-white/10 pb-2 flex items-center gap-2">
+            <h3 className="text-xs font-bold font-mono text-[#0071E3] uppercase tracking-wider border-b border-[#E5E5E7] pb-2 flex items-center gap-2">
               <User className="w-4 h-4" /> Personal & Demographic Information
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono">
+                <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono">
                   Birth Date
                 </label>
                 <input
                   type="date"
                   value={editDob}
                   onChange={(e) => setEditDob(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-white/10 text-xs text-white outline-none focus:border-[#38bdf8]"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none focus:border-[#0071E3]"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono">
+                <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono">
                   Gender
                 </label>
                 <select
                   value={editGender}
                   onChange={(e) => setEditGender(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-white/10 text-xs text-white outline-none focus:border-[#38bdf8] cursor-pointer"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none focus:border-[#0071E3] cursor-pointer"
                 >
-                  <option value="Male" className="bg-[#020617]">Male</option>
-                  <option value="Female" className="bg-[#020617]">Female</option>
-                  <option value="Other" className="bg-[#020617]">Other</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
             </div>
@@ -129,13 +129,13 @@ export default function ProfilePage({
 
           {/* Section 2: Medical Vitals */}
           <div className="space-y-4">
-            <h3 className="text-xs font-bold font-mono text-teal-400 uppercase tracking-wider border-b border-white/10 pb-2 flex items-center gap-2">
+            <h3 className="text-xs font-bold font-mono text-emerald-700 uppercase tracking-wider border-b border-[#E5E5E7] pb-2 flex items-center gap-2">
               <Heart className="w-4 h-4" /> Medical Vitals & Allergies Baseline
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono">
+                <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono">
                   Blood Group
                 </label>
                 <input
@@ -143,12 +143,12 @@ export default function ProfilePage({
                   value={editBlood}
                   onChange={(e) => setEditBlood(e.target.value)}
                   placeholder="e.g. O-Positive"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-white/10 text-xs text-white outline-none focus:border-[#38bdf8]"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none focus:border-[#0071E3]"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono">
+                <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono">
                   Severe Allergies
                 </label>
                 <input
@@ -156,13 +156,13 @@ export default function ProfilePage({
                   value={editAllergies}
                   onChange={(e) => setEditAllergies(e.target.value)}
                   placeholder="e.g. Penicillin, Latex"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-white/10 text-xs text-white outline-none focus:border-[#38bdf8]"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none focus:border-[#0071E3]"
                 />
               </div>
             </div>
 
             <div className="space-y-1.5">
-              <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono">
+              <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono">
                 Chronic Illnesses / Conditions
               </label>
               <input
@@ -170,20 +170,20 @@ export default function ProfilePage({
                 value={editDiseases}
                 onChange={(e) => setEditDiseases(e.target.value)}
                 placeholder="e.g. Type 1 Diabetes, Asthma"
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-white/10 text-xs text-white outline-none focus:border-[#38bdf8]"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none focus:border-[#0071E3]"
               />
             </div>
           </div>
 
           {/* Section 3: Emergency Contact Guardian */}
           <div className="space-y-4">
-            <h3 className="text-xs font-bold font-mono text-rose-400 uppercase tracking-wider border-b border-white/10 pb-2 flex items-center gap-2">
+            <h3 className="text-xs font-bold font-mono text-rose-600 uppercase tracking-wider border-b border-[#E5E5E7] pb-2 flex items-center gap-2">
               <Phone className="w-4 h-4" /> Emergency Contact Guardian
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="space-y-1.5">
-                <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono">
+                <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono">
                   Guardian Name
                 </label>
                 <input
@@ -191,12 +191,12 @@ export default function ProfilePage({
                   value={editContactName}
                   onChange={(e) => setEditContactName(e.target.value)}
                   placeholder="Contact Name"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-white/10 text-xs text-white outline-none focus:border-[#38bdf8]"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none focus:border-[#0071E3]"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono">
+                <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono">
                   Relationship
                 </label>
                 <input
@@ -204,12 +204,12 @@ export default function ProfilePage({
                   value={editContactRelation}
                   onChange={(e) => setEditContactRelation(e.target.value)}
                   placeholder="Spouse / Parent"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-white/10 text-xs text-white outline-none focus:border-[#38bdf8]"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none focus:border-[#0071E3]"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono">
+                <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono">
                   Guardian Phone
                 </label>
                 <input
@@ -217,7 +217,7 @@ export default function ProfilePage({
                   value={editContactPhone}
                   onChange={(e) => setEditContactPhone(e.target.value)}
                   placeholder="+1 (555) 019-2834"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-white/10 text-xs text-white outline-none focus:border-[#38bdf8]"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none focus:border-[#0071E3]"
                 />
               </div>
             </div>

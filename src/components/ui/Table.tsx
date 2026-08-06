@@ -8,18 +8,18 @@ interface TableProps {
 
 export const Table = React.memo(function Table({ headers, children, className = '' }: TableProps) {
   return (
-    <div className={`w-full overflow-x-auto rounded-3xl border border-white/10 bg-[#020617]/50 ${className}`}>
+    <div className={`w-full overflow-x-auto rounded-2xl border border-[#E5E5E7] bg-white ${className}`}>
       <table className="w-full text-left text-xs">
-        <thead className="bg-slate-900/80 text-slate-400 font-mono text-[10px] uppercase border-b border-white/10 tracking-wider">
+        <thead className="bg-[#F5F5F7] text-[#6E6E73] font-mono text-[10px] uppercase border-b border-[#E5E5E7] tracking-wider">
           <tr>
             {headers.map((h, i) => (
-              <th key={i} className="px-6 py-4 font-bold">
+              <th key={i} className="px-5 py-3.5 font-semibold">
                 {h}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="divide-y divide-white/5">{children}</tbody>
+        <tbody className="divide-y divide-[#F5F5F7]">{children}</tbody>
       </table>
     </div>
   );
@@ -48,7 +48,7 @@ export function DataTable<T extends { id?: string | number }>({
     <Table headers={columns.map((c) => c.header)}>
       {data.length === 0 ? (
         <tr>
-          <td colSpan={columns.length} className="text-center py-8 text-slate-400 font-mono text-xs">
+          <td colSpan={columns.length} className="text-center py-8 text-[#86868B] font-mono text-xs">
             {emptyMessage}
           </td>
         </tr>
@@ -57,12 +57,12 @@ export function DataTable<T extends { id?: string | number }>({
           <tr
             key={row.id || idx}
             onClick={() => onRowClick && onRowClick(row)}
-            className={`hover:bg-white/5 transition-colors ${
+            className={`hover:bg-[#F5F5F7] transition-colors ${
               onRowClick ? 'cursor-pointer' : ''
             }`}
           >
             {columns.map((col, cIdx) => (
-              <td key={cIdx} className={`px-6 py-4 text-slate-300 ${col.className || ''}`}>
+              <td key={cIdx} className={`px-5 py-3.5 text-[#1D1D1F] ${col.className || ''}`}>
                 {typeof col.accessor === 'function'
                   ? col.accessor(row)
                   : (row[col.accessor] as unknown as React.ReactNode)}

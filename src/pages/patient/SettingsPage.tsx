@@ -43,47 +43,47 @@ export default function SettingsPage({ onNavigateTab }: SettingsPageProps) {
 
       {/* Security Preferences Card */}
       <GlassCard className="p-6 space-y-5">
-        <div className="border-b border-white/10 pb-3">
-          <h3 className="font-display font-bold text-sm text-white flex items-center gap-2">
-            <Shield className="w-4 h-4 text-emerald-400" /> Vault Security Protocols
+        <div className="border-b border-[#E5E5E7] pb-3">
+          <h3 className="font-display font-bold text-sm text-[#1D1D1F] flex items-center gap-2">
+            <Shield className="w-4 h-4 text-emerald-600" /> Vault Security Protocols
           </h3>
-          <p className="text-xs text-slate-400">Cryptographic protections governing your medical records.</p>
+          <p className="text-xs text-[#6E6E73]">Cryptographic protections governing your medical records.</p>
         </div>
 
         <div className="space-y-4">
-          <div className="flex items-center justify-between p-3.5 bg-slate-950/60 border border-white/5 rounded-2xl">
+          <div className="flex items-center justify-between p-3.5 bg-[#F5F5F7] border border-[#E5E5E7] rounded-2xl">
             <div>
-              <span className="block font-bold text-xs text-white">SHA-256 Record Tamper Check</span>
-              <span className="text-[10px] text-slate-400">Automatic cryptographic integrity verification on all record uploads.</span>
+              <span className="block font-bold text-xs text-[#1D1D1F]">SHA-256 Record Tamper Check</span>
+              <span className="text-[10px] text-[#6E6E73]">Automatic cryptographic integrity verification on all record uploads.</span>
             </div>
-            <span className="text-xs font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-lg border border-emerald-500/20">
+            <span className="text-xs font-mono font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200">
               ACTIVE
             </span>
           </div>
 
-          <div className="flex items-center justify-between p-3.5 bg-slate-950/60 border border-white/5 rounded-2xl">
+          <div className="flex items-center justify-between p-3.5 bg-[#F5F5F7] border border-[#E5E5E7] rounded-2xl">
             <div>
-              <span className="block font-bold text-xs text-white">Automatic Token Session Expiration</span>
-              <span className="text-[10px] text-slate-400">Auto-flushes active authorization credentials after 24 hours of inactivity.</span>
+              <span className="block font-bold text-xs text-[#1D1D1F]">Automatic Token Session Expiration</span>
+              <span className="text-[10px] text-[#6E6E73]">Auto-flushes active authorization credentials after 24 hours of inactivity.</span>
             </div>
             <input
               type="checkbox"
               checked={autoExpireEnabled}
               onChange={(e) => setAutoExpireEnabled(e.target.checked)}
-              className="w-5 h-5 text-[#38bdf8] accent-[#38bdf8] cursor-pointer"
+              className="w-5 h-5 text-[#0071E3] accent-[#0071E3] cursor-pointer"
             />
           </div>
 
-          <div className="flex items-center justify-between p-3.5 bg-slate-950/60 border border-white/5 rounded-2xl">
+          <div className="flex items-center justify-between p-3.5 bg-[#F5F5F7] border border-[#E5E5E7] rounded-2xl">
             <div>
-              <span className="block font-bold text-xs text-white">Two-Factor Authorization Prompt</span>
-              <span className="text-[10px] text-slate-400">Prompt for security code when granting sensitive record clearance.</span>
+              <span className="block font-bold text-xs text-[#1D1D1F]">Two-Factor Authorization Prompt</span>
+              <span className="text-[10px] text-[#6E6E73]">Prompt for security code when granting sensitive record clearance.</span>
             </div>
             <input
               type="checkbox"
               checked={twoFactorEnabled}
               onChange={(e) => setTwoFactorEnabled(e.target.checked)}
-              className="w-5 h-5 text-[#38bdf8] accent-[#38bdf8] cursor-pointer"
+              className="w-5 h-5 text-[#0071E3] accent-[#0071E3] cursor-pointer"
             />
           </div>
         </div>
@@ -91,16 +91,16 @@ export default function SettingsPage({ onNavigateTab }: SettingsPageProps) {
 
       {/* Change Password Card */}
       <GlassCard className="p-6 space-y-4">
-        <div className="border-b border-white/10 pb-3">
-          <h3 className="font-display font-bold text-sm text-white flex items-center gap-2">
-            <Lock className="w-4 h-4 text-amber-400" /> Password & Credentials
+        <div className="border-b border-[#E5E5E7] pb-3">
+          <h3 className="font-display font-bold text-sm text-[#1D1D1F] flex items-center gap-2">
+            <Lock className="w-4 h-4 text-amber-600" /> Password & Credentials
           </h3>
-          <p className="text-xs text-slate-400">Update account password for HealthOrbit authentication.</p>
+          <p className="text-xs text-[#6E6E73]">Update account password for HealthOrbit authentication.</p>
         </div>
 
         <form onSubmit={handlePasswordSubmit} className="space-y-4">
           <div className="space-y-1.5">
-            <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono">
+            <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono">
               Current Password
             </label>
             <input
@@ -108,13 +108,13 @@ export default function SettingsPage({ onNavigateTab }: SettingsPageProps) {
               value={currentPassword}
               onChange={(e) => setCurrentPassword(e.target.value)}
               placeholder="••••••••••••"
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-white/10 text-xs text-white outline-none focus:border-[#38bdf8]"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none focus:border-[#0071E3]"
             />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono">
+              <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono">
                 New Password
               </label>
               <input
@@ -122,12 +122,12 @@ export default function SettingsPage({ onNavigateTab }: SettingsPageProps) {
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
                 placeholder="••••••••••••"
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-white/10 text-xs text-white outline-none focus:border-[#38bdf8]"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none focus:border-[#0071E3]"
               />
             </div>
 
             <div className="space-y-1.5">
-              <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono">
+              <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono">
                 Confirm New Password
               </label>
               <input
@@ -135,14 +135,14 @@ export default function SettingsPage({ onNavigateTab }: SettingsPageProps) {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="••••••••••••"
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-white/10 text-xs text-white outline-none focus:border-[#38bdf8]"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none focus:border-[#0071E3]"
               />
             </div>
           </div>
 
           {passSaved && (
-            <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-xl text-xs font-mono font-bold flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4" /> Password updated successfully.
+            <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl text-xs font-mono font-bold flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600" /> Password updated successfully.
             </div>
           )}
 
@@ -154,19 +154,19 @@ export default function SettingsPage({ onNavigateTab }: SettingsPageProps) {
 
       {/* Active Sessions Card */}
       <GlassCard className="p-6 space-y-4">
-        <div className="border-b border-white/10 pb-3">
-          <h3 className="font-display font-bold text-sm text-white flex items-center gap-2">
-            <Smartphone className="w-4 h-4 text-[#38bdf8]" /> Active Sessions & Devices
+        <div className="border-b border-[#E5E5E7] pb-3">
+          <h3 className="font-display font-bold text-sm text-[#1D1D1F] flex items-center gap-2">
+            <Smartphone className="w-4 h-4 text-[#0071E3]" /> Active Sessions & Devices
           </h3>
-          <p className="text-xs text-slate-400">Current active authorization tokens for your account.</p>
+          <p className="text-xs text-[#6E6E73]">Current active authorization tokens for your account.</p>
         </div>
 
-        <div className="p-3.5 bg-slate-950/60 border border-white/5 rounded-2xl flex items-center justify-between text-xs">
+        <div className="p-3.5 bg-[#F5F5F7] border border-[#E5E5E7] rounded-2xl flex items-center justify-between text-xs">
           <div className="space-y-0.5">
-            <span className="font-bold text-white block">Current Browser Session</span>
-            <span className="text-[10px] text-slate-400 font-mono">Chrome / Cloud Container Workspace • IP 10.244.0.12</span>
+            <span className="font-bold text-[#1D1D1F] block">Current Browser Session</span>
+            <span className="text-[10px] text-[#6E6E73] font-mono">Chrome / Cloud Container Workspace • IP 10.244.0.12</span>
           </div>
-          <span className="text-[10px] font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+          <span className="text-[10px] font-mono font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
             THIS DEVICE
           </span>
         </div>

@@ -84,7 +84,7 @@ export default function AdminDashboard({
   };
 
   return (
-    <div className="min-h-screen bg-[#020617] text-white flex">
+    <div className="min-h-screen bg-[#F5F5F7] text-[#1D1D1F] flex">
       
       {/* Sidebar Navigation */}
       <Sidebar
@@ -102,13 +102,13 @@ export default function AdminDashboard({
       <div className="flex-1 md:pl-64 flex flex-col min-w-0">
         
         {/* Top Header / Breadcrumbs */}
-        <div className="sticky top-16 z-20 bg-[#020617]/80 backdrop-blur-md border-b border-white/5 px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+        <div className="sticky top-16 z-20 bg-white/90 backdrop-blur-md border-b border-[#E5E5E7] px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setMobileSidebarOpen(true)}
-              className="md:hidden p-2 text-slate-400 hover:text-white rounded-xl bg-white/5 border border-white/10"
+              className="md:hidden p-2 text-[#6E6E73] hover:text-[#1D1D1F] rounded-xl bg-[#F5F5F7] border border-[#E5E5E7]"
             >
-              <Shield className="w-5 h-5 text-[#38bdf8]" />
+              <Shield className="w-5 h-5 text-[#0071E3]" />
             </button>
             <Breadcrumbs
               portalName="Admin Console"
@@ -121,9 +121,9 @@ export default function AdminDashboard({
           <div className="flex items-center gap-3">
             <button
               onClick={downloadAuditCSV}
-              className="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 px-3 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer flex items-center gap-1.5"
+              className="bg-white hover:bg-[#F5F5F7] border border-[#E5E5E7] text-[#1D1D1F] px-3 py-1.5 rounded-xl text-xs font-semibold transition cursor-pointer flex items-center gap-1.5 shadow-2xs"
             >
-              <Download className="w-3.5 h-3.5" /> Export Audit CSV
+              <Download className="w-3.5 h-3.5 text-[#0071E3]" /> Export Audit CSV
             </button>
           </div>
         </div>

@@ -623,23 +623,23 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#020617] text-white">
+    <div className="min-h-screen bg-[#FFFFFF] text-[#1D1D1F]">
       
       {/* Global Syncing Loader */}
       {loading && (
-        <div className="fixed inset-0 bg-[#020617]/80 backdrop-blur-md flex items-center justify-center z-[100]">
-          <div className="glass-card max-w-sm w-full mx-4 p-8 rounded-3xl border border-[#38bdf8]/30 text-center space-y-4 shadow-2xl">
-            <div className="relative w-16 h-16 mx-auto flex items-center justify-center">
-              <div className="absolute inset-0 border-2 border-[#38bdf8]/20 rounded-full"></div>
-              <div className="absolute inset-0 border-2 border-t-[#38bdf8] border-r-transparent rounded-full animate-spin"></div>
-              <Activity className="w-6 h-6 text-[#38bdf8] animate-pulse" />
+        <div className="fixed inset-0 bg-black/20 backdrop-blur-xs flex items-center justify-center z-[100]">
+          <div className="bg-white max-w-sm w-full mx-4 p-8 rounded-3xl border border-[#E5E5E7] text-center space-y-4 shadow-xl">
+            <div className="relative w-12 h-12 mx-auto flex items-center justify-center">
+              <div className="absolute inset-0 border-2 border-[#E5E5E7] rounded-full"></div>
+              <div className="absolute inset-0 border-2 border-t-[#1D1D1F] border-r-transparent rounded-full animate-spin"></div>
+              <Activity className="w-5 h-5 text-[#1D1D1F]" />
             </div>
             <div>
-              <p className="text-sm font-bold text-white uppercase tracking-wider font-display">HealthOrbit Engine</p>
-              <p className="text-xs text-slate-400 mt-1">Synchronizing clinical ledger...</p>
+              <p className="text-sm font-bold text-[#1D1D1F]">HealthOrbit Engine</p>
+              <p className="text-xs text-[#6E6E73] mt-1">Synchronizing clinical records...</p>
             </div>
-            <div className="w-full bg-slate-950/50 rounded-full h-1 overflow-hidden">
-              <div className="bg-gradient-to-r from-[#38bdf8] to-[#22d3ee] h-full w-[70%] rounded-full animate-pulse"></div>
+            <div className="w-full bg-[#F5F5F7] rounded-full h-1 overflow-hidden">
+              <div className="bg-[#1D1D1F] h-full w-[70%] rounded-full animate-pulse"></div>
             </div>
           </div>
         </div>

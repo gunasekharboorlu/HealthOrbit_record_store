@@ -78,10 +78,10 @@ export default function DoctorNotesView({ patientId }: DoctorNotesViewProps) {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h2 className="text-lg font-display font-bold text-white flex items-center gap-2">
-            <BookOpen className="w-5 h-5 text-[#38bdf8]" /> Private Clinician Progress Notes
+          <h2 className="text-lg font-display font-bold text-[#1D1D1F] flex items-center gap-2">
+            <BookOpen className="w-5 h-5 text-[#0071E3]" /> Private Clinician Progress Notes
           </h2>
-          <p className="text-xs text-slate-400">Keep confidential clinical observations and treatment notes for {patientId}.</p>
+          <p className="text-xs text-[#6E6E73]">Keep confidential clinical observations and treatment notes for {patientId}.</p>
         </div>
 
         <div className="w-full sm:w-64">
@@ -91,7 +91,7 @@ export default function DoctorNotesView({ patientId }: DoctorNotesViewProps) {
 
       {/* Add / Edit Form */}
       <GlassCard className="p-6 space-y-4">
-        <h3 className="text-xs font-bold font-mono text-[#38bdf8] uppercase tracking-wider">
+        <h3 className="text-xs font-bold font-mono text-[#0071E3] uppercase tracking-wider">
           {editingId ? 'Edit Clinical Note' : 'Add New Confidential Clinical Note'}
         </h3>
 
@@ -104,14 +104,14 @@ export default function DoctorNotesView({ patientId }: DoctorNotesViewProps) {
                 value={title}
                 onChange={e => setTitle(e.target.value)}
                 placeholder="Note Title (e.g. Follow-up Assessment)"
-                className="w-full px-3.5 py-2.5 rounded-xl premium-input text-xs text-white outline-none"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none"
               />
             </div>
             <div>
               <select
                 value={category}
                 onChange={e => setCategory(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl premium-input text-xs text-white outline-none cursor-pointer"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none cursor-pointer"
               >
                 <option value="General">General</option>
                 <option value="Diagnosis">Diagnosis</option>
@@ -128,7 +128,7 @@ export default function DoctorNotesView({ patientId }: DoctorNotesViewProps) {
             onChange={e => setContent(e.target.value)}
             placeholder="Write clinical details, treatment observations, or diagnostic notes..."
             rows={3}
-            className="w-full px-3.5 py-2.5 rounded-xl premium-input text-xs text-white outline-none resize-none"
+            className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none resize-none"
           />
 
           <div className="flex justify-end gap-2">
@@ -160,29 +160,29 @@ export default function DoctorNotesView({ patientId }: DoctorNotesViewProps) {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {filteredNotes.map(n => (
-            <GlassCard key={n.id} className="p-5 space-y-3 relative hover:border-[#38bdf8]/30 transition">
+            <GlassCard key={n.id} className="p-5 space-y-3 relative hover:border-[#0071E3]/30 transition">
               <div className="flex justify-between items-start">
-                <span className="text-[10px] font-mono font-bold text-[#38bdf8] bg-[#38bdf8]/10 px-2.5 py-0.5 rounded uppercase">
+                <span className="text-[10px] font-mono font-bold text-[#0071E3] bg-[#0071E3]/10 px-2.5 py-0.5 rounded uppercase">
                   {n.category}
                 </span>
-                <span className="text-[10px] text-slate-500 font-mono flex items-center gap-1">
+                <span className="text-[10px] text-[#6E6E73] font-mono flex items-center gap-1">
                   <Clock className="w-3 h-3" /> {new Date(n.createdAt).toLocaleDateString()}
                 </span>
               </div>
 
-              <h4 className="font-bold text-white text-sm">{n.title}</h4>
-              <p className="text-xs text-slate-300 leading-relaxed whitespace-pre-wrap">{n.content}</p>
+              <h4 className="font-bold text-[#1D1D1F] text-sm">{n.title}</h4>
+              <p className="text-xs text-[#6E6E73] leading-relaxed whitespace-pre-wrap">{n.content}</p>
 
-              <div className="flex justify-end gap-2 pt-2 border-t border-white/5">
+              <div className="flex justify-end gap-2 pt-2 border-t border-[#E5E5E7]">
                 <button
                   onClick={() => handleEdit(n)}
-                  className="p-1.5 hover:bg-white/10 rounded-lg text-slate-400 hover:text-white transition cursor-pointer"
+                  className="p-1.5 hover:bg-[#F5F5F7] rounded-lg text-[#6E6E73] hover:text-[#1D1D1F] transition cursor-pointer"
                 >
                   <Edit3 className="w-3.5 h-3.5" />
                 </button>
                 <button
                   onClick={() => handleDelete(n.id)}
-                  className="p-1.5 hover:bg-rose-500/10 rounded-lg text-slate-400 hover:text-rose-400 transition cursor-pointer"
+                  className="p-1.5 hover:bg-rose-50 rounded-lg text-[#6E6E73] hover:text-rose-600 transition cursor-pointer"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                 </button>

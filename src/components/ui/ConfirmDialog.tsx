@@ -31,15 +31,15 @@ export const ConfirmDialog = React.memo(function ConfirmDialog({
       <div className="text-center space-y-4 pt-2">
         <div
           className={`w-12 h-12 rounded-full mx-auto flex items-center justify-center ${
-            isDanger ? 'bg-rose-500/10 border border-rose-500/20 text-rose-400' : 'bg-[#38bdf8]/10 border border-[#38bdf8]/20 text-[#38bdf8]'
+            isDanger ? 'bg-rose-50 border border-rose-200 text-rose-600' : 'bg-[#F5F5F7] border border-[#E5E5E7] text-[#1D1D1F]'
           }`}
         >
           <AlertTriangle className="w-6 h-6" />
         </div>
 
         <div>
-          <h3 className="text-base font-bold font-display text-white">{title}</h3>
-          <p className="text-xs text-slate-400 mt-1 leading-relaxed">{message}</p>
+          <h3 className="text-base font-bold font-sans text-[#1D1D1F]">{title}</h3>
+          <p className="text-xs text-[#6E6E73] mt-1 leading-relaxed font-normal">{message}</p>
         </div>
 
         <div className="flex gap-2 pt-2">

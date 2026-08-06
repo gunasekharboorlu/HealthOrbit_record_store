@@ -66,18 +66,18 @@ export default function AdvancedFilterBar({
       {/* Search Input & Expand Toggle */}
       <div className="flex flex-col sm:flex-row items-center gap-3">
         <div className="relative flex-1 w-full">
-          <Search className="absolute left-3.5 top-2.5 w-4 h-4 text-slate-400" />
+          <Search className="absolute left-3.5 top-2.5 w-4 h-4 text-[#86868B]" />
           <input
             type="text"
             value={filters.searchQuery}
             onChange={e => updateFilter('searchQuery', e.target.value)}
             placeholder={placeholder}
-            className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-950 border border-white/10 text-xs text-white placeholder-slate-500 focus:border-[#38bdf8] outline-none transition"
+            className="w-full pl-10 pr-4 py-2 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] placeholder-[#86868B] focus:border-[#0071E3] outline-none transition"
           />
           {filters.searchQuery && (
             <button
               onClick={() => updateFilter('searchQuery', '')}
-              className="absolute right-3 top-2.5 text-slate-400 hover:text-white"
+              className="absolute right-3 top-2.5 text-[#86868B] hover:text-[#1D1D1F]"
             >
               <X className="w-3.5 h-3.5" />
             </button>
@@ -89,8 +89,8 @@ export default function AdvancedFilterBar({
             onClick={() => setExpanded(!expanded)}
             className={`px-3.5 py-2 rounded-xl text-xs font-bold font-mono transition flex items-center gap-2 cursor-pointer ${
               expanded || activeCount > 0
-                ? 'bg-[#38bdf8] text-slate-950'
-                : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                ? 'bg-[#1D1D1F] text-white shadow-xs'
+                : 'bg-[#F5F5F7] text-[#1D1D1F] border border-[#E5E5E7] hover:bg-[#E8E8ED]'
             }`}
           >
             <Filter className="w-4 h-4" />
@@ -101,7 +101,7 @@ export default function AdvancedFilterBar({
           {activeCount > 0 && (
             <button
               onClick={handleReset}
-              className="px-3 py-2 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 rounded-xl text-xs font-bold font-mono transition cursor-pointer flex items-center gap-1"
+              className="px-3 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 rounded-xl text-xs font-bold font-mono transition cursor-pointer flex items-center gap-1"
             >
               <RefreshCw className="w-3.5 h-3.5" /> Clear All
             </button>
@@ -111,15 +111,15 @@ export default function AdvancedFilterBar({
 
       {/* Expanded Filter Panel */}
       {expanded && (
-        <div className="pt-3 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs animate-fade-in">
+        <div className="pt-3 border-t border-[#E5E5E7] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs animate-fade-in">
           
           {/* Date Preset */}
           <div>
-            <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono mb-1">Date Range</label>
+            <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono mb-1">Date Range</label>
             <select
               value={filters.datePreset}
               onChange={e => updateFilter('datePreset', e.target.value)}
-              className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-white/10 text-xs text-white outline-none cursor-pointer"
+              className="w-full px-3 py-2 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none cursor-pointer focus:border-[#0071E3]"
             >
               <option value="all">All Time</option>
               <option value="today">Today Only</option>
@@ -131,11 +131,11 @@ export default function AdvancedFilterBar({
 
           {/* Category */}
           <div>
-            <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono mb-1">Category</label>
+            <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono mb-1">Category</label>
             <select
               value={filters.category}
               onChange={e => updateFilter('category', e.target.value)}
-              className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-white/10 text-xs text-white outline-none cursor-pointer"
+              className="w-full px-3 py-2 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none cursor-pointer focus:border-[#0071E3]"
             >
               <option value="all">All Categories</option>
               {categories.map(c => (
@@ -146,11 +146,11 @@ export default function AdvancedFilterBar({
 
           {/* Status */}
           <div>
-            <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono mb-1">Clearance Status</label>
+            <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono mb-1">Clearance Status</label>
             <select
               value={filters.status}
               onChange={e => updateFilter('status', e.target.value)}
-              className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-white/10 text-xs text-white outline-none cursor-pointer"
+              className="w-full px-3 py-2 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none cursor-pointer focus:border-[#0071E3]"
             >
               <option value="all">All Statuses</option>
               <option value="active">Active Clearances</option>
@@ -162,11 +162,11 @@ export default function AdvancedFilterBar({
 
           {/* Hospital */}
           <div>
-            <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono mb-1">Hospital Network</label>
+            <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono mb-1">Hospital Network</label>
             <select
               value={filters.hospital}
               onChange={e => updateFilter('hospital', e.target.value)}
-              className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-white/10 text-xs text-white outline-none cursor-pointer"
+              className="w-full px-3 py-2 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none cursor-pointer focus:border-[#0071E3]"
             >
               <option value="all">All Hospitals</option>
               {hospitals.map(h => (
@@ -176,25 +176,25 @@ export default function AdvancedFilterBar({
           </div>
 
           {/* Toggles */}
-          <div className="sm:col-span-2 lg:col-span-4 flex flex-wrap items-center gap-4 pt-2 border-t border-white/5">
-            <label className="flex items-center gap-2 cursor-pointer text-xs text-slate-300 font-mono">
+          <div className="sm:col-span-2 lg:col-span-4 flex flex-wrap items-center gap-4 pt-2 border-t border-[#E5E5E7]">
+            <label className="flex items-center gap-2 cursor-pointer text-xs text-[#1D1D1F] font-mono">
               <input
                 type="checkbox"
                 checked={filters.sensitiveOnly}
                 onChange={e => updateFilter('sensitiveOnly', e.target.checked)}
-                className="w-4 h-4 accent-[#38bdf8] rounded cursor-pointer"
+                className="w-4 h-4 accent-[#0071E3] rounded cursor-pointer"
               />
-              <span className="flex items-center gap-1 text-rose-400 font-bold"><Lock className="w-3.5 h-3.5" /> Sensitive Records Only</span>
+              <span className="flex items-center gap-1 text-rose-700 font-bold"><Lock className="w-3.5 h-3.5" /> Sensitive Records Only</span>
             </label>
 
-            <label className="flex items-center gap-2 cursor-pointer text-xs text-slate-300 font-mono">
+            <label className="flex items-center gap-2 cursor-pointer text-xs text-[#1D1D1F] font-mono">
               <input
                 type="checkbox"
                 checked={filters.verifiedOnly}
                 onChange={e => updateFilter('verifiedOnly', e.target.checked)}
-                className="w-4 h-4 accent-[#38bdf8] rounded cursor-pointer"
+                className="w-4 h-4 accent-[#0071E3] rounded cursor-pointer"
               />
-              <span className="flex items-center gap-1 text-emerald-400 font-bold"><ShieldCheck className="w-3.5 h-3.5" /> SHA-256 Verified Only</span>
+              <span className="flex items-center gap-1 text-emerald-700 font-bold"><ShieldCheck className="w-3.5 h-3.5" /> SHA-256 Verified Only</span>
             </label>
           </div>
 

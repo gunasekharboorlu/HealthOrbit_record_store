@@ -37,16 +37,16 @@ export default function SecurityPage() {
   ];
 
   return (
-    <div className="py-16 px-4 max-w-6xl mx-auto space-y-16">
+    <div className="py-16 px-6 max-w-6xl mx-auto space-y-16 text-[#1D1D1F]">
       <div className="text-center space-y-4 max-w-3xl mx-auto">
-        <div className="inline-flex items-center gap-2 bg-[#38bdf8]/10 border border-[#38bdf8]/20 px-4 py-1.5 rounded-full text-xs font-bold text-[#38bdf8] uppercase tracking-wider font-mono">
-          <Sparkles className="w-4 h-4" />
+        <div className="inline-flex items-center gap-2 bg-[#F5F5F7] border border-[#E5E5E7] px-4 py-1.5 rounded-full text-xs font-mono font-medium text-[#0071E3]">
+          <Sparkles className="w-4 h-4 text-[#0071E3]" />
           Security & Cryptography
         </div>
-        <h1 className="font-display text-4xl sm:text-5xl font-black text-white tracking-tight">
+        <h1 className="text-4xl sm:text-5xl font-bold text-[#1D1D1F] tracking-tight">
           Enterprise Security Architecture.
         </h1>
-        <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+        <p className="text-[#6E6E73] text-base sm:text-lg leading-relaxed font-normal">
           How HealthOrbit protects patient confidentiality through multi-layered cryptographic safeguards.
         </p>
       </div>
@@ -55,12 +55,12 @@ export default function SecurityPage() {
         {securityFeatures.map((sec, idx) => {
           const Icon = sec.icon;
           return (
-            <div key={idx} className="glass-card rounded-3xl p-8 border border-white/10 space-y-4">
-              <div className="p-3 w-fit rounded-2xl bg-[#38bdf8]/10 text-[#38bdf8] border border-[#38bdf8]/20">
+            <div key={idx} className="rounded-[32px] bg-[#FBFBFD] border border-[#E5E5E7] p-8 space-y-4 hover:border-[#D2D2D7] hover:bg-white transition-all shadow-2xs">
+              <div className="p-3 w-fit rounded-2xl bg-blue-50 text-[#0071E3] border border-blue-100">
                 <Icon className="w-6 h-6" />
               </div>
-              <h3 className="font-display text-lg font-bold text-white">{sec.title}</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">{sec.desc}</p>
+              <h3 className="text-lg font-bold text-[#1D1D1F] tracking-tight">{sec.title}</h3>
+              <p className="text-xs text-[#6E6E73] leading-relaxed">{sec.desc}</p>
             </div>
           );
         })}

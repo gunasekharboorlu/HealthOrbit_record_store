@@ -36,8 +36,8 @@ export default function AccessRequestsPage({
       
       {/* Page Title */}
       <div>
-        <h1 className="text-2xl font-display font-extrabold text-white">Access Clearances Management</h1>
-        <p className="text-xs text-slate-400 mt-1">
+        <h1 className="text-2xl font-display font-bold text-[#1D1D1F]">Access Clearances Management</h1>
+        <p className="text-xs text-[#6E6E73] mt-1">
           Monitor sensitive medical record clearance authorizations granted by patients across the HealthOrbit network.
         </p>
       </div>
@@ -48,7 +48,7 @@ export default function AccessRequestsPage({
           <button
             onClick={() => setActiveFilter('all')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold font-mono transition cursor-pointer ${
-              activeFilter === 'all' ? 'bg-[#38bdf8] text-slate-950' : 'bg-white/5 text-slate-300 hover:bg-white/10'
+              activeFilter === 'all' ? 'bg-[#1D1D1F] text-white shadow-xs' : 'bg-[#F5F5F7] text-[#6E6E73] hover:bg-[#E5E5E7] border border-[#E5E5E7]'
             }`}
           >
             All Clearances ({allRequests.length})
@@ -56,7 +56,7 @@ export default function AccessRequestsPage({
           <button
             onClick={() => setActiveFilter('approved')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold font-mono transition cursor-pointer ${
-              activeFilter === 'approved' ? 'bg-emerald-500 text-slate-950' : 'bg-white/5 text-slate-300 hover:bg-white/10'
+              activeFilter === 'approved' ? 'bg-emerald-600 text-white shadow-xs' : 'bg-[#F5F5F7] text-[#6E6E73] hover:bg-[#E5E5E7] border border-[#E5E5E7]'
             }`}
           >
             Active 24-hr Clearances ({approvedAccessRequests.length})
@@ -64,7 +64,7 @@ export default function AccessRequestsPage({
           <button
             onClick={() => setActiveFilter('pending')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold font-mono transition cursor-pointer ${
-              activeFilter === 'pending' ? 'bg-amber-500 text-slate-950' : 'bg-white/5 text-slate-300 hover:bg-white/10'
+              activeFilter === 'pending' ? 'bg-amber-600 text-white shadow-xs' : 'bg-[#F5F5F7] text-[#6E6E73] hover:bg-[#E5E5E7] border border-[#E5E5E7]'
             }`}
           >
             Pending Requests ({pendingAccessRequests.length})
@@ -80,7 +80,7 @@ export default function AccessRequestsPage({
       {filtered.length === 0 ? (
         <EmptyState
           title="No Clearance Records"
-          description="There are no clearance requests matching your current selection."
+          message="There are no clearance requests matching your current selection."
         />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -91,26 +91,26 @@ export default function AccessRequestsPage({
               <GlassCard
                 key={req.id}
                 className={`p-5 space-y-3 border-l-4 ${
-                  isApproved ? 'border-l-emerald-500 border-emerald-500/20' : 'border-l-amber-500 border-amber-500/20'
+                  isApproved ? 'border-l-emerald-600 border-emerald-200' : 'border-l-amber-600 border-amber-200'
                 }`}
               >
                 <div className="flex justify-between items-start gap-2">
                   <div className="space-y-0.5">
-                    <span className="text-[10px] font-mono font-bold text-[#38bdf8]">PATIENT ID: {req.patientId}</span>
-                    <h3 className="font-bold text-white text-sm">{req.recordTitle || 'Sensitive Record'}</h3>
+                    <span className="text-[10px] font-mono font-bold text-[#0071E3]">PATIENT ID: {req.patientId}</span>
+                    <h3 className="font-bold text-[#1D1D1F] text-sm">{req.recordTitle || 'Sensitive Record'}</h3>
                   </div>
 
                   <StatusChip status={isApproved ? 'Approved' : 'Pending'} />
                 </div>
 
-                <div className="bg-white/5 p-3 rounded-xl border border-white/5 flex items-center justify-between text-xs">
-                  <span className="text-slate-400 font-mono text-[10px]">TIME WINDOW STATUS:</span>
-                  <span className={`font-mono font-bold ${isApproved ? 'text-emerald-400' : 'text-amber-400'}`}>
+                <div className="bg-[#F5F5F7] p-3 rounded-xl border border-[#E5E5E7] flex items-center justify-between text-xs">
+                  <span className="text-[#6E6E73] font-mono text-[10px]">TIME WINDOW STATUS:</span>
+                  <span className={`font-mono font-bold ${isApproved ? 'text-emerald-700' : 'text-amber-700'}`}>
                     {isApproved ? getAccessTimer(req.respondedAt) : 'Awaiting Patient Authorization'}
                   </span>
                 </div>
 
-                <p className="text-[11px] text-slate-400 font-mono">
+                <p className="text-[11px] text-[#6E6E73] font-mono">
                   Requested on: {new Date(req.requestedAt || Date.now()).toLocaleString()}
                 </p>
               </GlassCard>

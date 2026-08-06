@@ -112,24 +112,24 @@ export default function PatientWorkspacePage({
     <div className="space-y-6 animate-fade-in">
       
       {/* Workspace Top Header Header Card */}
-      <GlassCard className="p-6 border-white/10 space-y-4">
+      <GlassCard className="p-6 border-[#E5E5E7] bg-[#FBFBFD] space-y-4">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
           <div className="flex items-center gap-4">
             <Avatar name={patient.name} size="lg" />
             <div className="space-y-1">
               <div className="flex items-center gap-2 flex-wrap">
-                <h1 className="text-xl sm:text-2xl font-display font-extrabold text-white">{patient.name}</h1>
-                <span className="text-xs font-mono font-bold text-[#38bdf8] bg-[#38bdf8]/10 border border-[#38bdf8]/20 px-2.5 py-0.5 rounded-md">
+                <h1 className="text-xl sm:text-2xl font-display font-extrabold text-[#1D1D1F]">{patient.name}</h1>
+                <span className="text-xs font-mono font-bold text-[#0071E3] bg-[#0071E3]/10 border border-[#0071E3]/20 px-2.5 py-0.5 rounded-md">
                   {patient.patientId}
                 </span>
                 <StatusChip status="Approved" label="Verified Health ID" />
               </div>
-              <p className="text-xs text-slate-300 font-mono">
-                Gender: <strong className="text-white">{patient.gender || 'N/A'}</strong> • DOB: <strong className="text-white">{patient.dob || 'N/A'}</strong> • Blood: <strong className="text-rose-400">{patient.bloodGroup || 'N/A'}</strong>
+              <p className="text-xs text-[#6E6E73] font-mono">
+                Gender: <strong className="text-[#1D1D1F]">{patient.gender || 'N/A'}</strong> • DOB: <strong className="text-[#1D1D1F]">{patient.dob || 'N/A'}</strong> • Blood: <strong className="text-rose-600">{patient.bloodGroup || 'N/A'}</strong>
               </p>
               {patient.allergies && (
                 <div className="flex items-center gap-1.5 pt-1">
-                  <span className="text-[10px] font-mono uppercase text-rose-400 font-bold bg-rose-500/10 border border-rose-500/20 px-2 py-0.5 rounded-full flex items-center gap-1">
+                  <span className="text-[10px] font-mono uppercase text-rose-700 font-bold bg-rose-50 border border-rose-200 px-2 py-0.5 rounded-full flex items-center gap-1">
                     <ShieldAlert className="w-3 h-3" /> Allergy Alert: {patient.allergies}
                   </span>
                 </div>
@@ -148,7 +148,7 @@ export default function PatientWorkspacePage({
         </div>
 
         {/* Workspace Inner Navigation Tabs */}
-        <div className="flex items-center gap-2 border-t border-white/5 pt-4 overflow-x-auto">
+        <div className="flex items-center gap-2 border-t border-[#E5E5E7] pt-4 overflow-x-auto">
           {[
             { id: 'overview', label: 'Clinical Overview', icon: User },
             { id: 'records', label: `Medical Records (${records.length})`, icon: FileText },
@@ -163,8 +163,8 @@ export default function PatientWorkspacePage({
               onClick={() => setWorkspaceTab(tab.id as any)}
               className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 shrink-0 cursor-pointer ${
                 workspaceTab === tab.id
-                  ? 'bg-gradient-to-r from-[#38bdf8] to-[#4f8cff] text-slate-950 font-extrabold shadow-md'
-                  : 'bg-white/5 hover:bg-white/10 text-slate-300'
+                  ? 'bg-[#1D1D1F] text-white shadow-xs'
+                  : 'bg-[#F5F5F7] hover:bg-[#E5E5E7] text-[#1D1D1F]'
               }`}
             >
               <tab.icon className="w-3.5 h-3.5" />
@@ -181,60 +181,60 @@ export default function PatientWorkspacePage({
             
             {/* Clinical Baseline */}
             <GlassCard className="p-6 space-y-4">
-              <h3 className="font-display font-bold text-sm text-white flex items-center gap-2">
-                <Heart className="w-4 h-4 text-rose-400" /> Clinical Baseline
+              <h3 className="font-display font-bold text-sm text-[#1D1D1F] flex items-center gap-2">
+                <Heart className="w-4 h-4 text-rose-600" /> Clinical Baseline
               </h3>
               <div className="space-y-3 text-xs">
-                <div className="bg-white/5 p-3 rounded-xl border border-white/5">
-                  <span className="text-slate-400 font-mono text-[10px] block">KNOWN ALLERGIES</span>
-                  <span className="font-bold text-rose-400">{patient.allergies || 'None declared'}</span>
+                <div className="bg-[#F5F5F7] p-3 rounded-xl border border-[#E5E5E7]">
+                  <span className="text-[#6E6E73] font-mono text-[10px] block">KNOWN ALLERGIES</span>
+                  <span className="font-bold text-rose-600">{patient.allergies || 'None declared'}</span>
                 </div>
-                <div className="bg-white/5 p-3 rounded-xl border border-white/5">
-                  <span className="text-slate-400 font-mono text-[10px] block">CHRONIC CONDITIONS</span>
-                  <span className="font-bold text-white">{patient.chronicDiseases || 'None declared'}</span>
+                <div className="bg-[#F5F5F7] p-3 rounded-xl border border-[#E5E5E7]">
+                  <span className="text-[#6E6E73] font-mono text-[10px] block">CHRONIC CONDITIONS</span>
+                  <span className="font-bold text-[#1D1D1F]">{patient.chronicDiseases || 'None declared'}</span>
                 </div>
-                <div className="bg-white/5 p-3 rounded-xl border border-white/5">
-                  <span className="text-slate-400 font-mono text-[10px] block">BLOOD GROUP</span>
-                  <span className="font-bold text-emerald-400">{patient.bloodGroup || 'N/A'}</span>
+                <div className="bg-[#F5F5F7] p-3 rounded-xl border border-[#E5E5E7]">
+                  <span className="text-[#6E6E73] font-mono text-[10px] block">BLOOD GROUP</span>
+                  <span className="font-bold text-emerald-700">{patient.bloodGroup || 'N/A'}</span>
                 </div>
               </div>
             </GlassCard>
 
             {/* Emergency Contact */}
             <GlassCard className="p-6 space-y-4">
-              <h3 className="font-display font-bold text-sm text-white flex items-center gap-2">
-                <ShieldAlert className="w-4 h-4 text-amber-400" /> Emergency Contact
+              <h3 className="font-display font-bold text-sm text-[#1D1D1F] flex items-center gap-2">
+                <ShieldAlert className="w-4 h-4 text-amber-600" /> Emergency Contact
               </h3>
               <div className="space-y-3 text-xs">
-                <div className="bg-white/5 p-3 rounded-xl border border-white/5 space-y-1">
-                  <span className="text-slate-400 font-mono text-[10px] block">PRIMARY CONTACT NAME</span>
-                  <span className="font-bold text-white block">{patient.emergencyContactName || 'Not configured'}</span>
-                  <span className="text-slate-400 text-[10px]">Relation: {patient.emergencyContactRelation || 'N/A'}</span>
+                <div className="bg-[#F5F5F7] p-3 rounded-xl border border-[#E5E5E7] space-y-1">
+                  <span className="text-[#6E6E73] font-mono text-[10px] block">PRIMARY CONTACT NAME</span>
+                  <span className="font-bold text-[#1D1D1F] block">{patient.emergencyContactName || 'Not configured'}</span>
+                  <span className="text-[#6E6E73] text-[10px]">Relation: {patient.emergencyContactRelation || 'N/A'}</span>
                 </div>
-                <div className="bg-white/5 p-3 rounded-xl border border-white/5">
-                  <span className="text-slate-400 font-mono text-[10px] block">EMERGENCY PHONE</span>
-                  <span className="font-bold text-[#38bdf8] font-mono">{patient.emergencyContactPhone || 'N/A'}</span>
+                <div className="bg-[#F5F5F7] p-3 rounded-xl border border-[#E5E5E7]">
+                  <span className="text-[#6E6E73] font-mono text-[10px] block">EMERGENCY PHONE</span>
+                  <span className="font-bold text-[#0071E3] font-mono">{patient.emergencyContactPhone || 'N/A'}</span>
                 </div>
               </div>
             </GlassCard>
 
             {/* Quick Stats Summary */}
             <GlassCard className="p-6 space-y-4">
-              <h3 className="font-display font-bold text-sm text-white flex items-center gap-2">
-                <FileText className="w-4 h-4 text-[#38bdf8]" /> Clinical Summary
+              <h3 className="font-display font-bold text-sm text-[#1D1D1F] flex items-center gap-2">
+                <FileText className="w-4 h-4 text-[#0071E3]" /> Clinical Summary
               </h3>
               <div className="space-y-3 text-xs">
-                <div className="flex justify-between items-center bg-white/5 p-3 rounded-xl">
-                  <span className="text-slate-400">Total Medical Records:</span>
-                  <span className="font-bold text-white font-mono">{records.length}</span>
+                <div className="flex justify-between items-center bg-[#F5F5F7] p-3 rounded-xl">
+                  <span className="text-[#6E6E73]">Total Medical Records:</span>
+                  <span className="font-bold text-[#1D1D1F] font-mono">{records.length}</span>
                 </div>
-                <div className="flex justify-between items-center bg-white/5 p-3 rounded-xl">
-                  <span className="text-slate-400">Prescriptions Issued:</span>
-                  <span className="font-bold text-purple-400 font-mono">{prescriptions.length}</span>
+                <div className="flex justify-between items-center bg-[#F5F5F7] p-3 rounded-xl">
+                  <span className="text-[#6E6E73]">Prescriptions Issued:</span>
+                  <span className="font-bold text-[#1D1D1F] font-mono">{prescriptions.length}</span>
                 </div>
-                <div className="flex justify-between items-center bg-white/5 p-3 rounded-xl">
-                  <span className="text-slate-400">Access Clearances:</span>
-                  <span className="font-bold text-emerald-400 font-mono">{accessRequests.length}</span>
+                <div className="flex justify-between items-center bg-[#F5F5F7] p-3 rounded-xl">
+                  <span className="text-[#6E6E73]">Access Clearances:</span>
+                  <span className="font-bold text-emerald-700 font-mono">{accessRequests.length}</span>
                 </div>
               </div>
             </GlassCard>
@@ -264,7 +264,7 @@ export default function PatientWorkspacePage({
                   key={cat}
                   onClick={() => setRecordCategoryFilter(cat)}
                   className={`px-3 py-1.5 rounded-xl text-xs font-bold font-mono transition cursor-pointer shrink-0 ${
-                    recordCategoryFilter === cat ? 'bg-[#38bdf8] text-slate-950' : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                    recordCategoryFilter === cat ? 'bg-[#1D1D1F] text-white' : 'bg-[#F5F5F7] text-[#1D1D1F] hover:bg-[#E5E5E7]'
                   }`}
                 >
                   {cat}
@@ -281,35 +281,35 @@ export default function PatientWorkspacePage({
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {filteredRecords.map((rec: any) => (
-                <GlassCard key={rec.id} className="p-5 space-y-3 relative hover:border-[#38bdf8]/30 transition">
+                <GlassCard key={rec.id} className="p-5 space-y-3 relative hover:border-[#0071E3]/30 transition">
                   <div className="flex justify-between items-start">
                     <Badge variant="cyan">{rec.category}</Badge>
                     {rec.isSensitive ? (
-                      <span className="bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded text-[9px] font-bold uppercase font-mono flex items-center gap-1">
+                      <span className="bg-amber-50 text-amber-800 border border-amber-200 px-2 py-0.5 rounded text-[9px] font-bold uppercase font-mono flex items-center gap-1">
                         <Lock className="w-3 h-3" /> Privacy Sensitive
                       </span>
                     ) : (
-                      <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded text-[9px] font-bold uppercase font-mono flex items-center gap-1">
+                      <span className="bg-emerald-50 text-emerald-800 border border-emerald-200 px-2 py-0.5 rounded text-[9px] font-bold uppercase font-mono flex items-center gap-1">
                         <Unlock className="w-3 h-3" /> Unlocked
                       </span>
                     )}
                   </div>
 
-                  <h3 className="font-bold text-white text-base">{rec.title}</h3>
+                  <h3 className="font-bold text-[#1D1D1F] text-base">{rec.title}</h3>
 
                   {rec.isLocked ? (
-                    <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 text-[11px] text-amber-300 space-y-2">
+                    <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 text-[11px] text-amber-800 space-y-2">
                       <span>Sensitive report is privacy locked. Request clearance authorization from the patient.</span>
                       <SecondaryButton
                         onClick={() => handleRequestAccess(rec.id, rec.title)}
-                        className="w-full justify-center text-amber-300 border-amber-500/30"
+                        className="w-full justify-center text-amber-800 border-amber-300"
                       >
                         Request Access Clearance
                       </SecondaryButton>
                     </div>
                   ) : (
                     <>
-                      <p className="text-xs text-slate-300">{rec.description || 'No description provided.'}</p>
+                      <p className="text-xs text-[#6E6E73]">{rec.description || 'No description provided.'}</p>
                       <div className="flex gap-2 pt-2">
                         {rec.fileContent && (
                           <SecondaryButton
@@ -330,30 +330,30 @@ export default function PatientWorkspacePage({
 
           {/* Upload Record on behalf of patient */}
           <GlassCard className="p-6 space-y-4">
-            <h3 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2">
-              <FilePlus className="w-4 h-4 text-[#38bdf8]" /> Ingest Record directly into Patient Timeline
+            <h3 className="text-sm font-bold text-[#1D1D1F] font-mono uppercase tracking-wider flex items-center gap-2">
+              <FilePlus className="w-4 h-4 text-[#0071E3]" /> Ingest Record directly into Patient Timeline
             </h3>
 
             <form onSubmit={handleDocUploadForPatient} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono mb-1">Document Title</label>
+                  <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono mb-1">Document Title</label>
                   <input
                     type="text"
                     required
                     value={docUploadTitle}
                     onChange={e => setDocUploadTitle(e.target.value)}
                     placeholder="e.g. Chest X-Ray Scan"
-                    className="w-full px-3.5 py-2.5 rounded-xl premium-input text-xs text-white outline-none"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono mb-1">Category</label>
+                  <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono mb-1">Category</label>
                   <select
                     value={docUploadCategory}
                     onChange={e => setDocUploadCategory(e.target.value as any)}
-                    className="w-full px-3.5 py-2.5 rounded-xl premium-input text-xs text-white outline-none cursor-pointer"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none cursor-pointer"
                   >
                     <option value="Lab Report">Lab Report</option>
                     <option value="Prescription">Prescription</option>
@@ -365,24 +365,24 @@ export default function PatientWorkspacePage({
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono mb-1">Clinical Notes / Comments</label>
+                <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono mb-1">Clinical Notes / Comments</label>
                 <textarea
                   value={docUploadDesc}
                   onChange={e => setDocUploadDesc(e.target.value)}
                   placeholder="Clinical notes regarding this document..."
                   rows={2}
-                  className="w-full px-3.5 py-2.5 rounded-xl premium-input text-xs text-white outline-none resize-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none resize-none"
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono mb-1">Select File</label>
+                <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono mb-1">Select File</label>
                 <input
                   type="file"
                   required
                   accept="image/*,application/pdf"
                   onChange={handleFileChange}
-                  className="w-full text-xs text-slate-400"
+                  className="w-full text-xs text-[#6E6E73]"
                 />
               </div>
 
@@ -405,44 +405,44 @@ export default function PatientWorkspacePage({
         <div className="space-y-6 animate-fade-in">
           
           <GlassCard className="p-6 space-y-5">
-            <h2 className="text-lg font-display font-bold text-white flex items-center gap-2">
-              <Stethoscope className="w-5 h-5 text-purple-400" /> Issue Digitally Signed Prescription
+            <h2 className="text-lg font-display font-bold text-[#1D1D1F] flex items-center gap-2">
+              <Stethoscope className="w-5 h-5 text-purple-700" /> Issue Digitally Signed Prescription
             </h2>
 
             <form onSubmit={handleAddPrescription} className="space-y-4">
               <div>
-                <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono mb-1">Clinical Diagnosis</label>
+                <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono mb-1">Clinical Diagnosis</label>
                 <input
                   type="text"
                   required
                   value={diagnosis}
                   onChange={e => setDiagnosis(e.target.value)}
                   placeholder="e.g. Acute Upper Respiratory Infection"
-                  className="w-full px-3.5 py-2.5 rounded-xl premium-input text-xs text-white outline-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none"
                 />
               </div>
 
               {/* Medication List Builder */}
-              <div className="space-y-3 border-t border-white/5 pt-4">
-                <span className="block text-[10px] font-bold text-slate-400 uppercase font-mono">Medications Included</span>
+              <div className="space-y-3 border-t border-[#E5E5E7] pt-4">
+                <span className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono">Medications Included</span>
                 
                 {medsList.map((m, idx) => (
-                  <div key={idx} className="p-3 bg-white/5 rounded-xl flex items-center justify-between text-xs">
+                  <div key={idx} className="p-3 bg-[#F5F5F7] rounded-xl border border-[#E5E5E7] flex items-center justify-between text-xs">
                     <div>
-                      <span className="font-bold text-white block">{m.name} ({m.dosage})</span>
-                      <span className="text-[10px] text-slate-400 font-mono">{m.frequency} • {m.duration}</span>
+                      <span className="font-bold text-[#1D1D1F] block">{m.name} ({m.dosage})</span>
+                      <span className="text-[10px] text-[#6E6E73] font-mono">{m.frequency} • {m.duration}</span>
                     </div>
-                    <button type="button" onClick={() => handleRemoveMedication(idx)} className="text-rose-400 hover:opacity-80">
+                    <button type="button" onClick={() => handleRemoveMedication(idx)} className="text-rose-600 hover:opacity-80 cursor-pointer">
                       <Trash2 className="w-4 h-4" />
                     </button>
                   </div>
                 ))}
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                  <input type="text" placeholder="Medication Name" value={addMedName} onChange={e => setAddMedName(e.target.value)} className="px-3 py-2 rounded-xl premium-input text-xs text-white outline-none" />
-                  <input type="text" placeholder="Dosage (e.g. 500mg)" value={addMedDosage} onChange={e => setAddMedDosage(e.target.value)} className="px-3 py-2 rounded-xl premium-input text-xs text-white outline-none" />
-                  <input type="text" placeholder="Frequency (e.g. 1-0-1)" value={addMedFreq} onChange={e => setAddMedFreq(e.target.value)} className="px-3 py-2 rounded-xl premium-input text-xs text-white outline-none" />
-                  <input type="text" placeholder="Duration (e.g. 5 Days)" value={addMedDur} onChange={e => setAddMedDur(e.target.value)} className="px-3 py-2 rounded-xl premium-input text-xs text-white outline-none" />
+                  <input type="text" placeholder="Medication Name" value={addMedName} onChange={e => setAddMedName(e.target.value)} className="px-3 py-2 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none" />
+                  <input type="text" placeholder="Dosage (e.g. 500mg)" value={addMedDosage} onChange={e => setAddMedDosage(e.target.value)} className="px-3 py-2 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none" />
+                  <input type="text" placeholder="Frequency (e.g. 1-0-1)" value={addMedFreq} onChange={e => setAddMedFreq(e.target.value)} className="px-3 py-2 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none" />
+                  <input type="text" placeholder="Duration (e.g. 5 Days)" value={addMedDur} onChange={e => setAddMedDur(e.target.value)} className="px-3 py-2 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none" />
                 </div>
 
                 <SecondaryButton type="button" onClick={handleAddMedication} className="w-full justify-center">
@@ -450,7 +450,7 @@ export default function PatientWorkspacePage({
                 </SecondaryButton>
               </div>
 
-              <PrimaryButton type="submit" className="w-full justify-center bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500">
+              <PrimaryButton type="submit" className="w-full justify-center">
                 Issue Signed Prescription (Rx)
               </PrimaryButton>
             </form>
@@ -458,7 +458,7 @@ export default function PatientWorkspacePage({
 
           {/* Issued Prescriptions History */}
           <div className="space-y-4">
-            <h3 className="font-display font-bold text-sm text-white">Prescription History ({prescriptions.length})</h3>
+            <h3 className="font-display font-bold text-sm text-[#1D1D1F]">Prescription History ({prescriptions.length})</h3>
             {prescriptions.length === 0 ? (
               <EmptyState title="No Prescriptions Issued" description="No prescription forms have been issued for this patient yet." />
             ) : (
@@ -467,21 +467,21 @@ export default function PatientWorkspacePage({
                   <GlassCard key={rx.id} className="p-5 space-y-3">
                     <div className="flex justify-between items-start">
                       <Badge variant="purple">Rx Prescribed</Badge>
-                      <span className="text-[10px] font-mono text-slate-400">{new Date(rx.createdAt).toLocaleDateString()}</span>
+                      <span className="text-[10px] font-mono text-[#6E6E73]">{new Date(rx.createdAt).toLocaleDateString()}</span>
                     </div>
 
-                    <h4 className="font-bold text-white text-sm">Diagnosis: {rx.diagnosis}</h4>
+                    <h4 className="font-bold text-[#1D1D1F] text-sm">Diagnosis: {rx.diagnosis}</h4>
 
-                    <div className="space-y-1 bg-white/5 p-3 rounded-xl border border-white/5">
-                      <span className="text-[10px] font-mono text-slate-500 uppercase block">Medications:</span>
+                    <div className="space-y-1 bg-[#F5F5F7] p-3 rounded-xl border border-[#E5E5E7]">
+                      <span className="text-[10px] font-mono text-[#6E6E73] uppercase block">Medications:</span>
                       {rx.medications.map((m: any, i: number) => (
-                        <div key={i} className="text-xs font-mono text-slate-200">
+                        <div key={i} className="text-xs font-mono text-[#1D1D1F]">
                           • {m.name} - {m.dosage} ({m.frequency}, {m.duration})
                         </div>
                       ))}
                     </div>
 
-                    <div className="text-[10px] text-emerald-400 font-mono flex items-center gap-1 pt-1">
+                    <div className="text-[10px] text-emerald-700 font-mono flex items-center gap-1 pt-1">
                       <CheckCircle className="w-3 h-3" /> Digitally Signed by Clinician
                     </div>
                   </GlassCard>
@@ -502,22 +502,22 @@ export default function PatientWorkspacePage({
       {workspaceTab === 'access' && (
         <div className="space-y-6 animate-fade-in">
           <GlassCard className="p-6 space-y-4">
-            <h3 className="font-display font-bold text-sm text-white flex items-center gap-2">
-              <Key className="w-4 h-4 text-amber-400" />
+            <h3 className="font-display font-bold text-sm text-[#1D1D1F] flex items-center gap-2">
+              <Key className="w-4 h-4 text-amber-600" />
               Access Clearances Log ({accessRequests.length})
             </h3>
 
             {accessRequests.length === 0 ? (
-              <div className="p-8 text-center text-xs text-slate-400">
+              <div className="p-8 text-center text-xs text-[#6E6E73]">
                 No clearance requests have been initiated for this patient profile.
               </div>
             ) : (
               <div className="space-y-3">
                 {accessRequests.map((req: any) => (
-                  <div key={req.id} className="p-4 bg-white/5 border border-white/5 rounded-2xl flex items-center justify-between gap-4">
+                  <div key={req.id} className="p-4 bg-[#F5F5F7] border border-[#E5E5E7] rounded-2xl flex items-center justify-between gap-4">
                     <div className="space-y-1">
-                      <span className="font-bold text-xs text-white block">Requested: "{req.recordTitle}"</span>
-                      <span className="text-[10px] font-mono text-slate-400">Date: {new Date(req.requestedAt).toLocaleString()}</span>
+                      <span className="font-bold text-xs text-[#1D1D1F] block">Requested: "{req.recordTitle}"</span>
+                      <span className="text-[10px] font-mono text-[#6E6E73]">Date: {new Date(req.requestedAt).toLocaleString()}</span>
                     </div>
                     <StatusChip status={req.status === 'approved' ? 'Approved' : req.status === 'rejected' ? 'Rejected' : 'Pending'} />
                   </div>
@@ -531,31 +531,31 @@ export default function PatientWorkspacePage({
       {/* TAB CONTENT: 7. EMERGENCY PROFILE */}
       {workspaceTab === 'emergency' && (
         <div className="space-y-6 animate-fade-in">
-          <GlassCard className="p-6 space-y-4 border-rose-500/20 bg-rose-500/5">
-            <h2 className="text-lg font-display font-bold text-rose-400 flex items-center gap-2">
-              <ShieldAlert className="w-5 h-5" /> Emergency Profile Baseline
+          <GlassCard className="p-6 space-y-4 border-rose-200 bg-rose-50/50">
+            <h2 className="text-lg font-display font-bold text-rose-800 flex items-center gap-2">
+              <ShieldAlert className="w-5 h-5 text-rose-600" /> Emergency Profile Baseline
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-              <div className="p-4 bg-slate-950/60 rounded-2xl border border-white/5 space-y-2">
-                <span className="text-[10px] font-mono text-slate-400 uppercase block">ALLERGY WARNINGS</span>
-                <p className="font-bold text-rose-400 text-sm">{patient.allergies || 'No severe allergies declared'}</p>
+              <div className="p-4 bg-white rounded-2xl border border-[#E5E5E7] space-y-2">
+                <span className="text-[10px] font-mono text-[#6E6E73] uppercase block">ALLERGY WARNINGS</span>
+                <p className="font-bold text-rose-700 text-sm">{patient.allergies || 'No severe allergies declared'}</p>
               </div>
 
-              <div className="p-4 bg-slate-950/60 rounded-2xl border border-white/5 space-y-2">
-                <span className="text-[10px] font-mono text-slate-400 uppercase block">CHRONIC CONDITIONS</span>
-                <p className="font-bold text-white text-sm">{patient.chronicDiseases || 'No chronic conditions declared'}</p>
+              <div className="p-4 bg-white rounded-2xl border border-[#E5E5E7] space-y-2">
+                <span className="text-[10px] font-mono text-[#6E6E73] uppercase block">CHRONIC CONDITIONS</span>
+                <p className="font-bold text-[#1D1D1F] text-sm">{patient.chronicDiseases || 'No chronic conditions declared'}</p>
               </div>
 
-              <div className="p-4 bg-slate-950/60 rounded-2xl border border-white/5 space-y-2">
-                <span className="text-[10px] font-mono text-slate-400 uppercase block">EMERGENCY CONTACT</span>
-                <p className="font-bold text-white">{patient.emergencyContactName} ({patient.emergencyContactRelation})</p>
-                <p className="text-[#38bdf8] font-mono font-bold">{patient.emergencyContactPhone}</p>
+              <div className="p-4 bg-white rounded-2xl border border-[#E5E5E7] space-y-2">
+                <span className="text-[10px] font-mono text-[#6E6E73] uppercase block">EMERGENCY CONTACT</span>
+                <p className="font-bold text-[#1D1D1F]">{patient.emergencyContactName} ({patient.emergencyContactRelation})</p>
+                <p className="text-[#0071E3] font-mono font-bold">{patient.emergencyContactPhone}</p>
               </div>
 
-              <div className="p-4 bg-slate-950/60 rounded-2xl border border-white/5 space-y-2">
-                <span className="text-[10px] font-mono text-slate-400 uppercase block">BLOOD GROUP & DEMOGRAPHICS</span>
-                <p className="font-bold text-white">Blood: {patient.bloodGroup} | Gender: {patient.gender} | DOB: {patient.dob}</p>
+              <div className="p-4 bg-white rounded-2xl border border-[#E5E5E7] space-y-2">
+                <span className="text-[10px] font-mono text-[#6E6E73] uppercase block">BLOOD GROUP & DEMOGRAPHICS</span>
+                <p className="font-bold text-[#1D1D1F]">Blood: {patient.bloodGroup} | Gender: {patient.gender} | DOB: {patient.dob}</p>
               </div>
             </div>
           </GlassCard>

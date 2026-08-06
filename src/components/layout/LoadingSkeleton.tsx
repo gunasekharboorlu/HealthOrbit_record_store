@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { ShieldCheck, Activity } from 'lucide-react';
-import ThreeSceneBackground from '../common/ThreeSceneBackground';
+import AnimatedBackground from '../common/AnimatedBackground';
 
 interface LoadingSkeletonProps {
   type?: 'page' | 'card' | 'table';
@@ -35,7 +35,7 @@ export default function LoadingSkeleton({ type = 'page' }: LoadingSkeletonProps)
 
   return (
     <div className="min-h-[70vh] relative flex flex-col items-center justify-center p-8 space-y-6 text-center overflow-hidden">
-      <ThreeSceneBackground variant="loading" />
+      <AnimatedBackground variant="loading" />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
@@ -44,9 +44,9 @@ export default function LoadingSkeleton({ type = 'page' }: LoadingSkeletonProps)
         className="glass-card p-8 rounded-3xl border border-white/15 bg-slate-950/80 backdrop-blur-2xl shadow-2xl relative z-10 max-w-sm w-full space-y-6 flex flex-col items-center"
       >
         <div className="relative w-16 h-16 flex items-center justify-center">
-          <div className="absolute inset-0 border-2 border-[#38bdf8]/20 rounded-full" />
-          <div className="absolute inset-0 border-2 border-t-[#38bdf8] border-r-transparent rounded-full animate-spin" />
-          <Activity className="w-8 h-8 text-[#38bdf8] animate-pulse" />
+          <div className="absolute inset-0 border-2 border-[#38bdf8]/20 rounded-2xl" />
+          <div className="absolute inset-0 border-2 border-t-[#38bdf8] border-r-transparent rounded-2xl animate-spin" />
+          <img src="/icon.svg" alt="HealthOrbit Logo" className="w-10 h-10 rounded-xl object-cover" referrerPolicy="no-referrer" />
         </div>
 
         <div className="space-y-2">

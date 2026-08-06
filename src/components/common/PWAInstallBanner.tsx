@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Download, RefreshCw, WifiOff, X, Sparkles, Smartphone, CheckCircle2 } from 'lucide-react';
+import { Download, RefreshCw, WifiOff, X, Smartphone, CheckCircle2 } from 'lucide-react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 
 interface BeforeInstallPromptEvent extends Event {
@@ -56,7 +56,6 @@ export default function PWAInstallBanner() {
     const handleAppInstalled = () => {
       setDeferredPrompt(null);
       setShowInstallBanner(false);
-      console.log('HealthOrbit PWA installed successfully');
     };
 
     // Listen for online/offline events
@@ -103,17 +102,17 @@ export default function PWAInstallBanner() {
     <>
       {/* 1. Offline Indicator Banner */}
       {isOffline && (
-        <div className="fixed top-0 left-0 right-0 z-50 bg-rose-950/90 border-b border-rose-500/30 backdrop-blur-md px-4 py-2.5 text-rose-200 text-xs font-medium flex items-center justify-between shadow-xl">
+        <div className="fixed top-0 left-0 right-0 z-50 bg-rose-50 border-b border-rose-200 text-rose-800 px-4 py-2.5 text-xs font-medium flex items-center justify-between shadow-sm">
           <div className="flex items-center gap-2 max-w-7xl mx-auto w-full justify-between">
             <div className="flex items-center gap-2">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-600"></span>
               </span>
-              <WifiOff className="w-4 h-4 text-rose-400 shrink-0" />
+              <WifiOff className="w-4 h-4 text-rose-600 shrink-0" />
               <span>Offline Mode Active — Viewing cached HealthOrbit clinical ledger.</span>
             </div>
-            <span className="font-mono text-[10px] bg-rose-900/60 border border-rose-700/50 px-2 py-0.5 rounded text-rose-300">
+            <span className="font-mono text-[10px] bg-rose-100 border border-rose-200 px-2 py-0.5 rounded text-rose-800 font-medium">
               STANDBY
             </span>
           </div>
@@ -122,15 +121,15 @@ export default function PWAInstallBanner() {
 
       {/* 2. Connection Restored Banner */}
       {showOnlineRestored && !isOffline && (
-        <div className="fixed top-0 left-0 right-0 z-50 bg-emerald-950/90 border-b border-emerald-500/30 backdrop-blur-md px-4 py-2.5 text-emerald-200 text-xs font-medium flex items-center justify-between shadow-xl animate-fade-in">
+        <div className="fixed top-0 left-0 right-0 z-50 bg-emerald-50 border-b border-emerald-200 text-emerald-800 px-4 py-2.5 text-xs font-medium flex items-center justify-between shadow-sm">
           <div className="flex items-center gap-2 max-w-7xl mx-auto w-full justify-between">
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Internet Restored — HealthOrbit is re-synchronized with live ledger server.</span>
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+              <span>Internet Restored — HealthOrbit is re-synchronized with live server.</span>
             </div>
             <button 
               onClick={() => setShowOnlineRestored(false)}
-              className="text-emerald-400 hover:text-white transition"
+              className="text-emerald-700 hover:text-emerald-900 transition"
             >
               <X className="w-3.5 h-3.5" />
             </button>
@@ -140,20 +139,20 @@ export default function PWAInstallBanner() {
 
       {/* 3. Service Worker Update Available Banner */}
       {needRefresh && (
-        <div className="fixed bottom-6 right-6 z-50 max-w-md w-[calc(100vw-3rem)] bg-[#0c1425]/95 border border-[#38bdf8]/40 rounded-2xl p-4 shadow-[0_20px_50px_rgba(0,0,0,0.6)] backdrop-blur-xl text-white space-y-3">
+        <div className="fixed bottom-6 right-6 z-50 max-w-md w-[calc(100vw-3rem)] bg-white border border-[#E5E5E7] rounded-2xl p-4 shadow-xl text-[#1D1D1F] space-y-3">
           <div className="flex items-start justify-between gap-3">
             <div className="flex items-center gap-2.5">
-              <div className="h-9 w-9 rounded-xl bg-[#38bdf8]/10 border border-[#38bdf8]/30 flex items-center justify-center text-[#38bdf8] shrink-0">
-                <RefreshCw className="w-4 h-4 animate-spin" />
+              <div className="h-9 w-9 rounded-xl bg-[#F5F5F7] border border-[#E5E5E7] flex items-center justify-center text-[#1D1D1F] shrink-0">
+                <RefreshCw className="w-4 h-4 animate-spin text-[#1D1D1F]" />
               </div>
               <div>
-                <h4 className="text-xs font-bold text-white">System Update Ready</h4>
-                <p className="text-[11px] text-slate-300">A new version of HealthOrbit is available.</p>
+                <h4 className="text-xs font-bold text-[#1D1D1F]">System Update Ready</h4>
+                <p className="text-[11px] text-[#6E6E73]">A new version of HealthOrbit is available.</p>
               </div>
             </div>
             <button
               onClick={() => setNeedRefresh(false)}
-              className="text-slate-400 hover:text-white transition p-1"
+              className="text-[#86868B] hover:text-[#1D1D1F] transition p-1"
               title="Dismiss"
             >
               <X className="w-4 h-4" />
@@ -162,14 +161,14 @@ export default function PWAInstallBanner() {
           <div className="flex items-center gap-2 pt-1">
             <button
               onClick={() => updateServiceWorker(true)}
-              className="flex-1 bg-gradient-to-r from-[#38bdf8] to-[#22d3ee] text-slate-950 font-bold text-xs py-2 px-3 rounded-xl hover:opacity-95 transition flex items-center justify-center gap-1.5 cursor-pointer"
+              className="flex-1 bg-[#1D1D1F] hover:bg-black text-white font-medium text-xs py-2 px-3 rounded-xl transition flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
             >
-              <RefreshCw className="w-3.5 h-3.5" />
+              <RefreshCw className="w-3.5 h-3.5 text-white" />
               Update Now
             </button>
             <button
               onClick={() => setNeedRefresh(false)}
-              className="px-3 py-2 bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 text-xs font-semibold rounded-xl border border-white/10 transition cursor-pointer"
+              className="px-3 py-2 bg-[#F5F5F7] hover:bg-[#E8E8ED] text-[#1D1D1F] text-xs font-medium rounded-xl border border-[#E5E5E7] transition cursor-pointer"
             >
               Later
             </button>
@@ -179,27 +178,27 @@ export default function PWAInstallBanner() {
 
       {/* 4. Install HealthOrbit App Prompt Banner */}
       {showInstallBanner && !isStandalone && deferredPrompt && (
-        <div className="fixed bottom-6 left-6 z-50 max-w-md w-[calc(100vw-3rem)] bg-[#0c1425]/95 border border-[#38bdf8]/30 rounded-2xl p-4.5 shadow-[0_20px_50px_rgba(0,0,0,0.6)] backdrop-blur-xl text-white space-y-3 animate-slide-up">
+        <div className="fixed bottom-6 left-6 z-50 max-w-md w-[calc(100vw-3rem)] bg-white border border-[#E5E5E7] rounded-2xl p-4.5 shadow-xl text-[#1D1D1F] space-y-3">
           <div className="flex items-start justify-between gap-3">
             <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-xl bg-gradient-to-tr from-[#38bdf8] to-[#22d3ee] flex items-center justify-center text-slate-950 font-black shadow-lg shrink-0">
+              <div className="h-10 w-10 rounded-xl bg-[#1D1D1F] text-white flex items-center justify-center font-bold shrink-0">
                 <Smartphone className="w-5 h-5" />
               </div>
               <div>
                 <div className="flex items-center gap-1.5">
-                  <h4 className="text-xs font-bold text-white">Install HealthOrbit</h4>
-                  <span className="text-[9px] font-mono font-bold bg-[#38bdf8]/15 border border-[#38bdf8]/30 text-[#38bdf8] px-1.5 py-0.2 rounded">
+                  <h4 className="text-xs font-bold text-[#1D1D1F]">Install HealthOrbit</h4>
+                  <span className="text-[9px] font-mono bg-[#F5F5F7] border border-[#E5E5E7] text-[#1D1D1F] px-1.5 py-0.2 rounded">
                     PWA App
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-300 leading-snug">
+                <p className="text-[11px] text-[#6E6E73] leading-snug font-normal">
                   Install for offline access, instant launch, and desktop & mobile support.
                 </p>
               </div>
             </div>
             <button
               onClick={() => setShowInstallBanner(false)}
-              className="text-slate-400 hover:text-white transition p-1 shrink-0"
+              className="text-[#86868B] hover:text-[#1D1D1F] transition p-1 shrink-0"
               title="Close"
             >
               <X className="w-4 h-4" />
@@ -208,14 +207,14 @@ export default function PWAInstallBanner() {
           <div className="flex items-center gap-2 pt-1">
             <button
               onClick={handleInstallClick}
-              className="flex-1 bg-gradient-to-r from-[#38bdf8] to-[#22d3ee] text-slate-950 font-bold text-xs py-2.5 px-4 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+              className="flex-1 bg-[#1D1D1F] hover:bg-black text-white font-medium text-xs py-2.5 px-4 rounded-xl transition shadow-xs flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Download className="w-4 h-4" />
+              <Download className="w-4 h-4 text-white" />
               Install Application
             </button>
             <button
               onClick={() => setShowInstallBanner(false)}
-              className="px-3.5 py-2.5 bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 text-xs font-semibold rounded-xl border border-white/10 transition cursor-pointer"
+              className="px-3.5 py-2.5 bg-[#F5F5F7] hover:bg-[#E8E8ED] text-[#1D1D1F] text-xs font-medium rounded-xl border border-[#E5E5E7] transition cursor-pointer"
             >
               Not Now
             </button>

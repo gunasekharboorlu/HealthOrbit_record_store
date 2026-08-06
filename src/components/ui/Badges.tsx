@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAvatarInitials, getAvatarBgColor } from '../../utils';
+import { getAvatarInitials } from '../../utils';
 
 interface BadgeProps {
   children: React.ReactNode;
@@ -8,11 +8,11 @@ interface BadgeProps {
 }
 
 const variantClasses = {
-  default: 'bg-slate-800 text-slate-300 border-slate-700',
-  success: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
-  warning: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
-  danger: 'bg-rose-500/10 text-rose-400 border-rose-500/20',
-  info: 'bg-[#38bdf8]/10 text-[#38bdf8] border-[#38bdf8]/20',
+  default: 'bg-[#F5F5F7] text-[#6E6E73] border-[#E5E5E7]',
+  success: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+  warning: 'bg-amber-50 text-amber-700 border-amber-200',
+  danger: 'bg-rose-50 text-rose-700 border-rose-200',
+  info: 'bg-sky-50 text-sky-700 border-sky-200',
 };
 
 export const Badge = React.memo(function Badge({
@@ -23,7 +23,7 @@ export const Badge = React.memo(function Badge({
   const sizeClass = size === 'sm' ? 'px-2 py-0.5 text-[10px]' : 'px-2.5 py-1 text-xs';
   return (
     <span
-      className={`inline-flex items-center font-bold font-mono rounded-lg border uppercase tracking-wider ${variantClasses[variant]} ${sizeClass}`}
+      className={`inline-flex items-center font-mono font-medium rounded-md border uppercase tracking-wider ${variantClasses[variant]} ${sizeClass}`}
     >
       {children}
     </span>
@@ -38,8 +38,8 @@ interface AvatarProps {
 
 const avatarSizes = {
   sm: 'w-7 h-7 text-[10px]',
-  md: 'w-9 h-9 text-xs',
-  lg: 'w-12 h-12 text-sm',
+  md: 'w-8 h-8 text-xs',
+  lg: 'w-11 h-11 text-sm',
 };
 
 export const Avatar = React.memo(function Avatar({ name, src, size = 'md' }: AvatarProps) {
@@ -48,17 +48,16 @@ export const Avatar = React.memo(function Avatar({ name, src, size = 'md' }: Ava
       <img
         src={src}
         alt={name || 'Avatar'}
-        className={`${avatarSizes[size]} rounded-full object-cover border border-white/20 shadow-md`}
+        className={`${avatarSizes[size]} rounded-full object-cover border border-[#E5E5E7] shadow-xs`}
       />
     );
   }
 
   const initials = getAvatarInitials(name);
-  const bgColor = getAvatarBgColor(name);
 
   return (
     <div
-      className={`${avatarSizes[size]} rounded-full bg-gradient-to-tr ${bgColor} flex items-center justify-center text-slate-950 font-black font-display shadow-md shrink-0`}
+      className={`${avatarSizes[size]} rounded-full bg-[#1D1D1F] text-white flex items-center justify-center font-bold font-sans shadow-xs shrink-0`}
     >
       {initials}
     </div>
@@ -71,19 +70,19 @@ interface StatusChipProps {
 }
 
 export const StatusChip = React.memo(function StatusChip({ status, label }: StatusChipProps) {
-  let style = 'bg-slate-800 text-slate-300 border-slate-700';
+  let style = 'bg-[#F5F5F7] text-[#6E6E73] border-[#E5E5E7]';
   const normStatus = status.toLowerCase();
 
   if (normStatus === 'approved' || normStatus === 'verified') {
-    style = 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30';
+    style = 'bg-emerald-50 text-emerald-700 border-emerald-200';
   } else if (normStatus === 'pending') {
-    style = 'bg-amber-500/10 text-amber-400 border-amber-500/30';
+    style = 'bg-amber-50 text-amber-700 border-amber-200';
   } else if (normStatus === 'rejected') {
-    style = 'bg-rose-500/10 text-rose-400 border-rose-500/30';
+    style = 'bg-rose-50 text-rose-700 border-rose-200';
   }
 
   return (
-    <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold font-mono border uppercase tracking-wider ${style}`}>
+    <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium border uppercase tracking-wider ${style}`}>
       {label || status}
     </span>
   );

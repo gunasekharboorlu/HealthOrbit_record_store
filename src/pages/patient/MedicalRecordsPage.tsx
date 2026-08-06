@@ -169,31 +169,31 @@ export default function MedicalRecordsPage({
             {paginatedRecords.map((rec) => (
               <div
                 key={rec.id}
-                className="glass-card border border-white/10 hover:border-[#38bdf8]/40 rounded-2xl p-5 space-y-4 transition-all duration-200 flex flex-col justify-between group"
+                className="bg-[#FBFBFD] border border-[#E5E5E7] hover:border-[#0071E3]/50 rounded-2xl p-5 space-y-4 transition-all duration-200 flex flex-col justify-between group shadow-2xs"
               >
                 <div className="space-y-3">
                   <div className="flex items-start justify-between gap-2">
-                    <span className="px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider font-mono bg-[#38bdf8]/10 text-[#38bdf8] border border-[#38bdf8]/20">
+                    <span className="px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider font-mono bg-[#0071E3]/10 text-[#0071E3] border border-[#0071E3]/20">
                       {rec.category}
                     </span>
                     {rec.isSensitive && (
-                      <span className="bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded text-[9px] font-bold uppercase font-mono flex items-center gap-1">
+                      <span className="bg-amber-50 text-amber-800 border border-amber-200 px-2 py-0.5 rounded text-[9px] font-bold uppercase font-mono flex items-center gap-1">
                         <Lock className="w-3 h-3" /> Sensitive
                       </span>
                     )}
                   </div>
 
-                  <h3 className="font-display font-bold text-white text-base leading-snug group-hover:text-[#38bdf8] transition-colors">
+                  <h3 className="font-display font-bold text-[#1D1D1F] text-base leading-snug group-hover:text-[#0071E3] transition-colors">
                     {rec.title}
                   </h3>
 
-                  <p className="text-xs text-slate-300 leading-relaxed line-clamp-2">
+                  <p className="text-xs text-[#6E6E73] leading-relaxed line-clamp-2">
                     {rec.description || 'No physician notes provided.'}
                   </p>
                 </div>
 
-                <div className="border-t border-white/5 pt-3.5 space-y-3">
-                  <div className="flex items-center justify-between text-[10px] text-slate-400 font-mono">
+                <div className="border-t border-[#E5E5E7] pt-3.5 space-y-3">
+                  <div className="flex items-center justify-between text-[10px] text-[#6E6E73] font-mono">
                     <span className="truncate max-w-[150px]">{rec.fileName}</span>
                     <span>{new Date(rec.createdAt).toLocaleDateString()}</span>
                   </div>
@@ -201,21 +201,21 @@ export default function MedicalRecordsPage({
                   <div className="flex items-center justify-end gap-2 pt-1">
                     <button
                       onClick={() => setSelectedReport(rec)}
-                      className="p-2 text-slate-300 hover:text-[#38bdf8] bg-white/5 hover:bg-white/10 rounded-xl border border-white/10 transition cursor-pointer flex items-center gap-1 text-xs font-semibold px-3"
+                      className="p-2 text-[#1D1D1F] hover:text-[#0071E3] bg-[#F5F5F7] hover:bg-[#E5E5E7] rounded-xl border border-[#D2D2D7] transition cursor-pointer flex items-center gap-1 text-xs font-semibold px-3"
                     >
                       <Eye className="w-3.5 h-3.5" /> Inspect
                     </button>
 
                     <button
                       onClick={() => downloadFile(rec.fileName, rec.fileContent)}
-                      className="p-2 text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 rounded-xl border border-white/10 transition cursor-pointer"
+                      className="p-2 text-[#1D1D1F] hover:text-[#0071E3] bg-[#F5F5F7] hover:bg-[#E5E5E7] rounded-xl border border-[#D2D2D7] transition cursor-pointer"
                       title="Download File"
                     >
                       <Download className="w-3.5 h-3.5" />
                     </button>
                     <button
                       onClick={() => setDeleteTargetId(rec.id)}
-                      className="p-2 text-slate-400 hover:text-rose-400 bg-white/5 hover:bg-rose-500/10 rounded-xl border border-white/10 transition cursor-pointer"
+                      className="p-2 text-[#6E6E73] hover:text-rose-600 bg-[#F5F5F7] hover:bg-rose-50 rounded-xl border border-[#D2D2D7] transition cursor-pointer"
                       title="Delete Record"
                     >
                       <Trash2 className="w-3.5 h-3.5" />

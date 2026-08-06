@@ -89,16 +89,16 @@ export default function UploadRecordPage({
 
       {/* Upload Flow Stepper */}
       <div className="grid grid-cols-3 gap-4 font-mono text-[10px]">
-        <div className={`p-3 rounded-xl border ${uploadSuccess ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400' : isUploading ? 'bg-[#38bdf8]/10 border-[#38bdf8]/30 text-[#38bdf8]' : 'bg-white/5 border-white/10 text-slate-300'} flex items-center gap-2`}>
-          <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center font-bold">1</span>
+        <div className={`p-3 rounded-xl border ${uploadSuccess ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : isUploading ? 'bg-[#1D1D1F] border-[#1D1D1F] text-white' : 'bg-[#F5F5F7] border-[#E5E5E7] text-[#1D1D1F]'} flex items-center gap-2`}>
+          <span className="w-5 h-5 rounded-full bg-black/5 flex items-center justify-center font-bold">1</span>
           <span className="font-bold">Record Details</span>
         </div>
-        <div className={`p-3 rounded-xl border ${uploadSuccess ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400' : isUploading ? 'bg-[#38bdf8]/10 border-[#38bdf8]/30 text-[#38bdf8]' : 'bg-white/5 border-white/10 text-slate-300'} flex items-center gap-2`}>
-          <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center font-bold">2</span>
+        <div className={`p-3 rounded-xl border ${uploadSuccess ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : isUploading ? 'bg-[#1D1D1F] border-[#1D1D1F] text-white' : 'bg-[#F5F5F7] border-[#E5E5E7] text-[#1D1D1F]'} flex items-center gap-2`}>
+          <span className="w-5 h-5 rounded-full bg-black/5 flex items-center justify-center font-bold">2</span>
           <span className="font-bold">File Verification</span>
         </div>
-        <div className={`p-3 rounded-xl border ${uploadSuccess ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400' : 'bg-white/5 border-white/10 text-slate-400'} flex items-center gap-2`}>
-          <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center font-bold">3</span>
+        <div className={`p-3 rounded-xl border ${uploadSuccess ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-[#F5F5F7] border-[#E5E5E7] text-[#6E6E73]'} flex items-center gap-2`}>
+          <span className="w-5 h-5 rounded-full bg-black/5 flex items-center justify-center font-bold">3</span>
           <span className="font-bold">Ledger Sync</span>
         </div>
       </div>
@@ -111,16 +111,16 @@ export default function UploadRecordPage({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
           >
-            <GlassCard className="text-center p-8 space-y-6 border-emerald-500/30 bg-emerald-950/20 shadow-2xl">
-              <div className="w-20 h-20 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center mx-auto text-emerald-400 animate-bounce">
+            <GlassCard className="text-center p-8 space-y-6 border-emerald-200 bg-emerald-50/50 shadow-md">
+              <div className="w-20 h-20 rounded-full bg-emerald-100 border border-emerald-200 flex items-center justify-center mx-auto text-emerald-700 animate-bounce">
                 <CheckCircle className="w-10 h-10" />
               </div>
 
               <div className="space-y-2">
-                <h3 className="font-display text-2xl font-bold text-white">
+                <h3 className="font-display text-2xl font-bold text-[#1D1D1F]">
                   Document Ingested Successfully!
                 </h3>
-                <p className="text-xs text-slate-300 max-w-md mx-auto leading-relaxed">
+                <p className="text-xs text-[#6E6E73] max-w-md mx-auto leading-relaxed">
                   Your document has been verified with SHA-256 integrity checks and indexed into your medical record vault.
                 </p>
               </div>
@@ -152,8 +152,8 @@ export default function UploadRecordPage({
               <form onSubmit={onSubmitForm} className="space-y-5">
                 {/* Title */}
                 <div className="space-y-1.5">
-                  <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest font-mono">
-                    Document Title <span className="text-rose-400">*</span>
+                  <label className="block text-[10px] font-bold text-[#6E6E73] uppercase tracking-widest font-mono">
+                    Document Title <span className="text-rose-600">*</span>
                   </label>
                   <input
                     type="text"
@@ -161,33 +161,33 @@ export default function UploadRecordPage({
                     value={uploadTitle}
                     onChange={(e) => setUploadTitle(e.target.value)}
                     placeholder="e.g. LabCorp Comprehensive Metabolic Panel"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-950/60 border border-white/10 text-xs font-semibold outline-none focus:border-[#38bdf8] text-white placeholder-slate-500"
+                    className="w-full px-4 py-3 rounded-xl bg-white border border-[#D2D2D7] text-xs font-semibold outline-none focus:border-[#0071E3] text-[#1D1D1F] placeholder-[#86868B]"
                   />
                 </div>
 
                 {/* Category Selection */}
                 <div className="space-y-1.5">
-                  <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest font-mono">
-                    Category Type <span className="text-rose-400">*</span>
+                  <label className="block text-[10px] font-bold text-[#6E6E73] uppercase tracking-widest font-mono">
+                    Category Type <span className="text-rose-600">*</span>
                   </label>
                   <select
                     value={uploadCategory}
                     onChange={(e) => setUploadCategory(e.target.value as any)}
-                    className="w-full px-4 py-3 rounded-xl bg-slate-950/60 border border-white/10 text-xs font-semibold outline-none focus:border-[#38bdf8] text-white cursor-pointer"
+                    className="w-full px-4 py-3 rounded-xl bg-white border border-[#D2D2D7] text-xs font-semibold outline-none focus:border-[#0071E3] text-[#1D1D1F] cursor-pointer"
                   >
-                    <option value="Lab Report" className="bg-[#020617]">
+                    <option value="Lab Report">
                       Lab Report
                     </option>
-                    <option value="Prescription" className="bg-[#020617]">
+                    <option value="Prescription">
                       Prescription
                     </option>
-                    <option value="Scan" className="bg-[#020617]">
+                    <option value="Scan">
                       Scan / Imaging (X-Ray, MRI, CT)
                     </option>
-                    <option value="Discharge Summary" className="bg-[#020617]">
+                    <option value="Discharge Summary">
                       Discharge Summary
                     </option>
-                    <option value="Other" className="bg-[#020617]">
+                    <option value="Other">
                       Other Medical Document
                     </option>
                   </select>
@@ -195,7 +195,7 @@ export default function UploadRecordPage({
 
                 {/* Notes */}
                 <div className="space-y-1.5">
-                  <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest font-mono">
+                  <label className="block text-[10px] font-bold text-[#6E6E73] uppercase tracking-widest font-mono">
                     Physician or Diagnostic Notes
                   </label>
                   <textarea
@@ -203,17 +203,17 @@ export default function UploadRecordPage({
                     onChange={(e) => setUploadDesc(e.target.value)}
                     placeholder="e.g. Fasting glucose level 92 mg/dL. Normal range."
                     rows={3}
-                    className="w-full px-4 py-3 rounded-xl bg-slate-950/60 border border-white/10 text-xs font-semibold outline-none focus:border-[#38bdf8] resize-none text-white placeholder-slate-500"
+                    className="w-full px-4 py-3 rounded-xl bg-white border border-[#D2D2D7] text-xs font-semibold outline-none focus:border-[#0071E3] resize-none text-[#1D1D1F] placeholder-[#86868B]"
                   />
                 </div>
 
                 {/* Sensitivity Toggle */}
-                <div className="bg-slate-950/60 border border-white/10 p-4 rounded-2xl flex items-center justify-between gap-4">
+                <div className="bg-[#F5F5F7] border border-[#E5E5E7] p-4 rounded-2xl flex items-center justify-between gap-4">
                   <div className="space-y-0.5">
-                    <span className="block text-xs font-bold text-white flex items-center gap-1.5">
-                      <Lock className="w-4 h-4 text-amber-400" /> Apply Sensitivity Lock
+                    <span className="block text-xs font-bold text-[#1D1D1F] flex items-center gap-1.5">
+                      <Lock className="w-4 h-4 text-amber-600" /> Apply Sensitivity Lock
                     </span>
-                    <p className="text-[10px] text-slate-400">
+                    <p className="text-[10px] text-[#6E6E73]">
                       Requires explicit patient clearance before doctors can inspect this record.
                     </p>
                   </div>
@@ -221,12 +221,12 @@ export default function UploadRecordPage({
                     type="checkbox"
                     checked={uploadIsSensitive}
                     onChange={(e) => setUploadIsSensitive(e.target.checked)}
-                    className="w-5 h-5 text-[#38bdf8] accent-[#38bdf8] rounded border-white/10 bg-[#020617] cursor-pointer"
+                    className="w-5 h-5 text-[#0071E3] accent-[#0071E3] rounded border-[#D2D2D7] bg-white cursor-pointer"
                   />
                 </div>
 
                 {/* File Upload Box */}
-                <div className="border-2 border-dashed border-white/15 hover:border-[#38bdf8] rounded-2xl p-8 text-center cursor-pointer hover:bg-[#38bdf8]/5 transition relative group">
+                <div className="border-2 border-dashed border-[#D2D2D7] hover:border-[#0071E3] rounded-2xl p-8 text-center cursor-pointer hover:bg-[#F5F5F7] transition relative group">
                   <input
                     type="file"
                     required
@@ -235,13 +235,13 @@ export default function UploadRecordPage({
                     className="absolute inset-0 opacity-0 cursor-pointer z-20"
                   />
                   <div className="space-y-2">
-                    <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto text-[#38bdf8] group-hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 rounded-2xl bg-[#F5F5F7] border border-[#E5E5E7] flex items-center justify-center mx-auto text-[#0071E3] group-hover:scale-110 transition-transform">
                       <UploadCloud className="w-6 h-6" />
                     </div>
-                    <span className="block text-xs font-bold text-white">
+                    <span className="block text-xs font-bold text-[#1D1D1F]">
                       {uploadFile ? uploadFile.name : 'Click or drop document file here'}
                     </span>
-                    <span className="block text-[10px] text-slate-400 font-mono uppercase">
+                    <span className="block text-[10px] text-[#6E6E73] font-mono uppercase">
                       {uploadFile ? uploadFile.size : 'Supports PDF, PNG, JPG up to 10MB'}
                     </span>
                   </div>
@@ -249,7 +249,7 @@ export default function UploadRecordPage({
 
                 {/* Duplicate Warning */}
                 {duplicateWarning && (
-                  <div className="bg-amber-500/10 border border-amber-500/20 p-3.5 rounded-xl text-xs font-bold text-amber-300 font-mono">
+                  <div className="bg-amber-50 border border-amber-200 p-3.5 rounded-xl text-xs font-bold text-amber-800 font-mono">
                     ⚠️ {duplicateWarning}
                   </div>
                 )}
@@ -257,13 +257,13 @@ export default function UploadRecordPage({
                 {/* Upload Progress Bar */}
                 {isUploading && (
                   <div className="space-y-2 pt-2">
-                    <div className="flex justify-between text-xs font-mono text-slate-300">
+                    <div className="flex justify-between text-xs font-mono text-[#6E6E73]">
                       <span>Encrypting & Ingesting...</span>
                       <span>{uploadProgress}%</span>
                     </div>
-                    <div className="w-full bg-slate-950 rounded-full h-2 overflow-hidden border border-white/10">
+                    <div className="w-full bg-[#E5E5E7] rounded-full h-2 overflow-hidden border border-[#D2D2D7]">
                       <div
-                        className="bg-gradient-to-r from-[#38bdf8] to-[#22d3ee] h-full transition-all duration-300"
+                        className="bg-[#1D1D1F] h-full transition-all duration-300"
                         style={{ width: `${uploadProgress}%` }}
                       />
                     </div>

@@ -36,12 +36,12 @@ export default function DoctorsPage({
       />
 
       {/* Security Info Card */}
-      <GlassCard className="border-[#38bdf8]/20 bg-[#38bdf8]/5 p-5 flex items-start gap-4">
-        <div className="p-2.5 rounded-xl bg-[#38bdf8]/20 text-[#38bdf8] shrink-0 mt-0.5">
+      <GlassCard className="border-[#0071E3]/20 bg-[#0071E3]/5 p-5 flex items-start gap-4">
+        <div className="p-2.5 rounded-xl bg-[#0071E3]/10 text-[#0071E3] shrink-0 mt-0.5">
           <Key className="w-5 h-5" />
         </div>
-        <div className="space-y-1 text-xs text-slate-300">
-          <h4 className="font-bold text-white text-sm">Patient-Centric Authorization Engine</h4>
+        <div className="space-y-1 text-xs text-[#6E6E73]">
+          <h4 className="font-bold text-[#1D1D1F] text-sm">Patient-Centric Authorization Engine</h4>
           <p className="leading-relaxed">
             Doctors cannot view locked or sensitive medical records without explicit permission. When a doctor requests clearance using your Registry ID, it appears here for your authorization.
           </p>
@@ -50,9 +50,9 @@ export default function DoctorsPage({
 
       {/* Section 1: Pending Access Requests */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between border-b border-white/10 pb-3">
-          <h3 className="font-display text-base font-bold text-white flex items-center gap-2">
-            <ShieldAlert className="w-4.5 h-4.5 text-amber-400" /> Pending Doctor Clearance Requests ({pendingRequests.length})
+        <div className="flex items-center justify-between border-b border-[#E5E5E7] pb-3">
+          <h3 className="font-display text-base font-bold text-[#1D1D1F] flex items-center gap-2">
+            <ShieldAlert className="w-4.5 h-4.5 text-amber-600" /> Pending Doctor Clearance Requests ({pendingRequests.length})
           </h3>
         </div>
 
@@ -66,21 +66,21 @@ export default function DoctorsPage({
             {pendingRequests.map((req) => (
               <GlassCard
                 key={req.id}
-                className="border-amber-500/30 bg-amber-950/10 space-y-4 p-5"
+                className="border-amber-200 bg-amber-50/50 space-y-4 p-5"
               >
                 <div className="flex justify-between items-start gap-3">
                   <div className="space-y-1">
-                    <h4 className="font-bold text-sm text-white">Dr. {req.doctorName}</h4>
-                    <p className="text-xs text-slate-400 font-mono">
+                    <h4 className="font-bold text-sm text-[#1D1D1F]">Dr. {req.doctorName}</h4>
+                    <p className="text-xs text-[#6E6E73] font-mono">
                       {req.doctorSpecialization || 'Specialist'} • {req.hospitalName || 'Health Center'}
                     </p>
                   </div>
                   <Badge variant="warning">Pending</Badge>
                 </div>
 
-                <div className="bg-slate-950/80 p-3 rounded-xl border border-white/5 text-xs">
-                  <span className="text-[10px] text-slate-400 uppercase font-mono block">Requested Record</span>
-                  <span className="font-bold text-[#38bdf8] block">{req.recordTitle}</span>
+                <div className="bg-white p-3 rounded-xl border border-[#E5E5E7] text-xs">
+                  <span className="text-[10px] text-[#6E6E73] uppercase font-mono block">Requested Record</span>
+                  <span className="font-bold text-[#0071E3] block">{req.recordTitle}</span>
                 </div>
 
                 <div className="flex items-center gap-3 pt-1">
@@ -109,9 +109,9 @@ export default function DoctorsPage({
 
       {/* Section 2: Active Granted Clearances */}
       <div className="space-y-4 pt-4">
-        <div className="flex items-center justify-between border-b border-white/10 pb-3">
-          <h3 className="font-display text-base font-bold text-white flex items-center gap-2">
-            <ShieldCheck className="w-4.5 h-4.5 text-emerald-400" /> Active Doctor Access Clearances ({approvedClearances.length})
+        <div className="flex items-center justify-between border-b border-[#E5E5E7] pb-3">
+          <h3 className="font-display text-base font-bold text-[#1D1D1F] flex items-center gap-2">
+            <ShieldCheck className="w-4.5 h-4.5 text-emerald-600" /> Active Doctor Access Clearances ({approvedClearances.length})
           </h3>
         </div>
 
@@ -123,22 +123,22 @@ export default function DoctorsPage({
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {approvedClearances.map((item) => (
-              <GlassCard key={item.id} className="p-5 space-y-3 border-emerald-500/20">
+              <GlassCard key={item.id} className="p-5 space-y-3 border-emerald-200">
                 <div className="flex justify-between items-start">
                   <div>
-                    <h4 className="font-bold text-sm text-white">Dr. {item.doctorName}</h4>
-                    <span className="text-[10px] text-slate-400 font-mono">{item.doctorSpecialization || 'Physician'}</span>
+                    <h4 className="font-bold text-sm text-[#1D1D1F]">Dr. {item.doctorName}</h4>
+                    <span className="text-[10px] text-[#6E6E73] font-mono">{item.doctorSpecialization || 'Physician'}</span>
                   </div>
                   <StatusChip status="approved" />
                 </div>
-                <p className="text-xs text-slate-300">
-                  Access Granted to: <span className="font-bold text-[#38bdf8]">{item.recordTitle}</span>
+                <p className="text-xs text-[#6E6E73]">
+                  Access Granted to: <span className="font-bold text-[#0071E3]">{item.recordTitle}</span>
                 </p>
-                <div className="flex items-center justify-between text-[10px] text-slate-400 font-mono border-t border-white/5 pt-2">
+                <div className="flex items-center justify-between text-[10px] text-[#6E6E73] font-mono border-t border-[#E5E5E7] pt-2">
                   <span>Granted: {new Date(item.timestamp || item.updatedAt || Date.now()).toLocaleDateString()}</span>
                   <button
                     onClick={() => handleRespondAccess(item.id, 'rejected')}
-                    className="text-rose-400 hover:underline font-bold cursor-pointer"
+                    className="text-rose-600 hover:underline font-bold cursor-pointer"
                   >
                     Revoke Access
                   </button>
@@ -152,9 +152,9 @@ export default function DoctorsPage({
       {/* Section 3: Audit Ledger of Expired or Revoked Access */}
       {rejectedClearances.length > 0 && (
         <div className="space-y-4 pt-4">
-          <div className="flex items-center justify-between border-b border-white/10 pb-3">
-            <h3 className="font-display text-base font-bold text-slate-300 flex items-center gap-2">
-              <Clock className="w-4.5 h-4.5 text-slate-400" /> Revoked & Expired Clearance History
+          <div className="flex items-center justify-between border-b border-[#E5E5E7] pb-3">
+            <h3 className="font-display text-base font-bold text-[#6E6E73] flex items-center gap-2">
+              <Clock className="w-4.5 h-4.5 text-[#6E6E73]" /> Revoked & Expired Clearance History
             </h3>
           </div>
 
@@ -162,11 +162,11 @@ export default function DoctorsPage({
             {rejectedClearances.map((item) => (
               <div
                 key={item.id}
-                className="p-3.5 bg-slate-900/40 border border-white/5 rounded-xl flex items-center justify-between text-xs text-slate-400"
+                className="p-3.5 bg-[#F5F5F7] border border-[#E5E5E7] rounded-xl flex items-center justify-between text-xs text-[#6E6E73]"
               >
                 <div>
-                  <span className="font-bold text-white">Dr. {item.doctorName}</span>
-                  <span className="text-[10px] text-slate-500 block">{item.recordTitle}</span>
+                  <span className="font-bold text-[#1D1D1F]">Dr. {item.doctorName}</span>
+                  <span className="text-[10px] text-[#6E6E73] block">{item.recordTitle}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <StatusChip status="rejected" />

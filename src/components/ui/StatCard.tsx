@@ -25,7 +25,7 @@ export const StatCard = React.memo(function StatCard({
   change,
   trendType,
   changeType,
-  color = '#38bdf8',
+  color = '#1D1D1F',
   onClick,
 }: StatCardProps) {
   const renderIcon = () => {
@@ -34,7 +34,7 @@ export const StatCard = React.memo(function StatCard({
       return icon;
     }
     const IconComponent = icon as React.ElementType;
-    return <IconComponent className="w-4 h-4" />;
+    return <IconComponent className="w-4 h-4 text-[#1D1D1F]" />;
   };
 
   const displayText = subtitle || subtext;
@@ -52,36 +52,35 @@ export const StatCard = React.memo(function StatCard({
 
   return (
     <motion.div
-      whileHover={{ y: -2 }}
+      whileHover={{ y: -1 }}
       onClick={onClick}
-      className={`glass-card rounded-3xl p-6 sm:p-7 border border-white/10 relative overflow-hidden space-y-4 ${
-        onClick ? 'cursor-pointer hover:border-[#38bdf8]/40 transition-colors' : ''
+      className={`rounded-2xl bg-white p-6 sm:p-7 border border-[#E5E5E7] shadow-xs relative overflow-hidden space-y-4 ${
+        onClick ? 'cursor-pointer hover:border-[#D2D2D7] hover:shadow-md transition-all' : ''
       }`}
     >
       <div className="flex items-center justify-between">
-        <span className="text-xs font-bold font-mono uppercase text-slate-400 tracking-wider">
+        <span className="text-xs font-mono font-medium uppercase text-[#86868B] tracking-wider">
           {title}
         </span>
         <div
-          className="p-2 rounded-xl bg-white/5 border border-white/10"
-          style={{ color }}
+          className="p-2 rounded-xl bg-[#F5F5F7] border border-[#E5E5E7]"
         >
           {renderIcon()}
         </div>
       </div>
 
       <div className="flex items-baseline justify-between gap-2">
-        <h3 className="text-2xl sm:text-3xl font-extrabold font-display text-white tracking-tight">
+        <h3 className="text-2xl sm:text-3xl font-bold font-sans text-[#1D1D1F] tracking-tight">
           {value}
         </h3>
         {trendText && (
           <span
-            className={`text-[10px] font-bold font-mono px-2 py-0.5 rounded-full ${
+            className={`text-[10px] font-mono font-medium px-2 py-0.5 rounded-full ${
               effectiveTrendType === 'up' || effectiveTrendType === 'positive'
-                ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                 : effectiveTrendType === 'down' || effectiveTrendType === 'warning'
-                ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
-                : 'bg-slate-800 text-slate-400 border border-white/10'
+                ? 'bg-amber-50 text-amber-700 border border-amber-200'
+                : 'bg-[#F5F5F7] text-[#6E6E73] border border-[#E5E5E7]'
             }`}
           >
             {trendText}
@@ -89,7 +88,7 @@ export const StatCard = React.memo(function StatCard({
         )}
       </div>
 
-      {displayText && <p className="text-[11px] text-slate-400">{displayText}</p>}
+      {displayText && <p className="text-xs text-[#6E6E73] font-normal">{displayText}</p>}
     </motion.div>
   );
 });

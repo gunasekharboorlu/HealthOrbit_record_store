@@ -38,8 +38,8 @@ export default function DoctorSettingsPage({
       
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-display font-extrabold text-white">Practice Settings & Preferences</h1>
-        <p className="text-xs text-slate-400 mt-1">
+        <h1 className="text-2xl font-display font-bold text-[#1D1D1F]">Practice Settings & Preferences</h1>
+        <p className="text-xs text-[#6E6E73] mt-1">
           Manage digital signature authorization keys, clearance timeframes, and notification rules.
         </p>
       </div>
@@ -49,16 +49,16 @@ export default function DoctorSettingsPage({
         
         {/* Digital Signature PIN */}
         <GlassCard className="p-6 space-y-4">
-          <div className="flex justify-between items-center border-b border-white/5 pb-4">
+          <div className="flex justify-between items-center border-b border-[#E5E5E7] pb-4">
             <div>
-              <h3 className="font-bold text-sm text-white flex items-center gap-2">
-                <Key className="w-4 h-4 text-[#38bdf8]" /> Digital Signature PIN
+              <h3 className="font-bold text-sm text-[#1D1D1F] flex items-center gap-2">
+                <Key className="w-4 h-4 text-[#0071E3]" /> Digital Signature PIN
               </h3>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-[#6E6E73]">
                 Attached to every digitally signed prescription issued to patients.
               </p>
             </div>
-            <span className="text-sm font-mono font-bold text-[#38bdf8] bg-[#38bdf8]/10 px-3 py-1 rounded-xl">
+            <span className="text-sm font-mono font-bold text-[#0071E3] bg-[#0071E3]/10 px-3 py-1 rounded-xl">
               {sigPin}
             </span>
           </div>
@@ -70,7 +70,7 @@ export default function DoctorSettingsPage({
                 value={pinInput}
                 onChange={e => setPinInput(e.target.value)}
                 placeholder="Enter 4-digit PIN"
-                className="px-3.5 py-2 rounded-xl premium-input text-xs text-white outline-none"
+                className="px-3.5 py-2 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none focus:border-[#0071E3]"
               />
               <PrimaryButton type="submit">Save PIN</PrimaryButton>
               <SecondaryButton type="button" onClick={() => setIsEditingPin(false)}>Cancel</SecondaryButton>
@@ -86,14 +86,14 @@ export default function DoctorSettingsPage({
         <GlassCard className="p-6 space-y-3">
           <div className="flex justify-between items-center">
             <div>
-              <h3 className="font-bold text-sm text-white flex items-center gap-2">
-                <Shield className="w-4 h-4 text-emerald-400" /> Clearance Window Policy
+              <h3 className="font-bold text-sm text-[#1D1D1F] flex items-center gap-2">
+                <Shield className="w-4 h-4 text-emerald-600" /> Clearance Window Policy
               </h3>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-[#6E6E73]">
                 Patient authorizations for sensitive records automatically expire after 24 hours.
               </p>
             </div>
-            <span className="text-xs font-mono font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-xl">
+            <span className="text-xs font-mono font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-xl">
               24-HR TIMEFRAME
             </span>
           </div>
@@ -103,10 +103,10 @@ export default function DoctorSettingsPage({
         <GlassCard className="p-6 space-y-3">
           <div className="flex justify-between items-center">
             <div>
-              <h3 className="font-bold text-sm text-white flex items-center gap-2">
-                <Bell className="w-4 h-4 text-purple-400" /> Practice Notifications
+              <h3 className="font-bold text-sm text-[#1D1D1F] flex items-center gap-2">
+                <Bell className="w-4 h-4 text-purple-600" /> Practice Notifications
               </h3>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-[#6E6E73]">
                 Receive instant alerts when a patient approves or denies access to sensitive records.
               </p>
             </div>
@@ -116,7 +116,7 @@ export default function DoctorSettingsPage({
                 showNotification(`Notifications ${!notifPref ? 'enabled' : 'disabled'}`, 'success');
               }}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold font-mono transition cursor-pointer ${
-                notifPref ? 'bg-emerald-500 text-slate-950' : 'bg-slate-800 text-slate-400'
+                notifPref ? 'bg-emerald-600 text-white shadow-xs' : 'bg-[#F5F5F7] text-[#6E6E73] border border-[#E5E5E7]'
               }`}
             >
               {notifPref ? 'ENABLED' : 'DISABLED'}

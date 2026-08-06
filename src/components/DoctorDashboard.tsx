@@ -281,7 +281,7 @@ export default function DoctorDashboard({
   };
 
   return (
-    <div className="min-h-screen bg-[#020617] text-white flex">
+    <div className="min-h-screen bg-[#F5F5F7] text-[#1D1D1F] flex">
       
       {/* Toast Notification Container */}
       <AnimatePresence>
@@ -291,10 +291,10 @@ export default function DoctorDashboard({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-4 py-3 rounded-xl border shadow-2xl backdrop-blur-md ${
-              notification.type === 'error' ? 'bg-rose-500/10 border-rose-500/20 text-rose-300' : 'bg-emerald-500/10 border-emerald-500/20 text-emerald-300'
+              notification.type === 'error' ? 'bg-rose-50 border-rose-200 text-rose-800' : 'bg-emerald-50 border-emerald-200 text-emerald-800'
             }`}
           >
-            {notification.type === 'error' ? <ShieldAlert className="w-4 h-4 text-rose-400" /> : <CheckCircle className="w-4 h-4 text-emerald-400" />}
+            {notification.type === 'error' ? <ShieldAlert className="w-4 h-4 text-rose-600" /> : <CheckCircle className="w-4 h-4 text-emerald-600" />}
             <span className="text-xs font-bold">{notification.message}</span>
             <button onClick={() => setNotification(null)} className="ml-2 hover:opacity-80"><X className="w-3.5 h-3.5" /></button>
           </motion.div>
@@ -318,13 +318,13 @@ export default function DoctorDashboard({
       <div className="flex-1 md:pl-64 flex flex-col min-w-0">
         
         {/* Top Header / Breadcrumbs */}
-        <div className="sticky top-16 z-20 bg-[#020617]/80 backdrop-blur-md border-b border-white/5 px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+        <div className="sticky top-16 z-20 bg-white/90 backdrop-blur-md border-b border-[#E5E5E7] px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setMobileSidebarOpen(true)}
-              className="md:hidden p-2 text-slate-400 hover:text-white rounded-xl bg-white/5 border border-white/10"
+              className="md:hidden p-2 text-[#6E6E73] hover:text-[#1D1D1F] rounded-xl bg-[#F5F5F7] border border-[#E5E5E7]"
             >
-              <Stethoscope className="w-5 h-5 text-[#38bdf8]" />
+              <Stethoscope className="w-5 h-5 text-[#0071E3]" />
             </button>
             <Breadcrumbs
               portalName="Doctor Portal"
@@ -337,7 +337,7 @@ export default function DoctorDashboard({
           <div className="flex items-center gap-3">
             <button
               onClick={() => setActiveTab('search')}
-              className="bg-gradient-to-r from-[#38bdf8] to-[#4f8cff] text-slate-950 font-extrabold px-3.5 py-1.5 rounded-xl text-xs shadow-md hover:opacity-95 transition cursor-pointer flex items-center gap-1.5"
+              className="bg-[#1D1D1F] hover:bg-black text-white font-semibold px-3.5 py-1.5 rounded-xl text-xs shadow-xs transition cursor-pointer flex items-center gap-1.5"
             >
               <Search className="w-4 h-4" /> Patient Search
             </button>

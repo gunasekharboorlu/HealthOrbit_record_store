@@ -44,20 +44,20 @@ export default function ProfessionalAnalyticsCharts({
 
   if (role === 'patient') {
     return (
-      <GlassCard className="p-6 md:p-8 space-y-6 bg-gradient-to-br from-[#0a0f2b]/80 via-[#0f173b]/60 to-[#020617]/90 border border-white/10">
+      <GlassCard className="p-6 md:p-8 space-y-6 bg-[#FBFBFD] border border-[#E5E5E7]">
         {/* Header Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#E5E5E7] pb-4">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-[#38bdf8]/15 text-[#38bdf8] border border-[#38bdf8]/30">
+            <div className="p-2.5 rounded-xl bg-[#0071E3]/10 text-[#0071E3] border border-[#0071E3]/20">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-base font-bold font-display text-white">Cryptographic Vault & Ledger Status</h3>
-              <p className="text-xs text-slate-400">Real-time breakdown of stored clinical documents & zero-trust security state.</p>
+              <h3 className="text-base font-bold font-display text-[#1D1D1F]">Cryptographic Vault & Ledger Status</h3>
+              <p className="text-xs text-[#6E6E73]">Real-time breakdown of stored clinical documents & zero-trust security state.</p>
             </div>
           </div>
-          <span className="text-[11px] font-mono font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-[11px] font-mono font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
             SHA-256 Ledger Integrity Active
           </span>
         </div>
@@ -67,27 +67,27 @@ export default function ProfessionalAnalyticsCharts({
           
           {/* Real Category Distribution */}
           <div className="md:col-span-2 space-y-4">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
-              <FileText className="w-4 h-4 text-[#38bdf8]" /> Category Breakdown ({totalRecords} Total Records)
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#1D1D1F] flex items-center gap-2">
+              <FileText className="w-4 h-4 text-[#0071E3]" /> Category Breakdown ({totalRecords} Total Records)
             </h4>
 
             {categoryArray.length === 0 ? (
-              <div className="p-8 text-center bg-white/5 rounded-2xl border border-white/5 space-y-2">
-                <HardDrive className="w-8 h-8 text-slate-500 mx-auto" />
-                <p className="text-xs text-slate-300 font-medium">No medical documents uploaded yet</p>
-                <p className="text-[11px] text-slate-500">Upload lab reports or prescriptions to view category analytics.</p>
+              <div className="p-8 text-center bg-[#F5F5F7] rounded-2xl border border-[#E5E5E7] space-y-2">
+                <HardDrive className="w-8 h-8 text-[#86868B] mx-auto" />
+                <p className="text-xs text-[#1D1D1F] font-medium">No medical documents uploaded yet</p>
+                <p className="text-[11px] text-[#6E6E73]">Upload lab reports or prescriptions to view category analytics.</p>
               </div>
             ) : (
               <div className="space-y-3">
                 {categoryArray.map((cat) => (
-                  <div key={cat.name} className="space-y-1.5 p-3 bg-slate-950/60 rounded-xl border border-white/5">
+                  <div key={cat.name} className="space-y-1.5 p-3 bg-[#F5F5F7] rounded-xl border border-[#E5E5E7]">
                     <div className="flex justify-between text-xs font-mono">
-                      <span className="text-slate-200 font-bold">{cat.name}</span>
-                      <span className="text-[#38bdf8] font-bold">{cat.count} records ({cat.percentage}%)</span>
+                      <span className="text-[#1D1D1F] font-bold">{cat.name}</span>
+                      <span className="text-[#0071E3] font-bold">{cat.count} records ({cat.percentage}%)</span>
                     </div>
-                    <div className="w-full h-2 bg-slate-900 rounded-full overflow-hidden">
+                    <div className="w-full h-2 bg-[#E5E5E7] rounded-full overflow-hidden">
                       <div 
-                        className="h-full bg-gradient-to-r from-[#38bdf8] to-[#22d3ee] rounded-full transition-all duration-500"
+                        className="h-full bg-[#0071E3] rounded-full transition-all duration-500"
                         style={{ width: `${cat.percentage}%` }}
                       />
                     </div>
@@ -98,31 +98,31 @@ export default function ProfessionalAnalyticsCharts({
           </div>
 
           {/* Security & Verification Status */}
-          <div className="space-y-4 bg-slate-950/80 p-5 rounded-2xl border border-white/5 flex flex-col justify-between">
+          <div className="space-y-4 bg-[#F5F5F7] p-5 rounded-2xl border border-[#E5E5E7] flex flex-col justify-between">
             <div className="space-y-3">
-              <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
-                <Lock className="w-4 h-4 text-purple-400" /> Ledger Security Policy
+              <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#1D1D1F] flex items-center gap-2">
+                <Lock className="w-4 h-4 text-purple-600" /> Ledger Security Policy
               </h4>
 
               <div className="space-y-2.5 text-xs font-mono">
-                <div className="flex justify-between p-2.5 bg-white/5 rounded-xl border border-white/5">
-                  <span className="text-slate-400">Clinic Verified:</span>
-                  <span className="text-emerald-400 font-bold">{verifiedRecords} Documents</span>
+                <div className="flex justify-between p-2.5 bg-white rounded-xl border border-[#E5E5E7]">
+                  <span className="text-[#6E6E73]">Clinic Verified:</span>
+                  <span className="text-emerald-700 font-bold">{verifiedRecords} Documents</span>
                 </div>
-                <div className="flex justify-between p-2.5 bg-white/5 rounded-xl border border-white/5">
-                  <span className="text-slate-400">Self-Reported:</span>
-                  <span className="text-slate-200 font-bold">{patientSelfReported} Documents</span>
+                <div className="flex justify-between p-2.5 bg-white rounded-xl border border-[#E5E5E7]">
+                  <span className="text-[#6E6E73]">Self-Reported:</span>
+                  <span className="text-[#1D1D1F] font-bold">{patientSelfReported} Documents</span>
                 </div>
-                <div className="flex justify-between p-2.5 bg-white/5 rounded-xl border border-white/5">
-                  <span className="text-slate-400">Privacy Locked:</span>
-                  <span className="text-purple-400 font-bold">{sensitiveRecords} Protected</span>
+                <div className="flex justify-between p-2.5 bg-white rounded-xl border border-[#E5E5E7]">
+                  <span className="text-[#6E6E73]">Privacy Locked:</span>
+                  <span className="text-purple-700 font-bold">{sensitiveRecords} Protected</span>
                 </div>
               </div>
             </div>
 
-            <div className="pt-3 border-t border-white/10 text-[11px] text-slate-400 flex items-center justify-between">
+            <div className="pt-3 border-t border-[#E5E5E7] text-[11px] text-[#6E6E73] flex items-center justify-between">
               <span>Decaying Token Standard</span>
-              <span className="font-mono text-[#38bdf8] font-bold">24 Hours Auto-Revoke</span>
+              <span className="font-mono text-[#0071E3] font-bold">24 Hours Auto-Revoke</span>
             </div>
           </div>
 
@@ -136,39 +136,39 @@ export default function ProfessionalAnalyticsCharts({
     const activeClearances = doctorStats.approvedAccessRequests || 0;
 
     return (
-      <GlassCard className="p-6 md:p-8 space-y-6 bg-gradient-to-br from-[#0a0f2b]/80 via-[#0f173b]/60 to-[#020617]/90 border border-white/10">
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
+      <GlassCard className="p-6 md:p-8 space-y-6 bg-[#FBFBFD] border border-[#E5E5E7]">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#E5E5E7] pb-4">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-purple-500/15 text-purple-400 border border-purple-500/30">
+            <div className="p-2.5 rounded-xl bg-purple-50 text-purple-700 border border-purple-200">
               <Stethoscope className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-base font-bold font-display text-white">Practitioner Clearance & Patient Registry Status</h3>
-              <p className="text-xs text-slate-400">Real-time clinical access approvals and verified hospital authorization node.</p>
+              <h3 className="text-base font-bold font-display text-[#1D1D1F]">Practitioner Clearance & Patient Registry Status</h3>
+              <p className="text-xs text-[#6E6E73]">Real-time clinical access approvals and verified hospital authorization node.</p>
             </div>
           </div>
-          <span className="text-[11px] font-mono font-bold text-teal-400 bg-teal-500/10 border border-teal-500/20 px-3 py-1 rounded-full">
+          <span className="text-[11px] font-mono font-bold text-teal-800 bg-teal-50 border border-teal-200 px-3 py-1 rounded-full">
             ● Authorized Practitioner Node
           </span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="p-4 bg-slate-950/70 border border-white/5 rounded-2xl space-y-1">
-            <span className="text-[10px] font-mono font-bold text-slate-400 uppercase">Active 24-Hr Unlocks</span>
-            <div className="text-2xl font-black text-emerald-400 font-mono">{activeClearances}</div>
-            <p className="text-[11px] text-slate-400">Records accessible via patient granted token</p>
+          <div className="p-4 bg-[#F5F5F7] border border-[#E5E5E7] rounded-2xl space-y-1">
+            <span className="text-[10px] font-mono font-bold text-[#6E6E73] uppercase">Active 24-Hr Unlocks</span>
+            <div className="text-2xl font-bold text-emerald-700 font-mono">{activeClearances}</div>
+            <p className="text-[11px] text-[#6E6E73]">Records accessible via patient granted token</p>
           </div>
 
-          <div className="p-4 bg-slate-950/70 border border-white/5 rounded-2xl space-y-1">
-            <span className="text-[10px] font-mono font-bold text-slate-400 uppercase">Pending Requests</span>
-            <div className="text-2xl font-black text-amber-400 font-mono">{pendingCount}</div>
-            <p className="text-[11px] text-slate-400">Clearances awaiting patient confirmation</p>
+          <div className="p-4 bg-[#F5F5F7] border border-[#E5E5E7] rounded-2xl space-y-1">
+            <span className="text-[10px] font-mono font-bold text-[#6E6E73] uppercase">Pending Requests</span>
+            <div className="text-2xl font-bold text-amber-700 font-mono">{pendingCount}</div>
+            <p className="text-[11px] text-[#6E6E73]">Clearances awaiting patient confirmation</p>
           </div>
 
-          <div className="p-4 bg-slate-950/70 border border-white/5 rounded-2xl space-y-1">
-            <span className="text-[10px] font-mono font-bold text-slate-400 uppercase">Total Patients Consulted</span>
-            <div className="text-2xl font-black text-[#38bdf8] font-mono">{doctorStats.totalPatientsViewed || 0}</div>
-            <p className="text-[11px] text-slate-400">Unique patient registry interactions</p>
+          <div className="p-4 bg-[#F5F5F7] border border-[#E5E5E7] rounded-2xl space-y-1">
+            <span className="text-[10px] font-mono font-bold text-[#6E6E73] uppercase">Total Patients Consulted</span>
+            <div className="text-2xl font-bold text-[#0071E3] font-mono">{doctorStats.totalPatientsViewed || 0}</div>
+            <p className="text-[11px] text-[#6E6E73]">Unique patient registry interactions</p>
           </div>
         </div>
       </GlassCard>
@@ -182,38 +182,38 @@ export default function ProfessionalAnalyticsCharts({
   const verifiedDoctors = adminData.doctors?.filter((d: any) => d.isVerified).length || 0;
 
   return (
-    <GlassCard className="p-6 md:p-8 space-y-6 bg-gradient-to-br from-[#0a0f2b]/80 via-[#0f173b]/60 to-[#020617]/90 border border-white/10">
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
+    <GlassCard className="p-6 md:p-8 space-y-6 bg-[#FBFBFD] border border-[#E5E5E7]">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#E5E5E7] pb-4">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-xl bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+          <div className="p-2.5 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200">
             <Activity className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-base font-bold font-display text-white">System Security & Network Real-Time Status</h3>
-            <p className="text-xs text-slate-400">Verified counts for registered users, partner clinics, and licensing status.</p>
+            <h3 className="text-base font-bold font-display text-[#1D1D1F]">System Security & Network Real-Time Status</h3>
+            <p className="text-xs text-[#6E6E73]">Verified counts for registered users, partner clinics, and licensing status.</p>
           </div>
         </div>
-        <span className="text-[11px] font-mono font-bold text-[#38bdf8] bg-[#38bdf8]/10 border border-[#38bdf8]/20 px-3 py-1 rounded-full">
+        <span className="text-[11px] font-mono font-bold text-[#0071E3] bg-[#0071E3]/10 border border-[#0071E3]/20 px-3 py-1 rounded-full">
           Zero-Trust Compliance Standard
         </span>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 font-mono text-xs">
-        <div className="p-4 bg-slate-950/70 rounded-2xl border border-white/5 space-y-1">
-          <span className="text-slate-400 font-bold block">Patient Ledger Accounts</span>
-          <span className="text-xl font-black text-white">{totalPatients}</span>
+        <div className="p-4 bg-[#F5F5F7] rounded-2xl border border-[#E5E5E7] space-y-1">
+          <span className="text-[#6E6E73] font-bold block">Patient Ledger Accounts</span>
+          <span className="text-xl font-bold text-[#1D1D1F]">{totalPatients}</span>
         </div>
-        <div className="p-4 bg-slate-950/70 rounded-2xl border border-white/5 space-y-1">
-          <span className="text-slate-400 font-bold block">Registered Physicians</span>
-          <span className="text-xl font-black text-[#38bdf8]">{totalDoctors} ({verifiedDoctors} Verified)</span>
+        <div className="p-4 bg-[#F5F5F7] rounded-2xl border border-[#E5E5E7] space-y-1">
+          <span className="text-[#6E6E73] font-bold block">Registered Physicians</span>
+          <span className="text-xl font-bold text-[#0071E3]">{totalDoctors} ({verifiedDoctors} Verified)</span>
         </div>
-        <div className="p-4 bg-slate-950/70 rounded-2xl border border-white/5 space-y-1">
-          <span className="text-slate-400 font-bold block">Whitelisted Hospital Nodes</span>
-          <span className="text-xl font-black text-teal-400">{totalHospitals}</span>
+        <div className="p-4 bg-[#F5F5F7] rounded-2xl border border-[#E5E5E7] space-y-1">
+          <span className="text-[#6E6E73] font-bold block">Whitelisted Hospital Nodes</span>
+          <span className="text-xl font-bold text-teal-700">{totalHospitals}</span>
         </div>
-        <div className="p-4 bg-slate-950/70 rounded-2xl border border-white/5 space-y-1">
-          <span className="text-slate-400 font-bold block">HIPAA Security Standard</span>
-          <span className="text-xl font-black text-emerald-400">ACTIVE</span>
+        <div className="p-4 bg-[#F5F5F7] rounded-2xl border border-[#E5E5E7] space-y-1">
+          <span className="text-[#6E6E73] font-bold block">HIPAA Security Standard</span>
+          <span className="text-xl font-bold text-emerald-700">ACTIVE</span>
         </div>
       </div>
     </GlassCard>

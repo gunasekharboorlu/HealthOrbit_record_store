@@ -11,9 +11,9 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 const sizeClasses = {
-  sm: 'px-4 py-2 text-xs font-semibold rounded-xl gap-2',
-  md: 'px-5 py-2.5 text-xs sm:text-sm font-bold rounded-xl gap-2.5',
-  lg: 'px-7 py-3.5 text-sm font-bold rounded-2xl gap-3',
+  sm: 'px-3.5 py-1.5 text-xs font-medium rounded-xl gap-2',
+  md: 'px-4.5 py-2 text-xs sm:text-sm font-medium rounded-xl gap-2',
+  lg: 'px-6 py-3 text-sm font-medium rounded-2xl gap-2.5',
 };
 
 function renderIcon(icon?: React.ReactNode | React.ElementType, defaultClass: string = 'w-4 h-4 shrink-0') {
@@ -38,13 +38,13 @@ export const PrimaryButton = React.memo(function PrimaryButton({
   return (
     <button
       disabled={disabled || isLoading}
-      className={`font-bold flex items-center justify-center transition-all duration-200 cursor-pointer shadow-lg shadow-[#38bdf8]/20 bg-gradient-to-r from-[#38bdf8] to-[#22d3ee] text-slate-950 hover:brightness-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${
+      className={`font-medium flex items-center justify-center transition-all duration-200 cursor-pointer bg-[#1D1D1F] hover:bg-black text-white shadow-xs active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed ${
         sizeClasses[size]
       } ${fullWidth ? 'w-full' : ''} ${className}`}
       {...props}
     >
       {isLoading ? (
-        <span className="w-4 h-4 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" />
+        <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
       ) : (
         renderIcon(icon, 'w-4 h-4 shrink-0')
       )}
@@ -66,15 +66,15 @@ export const SecondaryButton = React.memo(function SecondaryButton({
   return (
     <button
       disabled={disabled || isLoading}
-      className={`font-semibold flex items-center justify-center transition-all duration-200 cursor-pointer bg-white/5 border border-white/10 text-slate-200 hover:text-white hover:bg-white/10 hover:border-white/20 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${
+      className={`font-medium flex items-center justify-center transition-all duration-200 cursor-pointer bg-[#F5F5F7] border border-[#E5E5E7] text-[#1D1D1F] hover:bg-[#E8E8ED] hover:border-[#D2D2D7] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed ${
         sizeClasses[size]
       } ${fullWidth ? 'w-full' : ''} ${className}`}
       {...props}
     >
       {isLoading ? (
-        <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+        <span className="w-4 h-4 border-2 border-[#1D1D1F] border-t-transparent rounded-full animate-spin" />
       ) : (
-        renderIcon(icon, 'w-4 h-4 shrink-0 text-slate-400')
+        renderIcon(icon, 'w-4 h-4 shrink-0 text-[#6E6E73]')
       )}
       <span>{children}</span>
     </button>
@@ -94,13 +94,13 @@ export const DangerButton = React.memo(function DangerButton({
   return (
     <button
       disabled={disabled || isLoading}
-      className={`font-bold flex items-center justify-center transition-all duration-200 cursor-pointer bg-rose-500/10 border border-rose-500/20 text-rose-400 hover:bg-rose-500/20 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${
+      className={`font-medium flex items-center justify-center transition-all duration-200 cursor-pointer bg-rose-50 border border-rose-200 text-rose-700 hover:bg-rose-100 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed ${
         sizeClasses[size]
       } ${fullWidth ? 'w-full' : ''} ${className}`}
       {...props}
     >
       {isLoading ? (
-        <span className="w-4 h-4 border-2 border-rose-400 border-t-transparent rounded-full animate-spin" />
+        <span className="w-4 h-4 border-2 border-rose-600 border-t-transparent rounded-full animate-spin" />
       ) : (
         renderIcon(icon, 'w-4 h-4 shrink-0')
       )}

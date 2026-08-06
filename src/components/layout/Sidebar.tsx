@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
-  LayoutDashboard, FileText, UploadCloud, Shield, Lock, Clock, Heart, Bell,
-  Settings, User, Users, Building, ClipboardList, LogOut, X, Sparkles, Activity, Stethoscope, Key 
+  LayoutDashboard, FileText, UploadCloud, Shield, Lock, Bell,
+  Settings, User, Users, Building, ClipboardList, LogOut, X, Heart, Stethoscope, Key, Activity
 } from 'lucide-react';
 import { User as UserType } from '../../types';
 import Avatar from '../Avatar';
@@ -31,7 +31,6 @@ export default function Sidebar({
   handleLogout,
 }: SidebarProps) {
 
-  // Role-specific Navigation Items
   const getNavItems = () => {
     if (role === 'patient') {
       return [
@@ -66,18 +65,18 @@ export default function Sidebar({
   const navItems = getNavItems();
 
   const SidebarContent = () => (
-    <div className="flex flex-col h-full justify-between p-5 space-y-7">
+    <div className="flex flex-col h-full justify-between p-4 sm:p-5 space-y-6">
       
       {/* Top Section */}
-      <div className="space-y-7">
+      <div className="space-y-6">
         
         {/* User Identity Card */}
         {currentUser && (
-          <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3.5 shadow-sm">
+          <div className="p-3.5 rounded-2xl bg-[#F5F5F7] border border-[#E5E5E7] flex items-center gap-3 shadow-xs">
             <Avatar name={currentUser.name} src={currentUser.profilePicture} size="md" />
             <div className="overflow-hidden space-y-0.5">
-              <p className="text-xs font-bold text-white truncate font-display">{currentUser.name}</p>
-              <span className="inline-block text-[9px] font-mono font-bold text-[#38bdf8] uppercase tracking-wider bg-[#38bdf8]/10 border border-[#38bdf8]/20 px-2 py-0.5 rounded-md">
+              <p className="text-xs font-semibold text-[#1D1D1F] truncate">{currentUser.name}</p>
+              <span className="inline-block text-[9px] font-mono font-medium text-[#6E6E73] uppercase tracking-wider bg-white border border-[#E5E5E7] px-2 py-0.5 rounded-md">
                 {role} portal
               </span>
             </div>
@@ -86,13 +85,13 @@ export default function Sidebar({
 
         {/* Navigation Section Title */}
         <div className="px-2">
-          <p className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest">
-            Portal Navigation
+          <p className="text-[10px] font-mono font-medium text-[#86868B] uppercase tracking-wider">
+            Navigation
           </p>
         </div>
 
         {/* Links List */}
-        <nav className="space-y-1.5">
+        <nav className="space-y-1">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
@@ -103,22 +102,22 @@ export default function Sidebar({
                   setActiveTab(item.id);
                   setMobileOpen(false);
                 }}
-                className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-gradient-to-r from-[#38bdf8] to-[#22d3ee] text-slate-950 font-bold shadow-md shadow-[#38bdf8]/20'
-                    : 'text-slate-300 hover:text-white hover:bg-white/5'
+                    ? 'bg-[#1D1D1F] text-white font-medium shadow-xs'
+                    : 'text-[#6E6E73] hover:text-[#1D1D1F] hover:bg-[#F5F5F7] font-normal'
                 }`}
               >
-                <div className="flex items-center gap-3.5">
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-slate-950' : 'text-slate-400'}`} />
+                <div className="flex items-center gap-3">
+                  <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-[#86868B]'}`} />
                   <span>{item.label}</span>
                 </div>
 
                 {item.badge !== undefined && item.badge > 0 && (
                   <span
-                    className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                    className={`px-2 py-0.5 rounded-full text-[10px] font-medium ${
                       isActive
-                        ? 'bg-slate-950 text-[#38bdf8]'
+                        ? 'bg-white text-[#1D1D1F]'
                         : 'bg-rose-500 text-white'
                     }`}
                   >
@@ -132,7 +131,7 @@ export default function Sidebar({
       </div>
 
       {/* Bottom Section */}
-      <div className="space-y-3.5 pt-6 border-t border-white/10">
+      <div className="space-y-2.5 pt-4 border-t border-[#E5E5E7]">
         
         {/* Emergency Shortcut */}
         <button
@@ -140,13 +139,13 @@ export default function Sidebar({
             setActiveTab('emergency');
             setMobileOpen(false);
           }}
-          className="w-full flex items-center justify-between px-4 py-3 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 hover:bg-rose-500/20 text-xs font-bold transition-all cursor-pointer"
+          className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 hover:bg-rose-100 text-xs font-medium transition-all cursor-pointer"
         >
-          <div className="flex items-center gap-3">
-            <Heart className="w-4 h-4 text-rose-400 animate-pulse" />
+          <div className="flex items-center gap-2.5">
+            <Heart className="w-4 h-4 text-rose-600" />
             <span>Emergency Profile</span>
           </div>
-          <span className="text-[9px] font-mono uppercase bg-rose-500/20 px-1.5 py-0.5 rounded text-rose-300">
+          <span className="text-[9px] font-mono uppercase bg-rose-100 px-1.5 py-0.5 rounded text-rose-800">
             ER
           </span>
         </button>
@@ -158,9 +157,9 @@ export default function Sidebar({
               setMobileOpen(false);
               handleLogout();
             }}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-semibold text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition-all cursor-pointer"
+            className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium text-[#6E6E73] hover:text-rose-600 hover:bg-rose-50 transition-all cursor-pointer"
           >
-            <LogOut className="w-4 h-4" />
+            <LogOut className="w-4 h-4 text-[#86868B]" />
             <span>Sign Out</span>
           </button>
         )}
@@ -172,7 +171,7 @@ export default function Sidebar({
   return (
     <>
       {/* Desktop Permanent Sidebar */}
-      <aside className="hidden md:flex flex-col w-72 border-r border-white/10 bg-[#020617]/95 backdrop-blur-xl h-[calc(100vh-4.5rem)] sticky top-18 shrink-0 z-30">
+      <aside className="hidden md:flex flex-col w-64 border-r border-[#E5E5E7] bg-white h-[calc(100vh-4rem)] sticky top-16 shrink-0 z-30">
         <SidebarContent />
       </aside>
 
@@ -186,7 +185,7 @@ export default function Sidebar({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileOpen(false)}
-              className="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 md:hidden"
+              className="fixed inset-0 bg-black/40 backdrop-blur-xs z-50 md:hidden"
             />
 
             {/* Slide-over Drawer */}
@@ -195,19 +194,19 @@ export default function Sidebar({
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 left-0 w-72 bg-[#020617] border-r border-white/10 shadow-2xl z-50 md:hidden flex flex-col justify-between"
+              className="fixed inset-y-0 left-0 w-64 bg-white border-r border-[#E5E5E7] shadow-xl z-50 md:hidden flex flex-col justify-between"
             >
               {/* Header inside mobile drawer */}
-              <div className="flex items-center justify-between p-4 border-b border-white/10">
+              <div className="flex items-center justify-between p-4 border-b border-[#E5E5E7]">
                 <div className="flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tr from-[#38bdf8] to-[#22d3ee] text-slate-950">
-                    <Activity className="h-4 h-4" />
+                  <div className="flex h-7 w-7 items-center justify-center rounded-lg overflow-hidden shadow-xs">
+                    <img src="/icon.svg" alt="HealthOrbit Logo" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                   </div>
-                  <span className="font-display font-bold text-sm text-white">HealthOrbit Menu</span>
+                  <span className="font-sans font-semibold text-sm text-[#1D1D1F]">HealthOrbit Menu</span>
                 </div>
                 <button
                   onClick={() => setMobileOpen(false)}
-                  className="p-1 text-slate-400 hover:text-white rounded-lg hover:bg-white/5 cursor-pointer"
+                  className="p-1 text-[#6E6E73] hover:text-[#1D1D1F] rounded-lg hover:bg-[#F5F5F7] cursor-pointer"
                 >
                   <X className="w-5 h-5" />
                 </button>

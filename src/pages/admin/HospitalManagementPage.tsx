@@ -78,12 +78,12 @@ export default function HospitalManagementPage({
   return (
     <div className="space-y-6 animate-fade-in pb-12">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/10 pb-4">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-[#E5E5E7] pb-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-display font-bold text-white flex items-center gap-2">
-            <Building2 className="w-6 h-6 text-teal-400" /> Whitelisted Hospital Network Registry
+          <h1 className="text-xl sm:text-2xl font-display font-bold text-[#1D1D1F] flex items-center gap-2">
+            <Building2 className="w-6 h-6 text-teal-600" /> Whitelisted Hospital Network Registry
           </h1>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-[#6E6E73] mt-0.5">
             Manage partner healthcare facilities, regional clinic networks, and hospital authorization status.
           </p>
         </div>
@@ -99,13 +99,13 @@ export default function HospitalManagementPage({
       {/* Toolbar: Search and Filters */}
       <GlassCard className="p-4 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="relative w-full md:w-80">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-[#86868B] absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search hospital name, address, or ID..."
-            className="w-full pl-9 pr-3 py-2 bg-slate-950/60 border border-white/10 rounded-xl text-xs text-white placeholder-slate-500 outline-none focus:border-[#38bdf8]"
+            className="w-full pl-9 pr-3 py-2 bg-white border border-[#D2D2D7] rounded-xl text-xs text-[#1D1D1F] placeholder-[#86868B] outline-none focus:border-[#0071E3]"
           />
         </div>
 
@@ -120,8 +120,8 @@ export default function HospitalManagementPage({
               onClick={() => setStatusFilter(btn.id as any)}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold font-mono transition cursor-pointer shrink-0 ${
                 statusFilter === btn.id
-                  ? 'bg-teal-400 text-slate-950 shadow-md shadow-teal-400/20'
-                  : 'bg-white/5 text-slate-300 hover:bg-white/10 border border-white/5'
+                  ? 'bg-[#1D1D1F] text-white shadow-xs'
+                  : 'bg-white text-[#1D1D1F] hover:bg-[#F5F5F7] border border-[#D2D2D7]'
               }`}
             >
               {btn.label}
@@ -149,18 +149,18 @@ export default function HospitalManagementPage({
                 key={h.id}
                 className={`p-6 space-y-4 transition ${
                   isDeactivated
-                    ? 'border-rose-500/20 bg-rose-500/5 opacity-75'
-                    : 'border-white/10 hover:border-teal-500/30'
+                    ? 'border-rose-200 bg-rose-50/50 opacity-75'
+                    : 'border-[#E5E5E7] hover:border-teal-600/40'
                 }`}
               >
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex items-center gap-3 overflow-hidden">
-                    <div className="p-2.5 rounded-2xl bg-teal-500/10 border border-teal-500/20 text-teal-400 shrink-0">
+                    <div className="p-2.5 rounded-2xl bg-teal-50 border border-teal-200 text-teal-700 shrink-0">
                       <Building2 className="w-6 h-6" />
                     </div>
                     <div className="overflow-hidden">
-                      <h3 className="font-bold text-white text-base truncate">{h.name}</h3>
-                      <span className="text-[10px] font-mono text-slate-400 uppercase block">ID: {h.id}</span>
+                      <h3 className="font-bold text-[#1D1D1F] text-base truncate">{h.name}</h3>
+                      <span className="text-[10px] font-mono text-[#6E6E73] uppercase block">ID: {h.id}</span>
                     </div>
                   </div>
 
@@ -171,21 +171,21 @@ export default function HospitalManagementPage({
                   )}
                 </div>
 
-                <p className="text-xs text-slate-300 flex items-start gap-1.5 leading-relaxed min-h-[36px]">
-                  <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0 mt-0.5" />
+                <p className="text-xs text-[#6E6E73] flex items-start gap-1.5 leading-relaxed min-h-[36px]">
+                  <MapPin className="w-3.5 h-3.5 text-[#86868B] shrink-0 mt-0.5" />
                   <span>{h.address || 'Location Address Unspecified'}</span>
                 </p>
 
-                <div className="pt-3 border-t border-white/5 flex items-center justify-between text-xs font-mono">
-                  <span className="text-slate-400 flex items-center gap-1">
-                    <Stethoscope className="w-3.5 h-3.5 text-teal-400" />
-                    <strong className="text-white">{doctorsInHospital.length}</strong> Affiliated Doctors
+                <div className="pt-3 border-t border-[#E5E5E7] flex items-center justify-between text-xs font-mono">
+                  <span className="text-[#6E6E73] flex items-center gap-1">
+                    <Stethoscope className="w-3.5 h-3.5 text-teal-600" />
+                    <strong className="text-[#1D1D1F]">{doctorsInHospital.length}</strong> Affiliated Doctors
                   </span>
 
                   <div className="flex items-center gap-1.5">
                     <button
                       onClick={() => handleStartEdit(h)}
-                      className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 transition cursor-pointer"
+                      className="p-1.5 rounded-lg bg-white hover:bg-[#F5F5F7] text-[#6E6E73] hover:text-[#1D1D1F] border border-[#D2D2D7] transition cursor-pointer"
                       title="Edit Hospital Details"
                     >
                       <Edit2 className="w-3.5 h-3.5" />
@@ -194,8 +194,8 @@ export default function HospitalManagementPage({
                       onClick={() => handleToggleDeactivate(h.id)}
                       className={`p-1.5 rounded-lg border transition cursor-pointer ${
                         isDeactivated
-                          ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20 hover:bg-emerald-500/20'
-                          : 'bg-rose-500/10 text-rose-400 border-rose-500/20 hover:bg-rose-500/20'
+                          ? 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100'
+                          : 'bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100'
                       }`}
                       title={isDeactivated ? "Reactivate Hospital" : "Deactivate Hospital"}
                     >
@@ -224,7 +224,7 @@ export default function HospitalManagementPage({
             className="space-y-4"
           >
             <div>
-              <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono mb-1">
+              <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono mb-1">
                 Hospital / Clinic Name
               </label>
               <input
@@ -233,12 +233,12 @@ export default function HospitalManagementPage({
                 value={newHospitalName}
                 onChange={(e) => setNewHospitalName(e.target.value)}
                 placeholder="e.g. St. Jude Regional Medical Center"
-                className="w-full px-3.5 py-2.5 rounded-xl premium-input text-xs text-white outline-none"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none"
               />
             </div>
 
             <div>
-              <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono mb-1">
+              <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono mb-1">
                 Physical Location Address
               </label>
               <input
@@ -247,7 +247,7 @@ export default function HospitalManagementPage({
                 value={newHospitalAddress}
                 onChange={(e) => setNewHospitalAddress(e.target.value)}
                 placeholder="e.g. 500 Medical Center Blvd, Suite A"
-                className="w-full px-3.5 py-2.5 rounded-xl premium-input text-xs text-white outline-none"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none"
               />
             </div>
 
@@ -268,7 +268,7 @@ export default function HospitalManagementPage({
         >
           <form onSubmit={handleSaveEdit} className="space-y-4">
             <div>
-              <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono mb-1">
+              <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono mb-1">
                 Hospital Name
               </label>
               <input
@@ -276,12 +276,12 @@ export default function HospitalManagementPage({
                 required
                 value={editName}
                 onChange={(e) => setEditName(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl premium-input text-xs text-white outline-none"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none"
               />
             </div>
 
             <div>
-              <label className="block text-[10px] font-bold text-slate-400 uppercase font-mono mb-1">
+              <label className="block text-[10px] font-bold text-[#6E6E73] uppercase font-mono mb-1">
                 Physical Address
               </label>
               <input
@@ -289,7 +289,7 @@ export default function HospitalManagementPage({
                 required
                 value={editAddress}
                 onChange={(e) => setEditAddress(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl premium-input text-xs text-white outline-none"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D2D2D7] text-xs text-[#1D1D1F] outline-none"
               />
             </div>
 

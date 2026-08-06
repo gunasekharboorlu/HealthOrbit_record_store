@@ -85,8 +85,8 @@ export default function NotificationsPage({
               onClick={() => setCategory(cat)}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold font-mono transition cursor-pointer shrink-0 ${
                 category === cat
-                  ? 'bg-[#38bdf8] text-slate-950 shadow-md shadow-[#38bdf8]/20'
-                  : 'bg-white/5 text-slate-300 hover:bg-white/10 border border-white/5'
+                  ? 'bg-[#1D1D1F] text-white shadow-xs'
+                  : 'bg-[#F5F5F7] text-[#6E6E73] hover:bg-[#E5E5E7] border border-[#E5E5E7]'
               }`}
             >
               {cat}
@@ -112,8 +112,8 @@ export default function NotificationsPage({
                 hoverEffect
                 className={`p-5 transition-all duration-200 ${
                   isUnread
-                    ? 'border-l-4 border-l-[#38bdf8] bg-[#38bdf8]/5'
-                    : 'opacity-80'
+                    ? 'border-l-4 border-l-[#0071E3] bg-[#0071E3]/5'
+                    : 'opacity-90'
                 }`}
               >
                 <div className="flex items-start justify-between gap-4">
@@ -121,24 +121,24 @@ export default function NotificationsPage({
                     <div
                       className={`p-2.5 rounded-xl shrink-0 mt-0.5 ${
                         isUnread
-                          ? 'bg-[#38bdf8]/20 text-[#38bdf8]'
-                          : 'bg-white/5 text-slate-400'
+                          ? 'bg-[#0071E3]/10 text-[#0071E3]'
+                          : 'bg-[#F5F5F7] text-[#6E6E73]'
                       }`}
                     >
                       <Bell className="w-4 h-4" />
                     </div>
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
-                        <h4 className="font-bold text-sm text-white">{item.title}</h4>
+                        <h4 className="font-bold text-sm text-[#1D1D1F]">{item.title}</h4>
                         {isUnread && (
-                          <span className="w-2 h-2 rounded-full bg-[#38bdf8] animate-ping" />
+                          <span className="w-2 h-2 rounded-full bg-[#0071E3]" />
                         )}
                       </div>
-                      <p className="text-xs text-slate-300 leading-relaxed">{item.message}</p>
+                      <p className="text-xs text-[#6E6E73] leading-relaxed">{item.message}</p>
                     </div>
                   </div>
 
-                  <span className="text-[10px] text-slate-400 font-mono shrink-0">
+                  <span className="text-[10px] text-[#86868B] font-mono shrink-0">
                     {new Date(item.createdAt).toLocaleDateString(undefined, {
                       month: 'short',
                       day: 'numeric',

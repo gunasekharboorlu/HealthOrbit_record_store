@@ -16,8 +16,8 @@ export const Card = React.memo(function Card({
   return (
     <div
       onClick={onClick}
-      className={`rounded-3xl bg-slate-900/60 border border-slate-800 p-6 sm:p-8 shadow-lg ${
-        hoverEffect ? 'hover:border-slate-700 transition-all cursor-pointer' : ''
+      className={`rounded-2xl bg-white border border-[#E5E5E7] p-6 sm:p-7 shadow-xs ${
+        hoverEffect ? 'hover:border-[#D2D2D7] hover:shadow-md transition-all cursor-pointer' : ''
       } ${className}`}
     >
       {children}
@@ -34,8 +34,8 @@ export const GlassCard = React.memo(function GlassCard({
   return (
     <div
       onClick={onClick}
-      className={`rounded-3xl bg-[#020617]/60 backdrop-blur-xl border border-white/10 p-6 sm:p-8 md:p-9 shadow-xl ${
-        hoverEffect ? 'hover:border-[#38bdf8]/40 hover:bg-[#020617]/80 transition-all cursor-pointer' : ''
+      className={`rounded-2xl bg-white border border-[#E5E5E7] p-6 sm:p-7 shadow-xs ${
+        hoverEffect ? 'hover:border-[#D2D2D7] hover:shadow-md transition-all cursor-pointer' : ''
       } ${className}`}
     >
       {children}

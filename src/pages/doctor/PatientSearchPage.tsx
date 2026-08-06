@@ -61,8 +61,8 @@ export default function PatientSearchPage({
       
       {/* Search Header */}
       <div>
-        <h1 className="text-2xl font-display font-extrabold text-white">Universal Patient Search & Directory</h1>
-        <p className="text-xs text-slate-400 mt-1">
+        <h1 className="text-2xl font-display font-bold text-[#1D1D1F]">Universal Patient Search & Directory</h1>
+        <p className="text-xs text-[#6E6E73] mt-1">
           Search the entire health network registry by Patient ID, Name, or Mobile number to inspect clinical histories and issue prescriptions.
         </p>
       </div>
@@ -90,7 +90,7 @@ export default function PatientSearchPage({
 
         {/* Quick Suggestion Pills */}
         <div className="flex items-center gap-2 overflow-x-auto pt-1">
-          <span className="text-[10px] font-mono font-bold text-slate-500 uppercase shrink-0">Quick Search:</span>
+          <span className="text-[10px] font-mono font-bold text-[#6E6E73] uppercase shrink-0">Quick Search:</span>
           {quickSearchTags.map(tag => (
             <button
               key={tag}
@@ -98,7 +98,7 @@ export default function PatientSearchPage({
               onClick={() => {
                 setSearchQuery(tag);
               }}
-              className="px-2.5 py-1 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-[10px] font-mono text-slate-300 transition shrink-0 cursor-pointer"
+              className="px-2.5 py-1 bg-[#F5F5F7] hover:bg-[#E5E5E7] border border-[#E5E5E7] rounded-lg text-[10px] font-mono text-[#1D1D1F] transition shrink-0 cursor-pointer"
             >
               {tag}
             </button>
@@ -107,17 +107,17 @@ export default function PatientSearchPage({
       </GlassCard>
 
       {/* Filter Bar */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-950/60 p-4 border border-white/5 rounded-2xl">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-[#F5F5F7] p-4 border border-[#E5E5E7] rounded-2xl">
         <div className="flex items-center gap-2">
-          <Filter className="w-4 h-4 text-[#38bdf8]" />
-          <span className="text-xs font-bold text-white font-mono uppercase">Directory Filters:</span>
+          <Filter className="w-4 h-4 text-[#0071E3]" />
+          <span className="text-xs font-bold text-[#1D1D1F] font-mono uppercase">Directory Filters:</span>
         </div>
 
         <div className="flex flex-wrap gap-2 w-full sm:w-auto">
           <select
             value={filterGender}
             onChange={e => setFilterGender(e.target.value)}
-            className="px-3 py-1.5 bg-slate-900 border border-white/10 rounded-xl text-xs text-white outline-none cursor-pointer"
+            className="px-3 py-1.5 bg-white border border-[#D2D2D7] rounded-xl text-xs text-[#1D1D1F] outline-none cursor-pointer focus:border-[#0071E3]"
           >
             <option value="All">All Genders</option>
             <option value="Male">Male</option>
@@ -128,7 +128,7 @@ export default function PatientSearchPage({
           <select
             value={filterBlood}
             onChange={e => setFilterBlood(e.target.value)}
-            className="px-3 py-1.5 bg-slate-900 border border-white/10 rounded-xl text-xs text-white outline-none cursor-pointer"
+            className="px-3 py-1.5 bg-white border border-[#D2D2D7] rounded-xl text-xs text-[#1D1D1F] outline-none cursor-pointer focus:border-[#0071E3]"
           >
             <option value="All">All Blood Groups</option>
             <option value="A+">A+</option>
@@ -148,7 +148,7 @@ export default function PatientSearchPage({
                 setFilterBlood('All');
                 setSearchQuery('');
               }}
-              className="px-3 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 rounded-xl text-xs font-bold transition cursor-pointer"
+              className="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 rounded-xl text-xs font-bold transition cursor-pointer"
             >
               Reset Filters
             </button>
@@ -176,14 +176,14 @@ export default function PatientSearchPage({
             return (
               <GlassCard
                 key={p.patientId}
-                className="p-5 space-y-4 hover:border-[#38bdf8]/40 transition group relative"
+                className="p-5 space-y-4 hover:border-[#0071E3]/40 transition group relative"
               >
                 <div className="flex justify-between items-start gap-3">
                   <div className="flex items-center gap-3">
                     <Avatar name={p.name} size="md" />
                     <div>
-                      <h3 className="font-bold text-sm text-white group-hover:text-[#38bdf8] transition-colors">{p.name}</h3>
-                      <span className="text-[10px] font-mono font-bold text-[#38bdf8] bg-[#38bdf8]/10 px-2 py-0.5 rounded">
+                      <h3 className="font-bold text-sm text-[#1D1D1F] group-hover:text-[#0071E3] transition-colors">{p.name}</h3>
+                      <span className="text-[10px] font-mono font-bold text-[#0071E3] bg-[#0071E3]/10 px-2 py-0.5 rounded">
                         {p.patientId}
                       </span>
                     </div>
@@ -194,28 +194,28 @@ export default function PatientSearchPage({
                     title={isPinned ? 'Unpin Patient' : 'Pin Patient'}
                     className={`p-1.5 rounded-lg border transition cursor-pointer ${
                       isPinned 
-                        ? 'bg-amber-500/20 text-amber-400 border-amber-500/30' 
-                        : 'bg-white/5 text-slate-500 border-white/10 hover:text-white'
+                        ? 'bg-amber-50 text-amber-700 border-amber-300' 
+                        : 'bg-[#F5F5F7] text-[#6E6E73] border-[#E5E5E7] hover:text-[#1D1D1F]'
                     }`}
                   >
-                    <Star className={`w-4 h-4 ${isPinned ? 'fill-amber-400' : ''}`} />
+                    <Star className={`w-4 h-4 ${isPinned ? 'fill-amber-400 text-amber-500' : ''}`} />
                   </button>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 text-[11px] text-slate-300 font-mono bg-white/5 p-3 rounded-xl border border-white/5">
+                <div className="grid grid-cols-2 gap-2 text-[11px] text-[#1D1D1F] font-mono bg-[#F5F5F7] p-3 rounded-xl border border-[#E5E5E7]">
                   <div>
-                    <span className="text-slate-500 block text-[9px]">GENDER / AGE</span>
-                    <span className="font-semibold text-white">{p.gender || 'N/A'} • {p.age || '32'} yrs</span>
+                    <span className="text-[#6E6E73] block text-[9px]">GENDER / AGE</span>
+                    <span className="font-semibold text-[#1D1D1F]">{p.gender || 'N/A'} • {p.age || '32'} yrs</span>
                   </div>
                   <div>
-                    <span className="text-slate-500 block text-[9px]">BLOOD GROUP</span>
-                    <span className="font-semibold text-rose-400">{p.bloodGroup || 'N/A'}</span>
+                    <span className="text-[#6E6E73] block text-[9px]">BLOOD GROUP</span>
+                    <span className="font-semibold text-rose-600">{p.bloodGroup || 'N/A'}</span>
                   </div>
-                  <div className="col-span-2 pt-1 border-t border-white/5 flex items-center justify-between">
-                    <span className="text-slate-500 text-[9px] flex items-center gap-1">
-                      <Phone className="w-3 h-3 text-slate-400" /> {p.phone || 'N/A'}
+                  <div className="col-span-2 pt-1 border-t border-[#E5E5E7] flex items-center justify-between">
+                    <span className="text-[#6E6E73] text-[9px] flex items-center gap-1">
+                      <Phone className="w-3 h-3 text-[#6E6E73]" /> {p.phone || 'N/A'}
                     </span>
-                    <span className="text-slate-400 text-[10px]">{p.lastVisit || 'Recent Visit'}</span>
+                    <span className="text-[#6E6E73] text-[10px]">{p.lastVisit || 'Recent Visit'}</span>
                   </div>
                 </div>
 
